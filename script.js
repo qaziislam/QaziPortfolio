@@ -1,7 +1,7 @@
 import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
 import { GLTFLoader } from 'https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
 
-gsap.registerPlugin(ScrollTrigger, Flip);
+gsap.registerPlugin(ScrollTrigger);
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const lowPowerByCores = Number.isFinite(navigator.hardwareConcurrency) && navigator.hardwareConcurrency <= 4;
@@ -164,7 +164,7 @@ const caption = document.getElementById('lb-caption');
 
 let currentGallery = [];
 let currentIndex = 0;
-let activeThumbnail = null;
+let lightboxSwapRaf = null;
 
 function initContactActions() {
     const secureContactLink = document.getElementById('secure-contact-link');
@@ -491,7 +491,7 @@ function inferMediaType(src) {
     return 'image';
 }
 
-function openGallery(source, index = 0, element = null) {
+function openGallery(source, index = 0) {
     if (source === 'visuals') {
         currentGallery = VISUAL_GALLERY_DATA;
     } else if (source === 'videos') {
@@ -505,21 +505,34 @@ function openGallery(source, index = 0, element = null) {
     }
 
     currentIndex = Math.max(0, Math.min(index, currentGallery.length - 1));
-    activeThumbnail = element ? element.querySelector('img') : null;
 
     updateLightbox(false);
     lightbox.classList.remove('hidden');
+}
 
-    if (activeThumbnail && source === 'visuals' && !prefersReducedMotion) {
-        const state = Flip.getState(activeThumbnail);
-        lightboxImg.classList.remove('hidden');
-        Flip.from(state, {
-            targets: lightboxImg,
-            duration: 0.5,
-            ease: 'power2.inOut',
-            scale: true
-        });
+function runLightboxSwap(renderFn, animate = true) {
+    if (!lightbox) {
+        return;
     }
+    if (lightboxSwapRaf) {
+        cancelAnimationFrame(lightboxSwapRaf);
+        lightboxSwapRaf = null;
+    }
+
+    if (!animate || prefersReducedMotion) {
+        lightbox.classList.remove('is-swapping');
+        renderFn();
+        return;
+    }
+
+    lightbox.classList.add('is-swapping');
+    lightboxSwapRaf = requestAnimationFrame(() => {
+        renderFn();
+        lightboxSwapRaf = requestAnimationFrame(() => {
+            lightbox.classList.remove('is-swapping');
+            lightboxSwapRaf = null;
+        });
+    });
 }
 
 function updateLightbox(animate = true) {
@@ -537,11 +550,7 @@ function updateLightbox(animate = true) {
 
     caption.textContent = currentGallery.length > 1 ? `${currentIndex + 1} / ${currentGallery.length}  ${itemCaption}` : itemCaption;
 
-    if (animate && !prefersReducedMotion) {
-        [lightboxImg, lightboxVid, lightboxYT].forEach((node) => node.classList.add('fade-out'));
-    }
-
-    setTimeout(() => {
+    runLightboxSwap(() => {
         lightboxImg.classList.add('hidden');
         lightboxVid.classList.add('hidden');
         lightboxYT.classList.add('hidden');
@@ -562,20 +571,16 @@ function updateLightbox(animate = true) {
             lightboxImg.src = itemSrc;
             lightboxImg.alt = itemCaption || 'Gallery image';
         }
-
-        [lightboxImg, lightboxVid, lightboxYT].forEach((node) => node.classList.remove('fade-out'));
-    }, animate && !prefersReducedMotion ? 200 : 0);
+    }, animate);
 }
 
 function showNext() {
     currentIndex = currentIndex < currentGallery.length - 1 ? currentIndex + 1 : 0;
-    activeThumbnail = null;
     updateLightbox(true);
 }
 
 function showPrev() {
     currentIndex = currentIndex > 0 ? currentIndex - 1 : currentGallery.length - 1;
-    activeThumbnail = null;
     updateLightbox(true);
 }
 
@@ -584,9 +589,9 @@ function closeLightbox() {
         return;
     }
     lightbox.classList.add('hidden');
+    lightbox.classList.remove('is-swapping');
     lightboxVid.pause();
     ytPlayer.src = '';
-    activeThumbnail = null;
 }
 
 function initLightboxEvents() {
@@ -605,7 +610,7 @@ function initLightboxEvents() {
         }
 
         if (visualItem) {
-            openGallery('visuals', Number(visualItem.dataset.galleryIndex), visualItem);
+            openGallery('visuals', Number(visualItem.dataset.galleryIndex));
             return;
         }
 

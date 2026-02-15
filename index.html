@@ -23,7 +23,6 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/Flip.min.js"></script>
 
     <script type="importmap">
       {
@@ -56,11 +55,11 @@
         <button id="lb-prev" class="lb-nav left">‹</button>
         
         <div class="lb-content-wrapper">
-            <img id="lightbox-img" class="hidden" src="" alt="Gallery View">
-            <video id="lightbox-vid" class="hidden" controls autoplay loop playsinline>
+            <img id="lightbox-img" class="lb-media hidden" src="" alt="Gallery View">
+            <video id="lightbox-vid" class="lb-media hidden" controls autoplay loop playsinline>
                 <source src="" type="video/mp4">
             </video>
-            <div id="lightbox-yt" class="hidden video-wrapper">
+            <div id="lightbox-yt" class="lb-media hidden video-wrapper">
                 <iframe id="yt-player" width="100%" height="100%" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
         </div>
@@ -128,23 +127,18 @@
             <p class="gallery-subline">SELECTED STILLS // CAMPAIGN, CULTURE, AND FIELD WORK</p>
             <div class="gallery-scroll-container">
                 <div class="gallery-scroll-track">
-                    <div class="scroll-item" data-gallery-index="0" data-shot="RUN THE JEWELS"><img src="assets/jabee_runthejewels.jpg" loading="lazy"></div>
-                    <div class="scroll-item is-portrait" data-gallery-index="1" data-shot="THUNDER ARENA"><img src="assets/jabee_thunderarena.jpg" loading="lazy"></div>
-                    <div class="scroll-item" data-gallery-index="2" data-shot="LIL WAYNE"><img src="assets/lilwayne.jpg" loading="lazy"></div>
+                    <div class="scroll-item is-feature" data-gallery-index="0" data-shot="RUN THE JEWELS"><img src="assets/jabee_runthejewels.jpg" loading="lazy"></div>
+                    <div class="scroll-item is-portrait is-tall" data-gallery-index="1" data-shot="THUNDER ARENA"><img src="assets/jabee_thunderarena.jpg" loading="lazy"></div>
+                    <div class="scroll-item is-wide" data-gallery-index="2" data-shot="LIL WAYNE"><img src="assets/lilwayne.jpg" loading="lazy"></div>
                     <div class="scroll-item" data-gallery-index="3" data-shot="FAMILY ARCHIVE"><img src="assets/qazianddad.jpg" loading="lazy"></div>
-                    <div class="scroll-item is-portrait" data-gallery-index="4" data-shot="OKLAHOMA CAPITOL"><img src="assets/repturner.jpg" loading="lazy"></div>
-                    <div class="scroll-item is-portrait" data-gallery-index="5" data-shot="SOYLENT CAMPAIGN"><img src="assets/tianasoylent.jpg" loading="lazy"></div>
-                    <div class="scroll-item" data-gallery-index="6" data-shot="OKC DOWNTOWN"><img src="assets/okcdowntown.jpg" loading="lazy"></div>
+                    <div class="scroll-item is-portrait is-tall" data-gallery-index="4" data-shot="OKLAHOMA CAPITOL"><img src="assets/repturner.jpg" loading="lazy"></div>
+                    <div class="scroll-item is-portrait is-tall" data-gallery-index="5" data-shot="SOYLENT CAMPAIGN"><img src="assets/tianasoylent.jpg" loading="lazy"></div>
+                    <div class="scroll-item is-wide" data-gallery-index="6" data-shot="OKC DOWNTOWN"><img src="assets/okcdowntown.jpg" loading="lazy"></div>
                     <div class="scroll-item" data-gallery-index="7" data-shot="BANGLADESH AERIAL"><img src="assets/bangladesh_dronepicture.jpg" loading="lazy"></div>
-                    <div class="scroll-item" data-gallery-index="8" data-shot="CANNABIS BRAND"><img src="assets/alterra_cannabis_greenery.jpg" loading="lazy"></div>
+                    <div class="scroll-item is-wide" data-gallery-index="8" data-shot="CANNABIS BRAND"><img src="assets/alterra_cannabis_greenery.jpg" loading="lazy"></div>
                     <div class="scroll-item" data-gallery-index="9" data-shot="SEATTLE FOREST"><img src="assets/qaziseattleforrest.jpg" loading="lazy"></div>
-                    <div class="scroll-item is-portrait" data-gallery-index="10" data-shot="PORTRAIT STUDY"><img src="assets/alexeppler.jpg" loading="lazy"></div>
-                    <div class="scroll-item is-portrait" data-gallery-index="11" data-shot="SMOKEY SERIES"><img src="assets/smokeyqazi.jpg" loading="lazy"></div>
-                    <div class="scroll-item" data-gallery-index="12" data-shot="COMMUNITY WORK"><img src="assets/foodbankcair.jpg" loading="lazy"></div>
-                    <div class="scroll-item" data-gallery-index="13" data-shot="TOP CROP"><img src="assets/cananbisflower.jpg" loading="lazy"></div>
-                    <div class="scroll-item is-portrait" data-gallery-index="14" data-shot="IMAN POSTER"><img src="assets/imandocumentaryposter.jpg" loading="lazy"></div>
-                    <div class="scroll-item is-portrait" data-gallery-index="15" data-shot="MOM POLAROID"><img src="assets/mompoloroid.jpg" loading="lazy"></div>
-                    <div class="scroll-item" data-gallery-index="16" data-shot="PRODUCT FEATURE"><img src="assets/pokuxshopgood%202.jpg" loading="lazy"></div>
+                    <div class="scroll-item" data-gallery-index="10" data-shot="COMMUNITY WORK"><img src="assets/foodbankcair.jpg" loading="lazy"></div>
+                    <div class="scroll-item is-portrait is-tall" data-gallery-index="11" data-shot="IMAN POSTER"><img src="assets/imandocumentaryposter.jpg" loading="lazy"></div>
                 </div>
             </div>
             <div class="scroll-hint">OPEN ANY FRAME FOR FULL VIEW</div>
