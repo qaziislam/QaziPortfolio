@@ -213,6 +213,53 @@ h2 { font-family: var(--font-head); font-size: 8rem; margin: 0; line-height: 0.9
 .client-logo:hover { filter: grayscale(0%) brightness(1); opacity: 1; transform: scale(1.1); }
 .invert-logo { filter: invert(1) grayscale(100%) brightness(2) !important; opacity: 0.8 !important; }
 
+/* CREDENTIALS */
+.cred-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 24px;
+}
+.cred-card {
+    display: block;
+    text-decoration: none;
+    border: 1px solid #323232;
+    background: rgba(14, 14, 14, 0.85);
+    padding: 22px;
+    transition: border-color 0.24s ease, transform 0.24s ease, background-color 0.24s ease;
+}
+.cred-card:hover {
+    border-color: #7a7a7a;
+    transform: translateY(-2px);
+    background: rgba(20, 20, 20, 0.9);
+}
+.cred-source {
+    display: block;
+    color: #8f8f8f;
+    font-size: 10px;
+    letter-spacing: 1.4px;
+    margin-bottom: 10px;
+}
+.cred-card h3 {
+    margin: 0;
+    font-family: var(--font-head);
+    font-size: 2rem;
+    line-height: 0.9;
+    color: #f2f2f2;
+}
+.cred-card p {
+    margin: 12px 0 16px;
+    color: #c7c7c7;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+.cred-link {
+    color: var(--accent);
+    font-size: 10px;
+    letter-spacing: 1.6px;
+}
+
 /* LINKS */
 .tech-link { color: white; text-decoration: none; display: block; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px; font-size: 2rem; font-family: var(--font-head); transition: 0.3s; }
 .tech-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
@@ -240,6 +287,9 @@ footer { width: 100%; border-top: 1px solid #333; padding: 40px 5%; margin-top: 
     .timeline-node.right .tm-content { text-align: left; }
     .tm-img { max-height: 250px; object-position: top; }
     .video-grid { grid-template-columns: 1fr; }
+    .cred-grid { grid-template-columns: 1fr; gap: 14px; }
+    .cred-card { padding: 18px; }
+    .cred-card h3 { font-size: 1.7rem; }
     .scroll-item { width: 200px; height: 300px; }
     .logo-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; padding: 20px; }
     .client-logo { height: 40px; }

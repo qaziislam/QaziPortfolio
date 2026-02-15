@@ -34,6 +34,7 @@ const KEYFRAMES = {
         { target: '#sec-video', pos: { x: -3, y: 0, z: 0 }, rot: { x: 0, y: 0.5, z: 0 }, scale: 1.2 },
         { target: '#sec-gallery', pos: { x: 3, y: 0, z: 0 }, rot: { x: 0, y: -0.5, z: 0 }, scale: 1.2 },
         { target: '#sec-clients', pos: { x: -3, y: -2, z: 0 }, rot: { x: 0, y: 0.5, z: 0 }, scale: 1.2 },
+        { target: '#sec-cred', pos: { x: 1.6, y: 0.5, z: 1 }, rot: { x: 0.06, y: -0.35, z: -0.08 }, scale: 1.05 },
         { target: '#sec-tech', pos: { x: 2.5, y: -1.5, z: 1 }, rot: { x: 0.1, y: -0.5, z: -0.1 }, scale: 1.2 },
         { target: '#sec-contact', pos: { x: 0, y: -1.5, z: 0 }, rot: { x: 0, y: 0, z: 0 }, scale: 0.35 }
     ],
@@ -44,6 +45,7 @@ const KEYFRAMES = {
         { target: '#sec-video', pos: { x: 0, y: -4, z: -4 }, rot: { x: -0.2, y: 0, z: 0 }, scale: 1.0 },
         { target: '#sec-gallery', pos: { x: 0, y: -4, z: -4 }, rot: { x: -0.2, y: 0, z: 0 }, scale: 1.0 },
         { target: '#sec-clients', pos: { x: 0, y: 2, z: -4 }, rot: { x: 0, y: 0, z: 0 }, scale: 1.0 },
+        { target: '#sec-cred', pos: { x: 0.2, y: 1.4, z: -3.3 }, rot: { x: 0.05, y: -0.25, z: 0 }, scale: 1.0 },
         { target: '#sec-tech', pos: { x: 0, y: 1, z: -3 }, rot: { x: 0.1, y: -0.3, z: 0 }, scale: 1.0 },
         { target: '#sec-contact', pos: { x: 0, y: -1, z: -1 }, rot: { x: 0, y: 0, z: 0 }, scale: 0.35 }
     ]
