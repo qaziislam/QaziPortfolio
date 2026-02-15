@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Qazi Islam: Creative Operator, Multidisciplinary Builder, and Revenue Architect based in OKC.">
+    <meta property="og:title" content="QAZI ISLAM | BIG DAWGS">
+    <meta property="og:image" content="assets/qazi_noice.png">
+    <meta property="og:description" content="Creative Operator // Revenue Architect">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://qaziislam.com">
+    
+    <title>QAZI ISLAM | BIG DAWGS</title>
+    
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%20font-weight%3D%22bold%22%20font-family%3D%22sans-serif%22%20fill%3D%22red%22%3EQ%3C%2Ftext%3E%3C%2Fsvg%3E">
+    
+    <link rel="stylesheet" href="styles.css?v=4.0">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/Flip.min.js"></script>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+</head>
+<body class="no-scroll">
+    
+    <div id="splash-screen">
+        <div class="splash-content">
+            <div class="bismillah-text">﷽</div>
+            <div class="translation-text">IN THE NAME OF ALLAH<br><span style="color: #666;">THE MOST GRACIOUS, THE MOST MERCIFUL</span></div>
+            <div class="welcome-text">WELCOME TO MY SITE</div>
+        </div>
+    </div>
+
+    <div class="noise-overlay"></div>
+    <div class="brand-badge">Q</div>
+
+    <div id="mina-stage">
+        <canvas id="mina-canvas"></canvas>
+    </div>
+
+    <div id="lightbox" class="lightbox hidden">
+        <span class="lightbox-close">&times;</span>
+        <button id="lb-prev" class="lb-nav left">‹</button>
+        
+        <div class="lb-content-wrapper">
+            <img id="lightbox-img" class="hidden" src="" alt="Gallery View">
+            <video id="lightbox-vid" class="hidden" controls autoplay loop playsinline>
+                <source src="" type="video/mp4">
+            </video>
+            <div id="lightbox-yt" class="hidden video-wrapper">
+                <iframe id="yt-player" width="100%" height="100%" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <button id="lb-next" class="lb-nav right">›</button>
+        <div id="lb-caption"></div>
+    </div>
+
+    <div id="funnel-modal" class="funnel-modal hidden">
+        <div class="funnel-content">
+            <span class="funnel-close">&times;</span>
+            <h2>INITIATE PROTOCOL</h2>
+            <p>SELECT YOUR OBJECTIVE:</p>
+            
+            <div class="funnel-options">
+                <a href="#" data-subject="New Project Inquiry" class="funnel-btn">
+                    <span class="btn-title">BUILD A SYSTEM</span>
+                    <span class="btn-desc">Web / App / Tech Stack</span>
+                </a>
+                <a href="#" data-subject="Creative Direction Inquiry" class="funnel-btn">
+                    <span class="btn-title">TELL A STORY</span>
+                    <span class="btn-desc">Video / Brand / Direction</span>
+                </a>
+                <a href="#" data-subject="Consulting Inquiry" class="funnel-btn">
+                    <span class="btn-title">SCALE REVENUE</span>
+                    <span class="btn-desc">Strategy / Growth / Ops</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main id="scroll-stream">
+        
+        <section id="sec-hero">
+            <div class="hud-top">SYSTEM: OPERATIONAL // OKC BASE</div>
+            <h1 class="giant-text">QAZI<br>ISLAM</h1>
+            <div class="sub-text">CREATIVE OPERATOR <span class="slash">//</span> OKC NATIVE</div>
+        </section>
+
+        <section id="sec-profile" class="align-left">
+            <div class="track-info">
+                <span class="track-num">01</span>
+                <h2>THE<br>ARCHITECT</h2>
+            </div>
+            <div class="lyrics-box">
+                <p>I BUILD BRANDS AND SYSTEMS.</p>
+                <ul style="list-style: none; padding: 0; margin: 20px 0; color: #ccc; font-size: 1rem; line-height: 1.6;">
+                    <li>// CREATIVE DIRECTION (VIDEO/PHOTO)</li>
+                    <li>// MULTIDISCIPLINARY BUILDER</li>
+                    <li>// REVENUE STRATEGY ($4M+/MO MANAGED)</li>
+                </ul>
+                <div class="stat-row">
+                    <span>112K+ <small>COMMUNITY</small></span>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-history">
+            <div class="section-header-center" style="margin-bottom: 50px;">
+                <div class="track-info center">
+                    <span class="track-num">02</span>
+                    <h2>THE<br>ORIGIN</h2>
+                </div>
+            </div>
+            
+            <div class="timeline-wrap">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-node">
+                    <div class="tm-year">1994</div>
+                    <div class="tm-content" data-gallery-key="birth">
+                        <h3>ORIGIN POINT</h3>
+                        <p class="accent">OKC BORN</p>
+                        <p>The beginning. Before the noise.</p>
+                        <img src="assets/qazibirth.jpg" alt="1994" class="tm-img" loading="lazy">
+                        <span class="tap-hint">+ TAP TO VIEW GALLERY</span>
+                    </div>
+                </div>
+
+                <div class="timeline-node right">
+                    <div class="tm-year">200X</div>
+                    <div class="tm-content" data-gallery-key="lyrewood">
+                        <h3>7015 LYREWOOD LANE</h3>
+                        <p class="accent">L-BLOCK</p>
+                        <p>Growing up in "Firewood." We didn't have much, but we had each other.</p>
+                        <img src="assets/lyrewoodlane.png" alt="Lyrewood" class="tm-img" loading="lazy">
+                        <span class="tap-hint">+ TAP TO VIEW GALLERY</span>
+                    </div>
+                </div>
+
+                <div class="timeline-node">
+                    <div class="tm-year">2010</div>
+                    <div class="tm-content" data-gallery-key="bangla">
+                        <h3>BANGLA BAZAAR</h3>
+                        <p class="accent">THE INTEGRITY</p>
+                        <p>3096 N Portland. My parents pulled 15-hour shifts. Pure hustle.</p>
+                        <img src="assets/banglabazaar_outside.jpg" alt="Store" class="tm-img" loading="lazy">
+                        <span class="tap-hint">+ TAP TO VIEW GALLERY</span>
+                    </div>
+                </div>
+
+                <div class="timeline-node right">
+                    <div class="tm-year">2012-18</div>
+                    <div class="tm-content" data-gallery-key="grind">
+                        <h3>THE GRIND</h3>
+                        <p class="accent">WEDDINGS / A/V / AGENCY</p>
+                        <p>The "One-Man-Band" era. I learned to execute with zero friction.</p>
+                        <img src="assets/sabah_vape_photography.jpg" alt="The Grind" class="tm-img" loading="lazy">
+                        <span class="tap-hint">+ TAP TO VIEW GALLERY</span>
+                    </div>
+                </div>
+
+                <div class="timeline-node">
+                    <div class="tm-year">2018</div>
+                    <div class="tm-content" data-gallery-key="mina">
+                        <h3>MINA</h3>
+                        <p class="accent">THE SAVIOR</p>
+                        <p>She changed everything. Got me through the darkest times.</p>
+                        <img src="assets/minaonthehunt.jpg" alt="Mina" class="tm-img" loading="lazy">
+                        <span class="tap-hint">+ TAP TO VIEW GALLERY</span>
+                    </div>
+                </div>
+
+                <div class="timeline-node right">
+                    <div class="tm-year">2019</div>
+                    <div class="tm-content" data-gallery-key="agencies">
+                        <h3>THE FOUNDER</h3>
+                        <p class="accent">IMAGELINE / CANNALINE</p>
+                        <p>Medical legalization hit Oklahoma. I launched Cannaline Marketing.</p>
+                        <img src="assets/alterra_cannabis_greenery.jpg" alt="Cannabis Agency" class="tm-img" loading="lazy">
+                        <span class="tap-hint">+ TAP TO VIEW GALLERY</span>
+                    </div>
+                </div>
+
+                <div class="timeline-node">
+                    <div class="tm-year">2022</div>
+                    <div class="tm-content" data-gallery-key="mom">
+                        <h3>THE MATRIARCH</h3>
+                        <p class="accent">APRIL FOREVER</p>
+                        <p>We lost her to cancer. Her dying wish was to return to the soil of Bangladesh.</p>
+                        <img src="assets/maaportrait.jpg" alt="Maa" class="tm-img" loading="lazy">
+                        <span class="tap-hint">+ TAP TO VIEW GALLERY</span>
+                    </div>
+                </div>
+
+                <div class="timeline-node right">
+                    <div class="tm-year">2023</div>
+                    <div class="tm-content" data-gallery-key="cair">
+                        <h3>THE PROJECT</h3>
+                        <p class="accent">IMAN DOC / THE CRASH</p>
+                        <p>Directed "IMAN". Then Silicon Valley Bank collapsed. Survival mode.</p>
+                        <img src="assets/cairbeyondtheballet.jpg" alt="CAIR" class="tm-img" loading="lazy">
+                        <span class="tap-hint">+ TAP TO VIEW GALLERY</span>
+                    </div>
+                </div>
+
+                <div class="timeline-node">
+                    <div class="tm-year">2024</div>
+                    <div class="tm-content" data-gallery-key="oao">
+                        <h3>THE RESISTANCE</h3>
+                        <p class="accent">GAZA / OAO</p>
+                        <p>The world burned. OAO was founded. Organized the city.</p>
+                        <img src="assets/oaolandrally.jpg" alt="OAO Rally" class="tm-img" loading="lazy">
+                        <span class="tap-hint">+ TAP TO VIEW GALLERY</span>
+                    </div>
+                </div>
+
+                <div class="timeline-node right">
+                    <div class="tm-year">2025</div>
+                    <div class="tm-content" data-gallery-key="topcrop">
+                        <h3>CONTENT DIRECTOR</h3>
+                        <p class="accent">TOP CROP // THE ASCENSION</p>
+                        <p>Overseeing multi-state digital infrastructure. The trial paid off.</p>
+                        <img src="assets/cananbisflower.jpg" alt="Top Crop" class="tm-img" loading="lazy">
+                        <span class="tap-hint">+ TAP TO VIEW GALLERY</span>
+                    </div>
+                </div>
+
+                <div class="timeline-node">
+                    <div class="tm-year">2026</div>
+                    <div class="tm-content" data-gallery-key="now">
+                        <h3>THE EXECUTION</h3>
+                        <p class="accent">BIG DAWG ERA</p>
+                        <p>Scaling systems. Telling stories. Getting married this year.</p>
+                        <img src="assets/qazi_noice.png" alt="Big Dawg" class="tm-img" loading="lazy">
+                        <span class="tap-hint">+ TAP TO VIEW GALLERY</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-video" class="align-center has-bg-video">
+            <div class="bg-video-layer">
+                <video autoplay muted loop playsinline>
+                    <source src="assets/qazi%20reel%20website.mp4" type="video/mp4">
+                </video>
+                <div class="bg-overlay"></div>
+            </div>
+
+            <div class="content-layer">
+                 <div class="section-header-center">
+                    <h2 class="outline-text">FILM ARCHIVE</h2>
+                </div>
+                <div class="video-grid">
+                    <div class="video-card" data-gallery-index="0">
+                        <img src="https://img.youtube.com/vi/-Ayp30uJSPk/maxresdefault.jpg" alt="Oregon" loading="lazy">
+                        <div class="vid-meta">OREGON TRIP</div>
+                    </div>
+                    <div class="video-card" data-gallery-index="1">
+                        <img src="https://img.youtube.com/vi/pdJg_Wlb8Ac/maxresdefault.jpg" alt="OAO Protest" loading="lazy">
+                        <div class="vid-meta">OKC PALESTINE PROTEST</div>
+                    </div>
+                    <div class="video-card" data-gallery-index="2">
+                        <img src="https://img.youtube.com/vi/YAjpdOEYs8Q/maxresdefault.jpg" alt="ChronClub" loading="lazy">
+                        <div class="vid-meta">CHRONCLUB VEGAS</div>
+                    </div>
+                    <div class="video-card" data-gallery-index="3">
+                        <img src="https://img.youtube.com/vi/yMO3nwPEQ7g/maxresdefault.jpg" alt="Bangladesh" loading="lazy">
+                        <div class="vid-meta">BANGLADESH 120FPS</div>
+                    </div>
+                    <div class="video-card" data-gallery-index="4">
+                        <img src="https://img.youtube.com/vi/2La7TDYkng8/maxresdefault.jpg" alt="March" loading="lazy">
+                        <div class="vid-meta">MARCH ON WASHINGTON</div>
+                    </div>
+                    <div class="video-card" data-gallery-index="5">
+                        <img src="https://img.youtube.com/vi/7RKnyG7L5L0/maxresdefault.jpg" alt="Timberland" loading="lazy">
+                        <div class="vid-meta">TIMBERLAND PIONEERS</div>
+                    </div>
+                    <div class="video-card" data-gallery-index="6">
+                        <img src="https://img.youtube.com/vi/CfDc66a5mVU/maxresdefault.jpg" alt="Spherex" loading="lazy">
+                        <div class="vid-meta">SPHEREX COMMERCIAL</div>
+                    </div>
+                    <div class="video-card" data-gallery-index="7">
+                        <img src="https://img.youtube.com/vi/1NY4IrxMcCk/maxresdefault.jpg" alt="Sundeep" loading="lazy">
+                        <div class="vid-meta">SUNDEEP: FIRST LIGHT</div>
+                    </div>
+                    <div class="video-card" data-gallery-index="8">
+                        <img src="https://img.youtube.com/vi/mWHXkGMUehg/maxresdefault.jpg" alt="Campaign" loading="lazy">
+                        <div class="vid-meta">MASOOD HAQ CAMPAIGN</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-gallery" class="align-center">
+            <div class="section-header-center">
+                <h2 class="outline-text">VISUAL DATA</h2>
+            </div>
+            <div class="gallery-scroll-container">
+                <div class="gallery-scroll-track">
+                    <div class="scroll-item" data-gallery-index="0"><img src="assets/lilwayne.jpg" loading="lazy"></div>
+                    <div class="scroll-item" data-gallery-index="1"><img src="assets/smokeyqazi.jpg" loading="lazy"></div>
+                    <div class="scroll-item" data-gallery-index="2"><img src="assets/tianasoylent.jpg" loading="lazy"></div>
+                    <div class="scroll-item" data-gallery-index="3"><img src="assets/cananbisflower.jpg" loading="lazy"></div>
+                    <div class="scroll-item" data-gallery-index="4"><img src="assets/alexeppler.jpg" loading="lazy"></div>
+                    <div class="scroll-item" data-gallery-index="5"><img src="assets/qaziseattleforrest.jpg" loading="lazy"></div>
+                    <div class="scroll-item" data-gallery-index="6"><img src="assets/foodbankcair.jpg" loading="lazy"></div>
+                    <div class="scroll-item" data-gallery-index="7"><img src="assets/repturner.jpg" loading="lazy"></div>
+                    <div class="scroll-item" data-gallery-index="8"><img src="assets/mompoloroid.jpg" loading="lazy"></div>
+                    <div class="scroll-item" data-gallery-index="9"><img src="assets/qazianddad.jpg" loading="lazy"></div>
+                    <div class="scroll-item" data-gallery-index="10"><img src="assets/alterra_cannabis_greenery.jpg" loading="lazy"></div>
+                    <div class="scroll-item" data-gallery-index="11"><img src="assets/bangladesh_dronepicture.jpg" loading="lazy"></div>
+                    <div class="scroll-item" data-gallery-index="12"><img src="assets/imandocumentaryposter.jpg" loading="lazy"></div>
+                    <div class="scroll-item" data-gallery-index="13"><img src="assets/jabee_runthejewels.jpg" loading="lazy"></div>
+                    <div class="scroll-item" data-gallery-index="14"><img src="assets/jabee_thunderarena.jpg" loading="lazy"></div>
+                    <div class="scroll-item" data-gallery-index="15"><img src="assets/okcdowntown.jpg" loading="lazy"></div>
+                    <div class="scroll-item" data-gallery-index="16"><img src="assets/pokuxshopgood%202.jpg" loading="lazy"></div>
+                </div>
+            </div>
+            <div class="scroll-hint">DRAG / SCROLL -></div>
+        </section>
+
+        <section id="sec-clients" class="align-center">
+            <div class="track-info">
+                <span class="track-num">05</span>
+                <h2>TRUSTED<br>BY</h2>
+            </div>
+            <div class="logo-grid">
+                <img src="assets/thunderlogo.png" alt="OKC Thunder" class="client-logo">
+                <img src="assets/cairlogo.png" alt="CAIR" class="client-logo">
+                <img src="assets/atlanticlogo.png" alt="Atlantic" class="client-logo">
+                <img src="assets/dressforsuccessblack.png" alt="Dress For Success" class="client-logo invert-logo">
+                <img src="assets/towerlogo.png" alt="Tower" class="client-logo">
+                <img src="assets/soylentlogo.png" alt="Soylent" class="client-logo"> 
+            </div>
+        </section>
+
+        <section id="sec-tech" class="align-left">
+            <div class="track-info">
+                <span class="track-num">06</span>
+                <h2>THE<br>GRID</h2>
+            </div>
+            <div class="lyrics-box">
+                <a href="https://loadeasy.io" target="_blank" class="tech-link">
+                    LOADEASY.IO ↗ <span class="tag">FINTECH</span>
+                </a>
+                <a href="http://thechronclub.com/" target="_blank" class="tech-link">
+                    THECHRONCLUB.COM ↗ <span class="tag">DIGITAL EXP</span>
+                </a>
+                <div class="tech-ticker">THE COMPLETE ECOSYSTEM // FROM PIXEL TO SERVER</div>
+            </div>
+        </section>
+
+        <section id="sec-contact" class="align-center">
+            <a href="#" id="secure-contact-link" class="giant-link" style="cursor: pointer;">INITIATE<br>LINK</a>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <div class="f-left">QAZI ISLAM © 2026</div>
+                <div class="f-right">OKC // WORLDWIDE</div>
+            </div>
+        </footer>
+
+    </main>
+
+    <script type="module" src="script.js?v=4.0"></script>
+</body>
+</html>
