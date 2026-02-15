@@ -224,6 +224,7 @@ function revealSite() {
 
     splash.dataset.revealed = 'true';
     splash.classList.add('is-exiting');
+    splash.style.transform = 'translateY(-100%)';
 
     setTimeout(() => {
         document.body.classList.remove('no-scroll');
