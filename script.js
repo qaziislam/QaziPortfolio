@@ -8,6 +8,15 @@ const lowPowerByCores = Number.isFinite(navigator.hardwareConcurrency) && naviga
 const lowPowerByMemory = Number.isFinite(navigator.deviceMemory) && navigator.deviceMemory <= 4;
 const isLowPowerDevice = lowPowerByCores || lowPowerByMemory;
 const allow3D = !prefersReducedMotion && !isLowPowerDevice;
+const MOTION = {
+    splashMs: prefersReducedMotion ? 450 : 980,
+    modelEntranceMs: 0.82,
+    revealStagger: 0.085,
+    revealDuration: 0.66,
+    revealEase: 'power3.out',
+    counterDuration: 0.95,
+    scrollScrub: 0.12
+};
 
 const mobileQuery = window.matchMedia('(max-width: 767px)');
 let isMobile = mobileQuery.matches;
@@ -218,13 +227,13 @@ function revealSite() {
         document.body.classList.remove('no-scroll');
         splash.style.display = 'none';
         if (mina) {
-            gsap.fromTo(mina.scale, { x: 0.2, y: 0.2, z: 0.2 }, { x: mina.scale.x, y: mina.scale.y, z: mina.scale.z, duration: 0.9, ease: 'power2.out' });
+            gsap.fromTo(mina.scale, { x: 0.2, y: 0.2, z: 0.2 }, { x: mina.scale.x, y: mina.scale.y, z: mina.scale.z, duration: MOTION.modelEntranceMs, ease: 'power2.out' });
         }
     }, prefersReducedMotion ? 180 : 620);
 }
 
 function initSplash() {
-    const minSplashMs = prefersReducedMotion ? 450 : 1200;
+    const minSplashMs = MOTION.splashMs;
     const minTime = new Promise((resolve) => setTimeout(resolve, minSplashMs));
     const loadTime = new Promise((resolve) => window.addEventListener('load', resolve, { once: true }));
 
@@ -373,7 +382,7 @@ function initScrollAnimations() {
             trigger: '#scroll-stream',
             start: 'top top',
             end: 'bottom bottom',
-            scrub: 0.14
+            scrub: MOTION.scrollScrub
         }
     });
 
@@ -597,9 +606,9 @@ function initSectionReveals() {
                 gsap.to(nodes, {
                     y: 0,
                     opacity: 1,
-                    stagger: 0.1,
-                    duration: 0.72,
-                    ease: 'power3.out',
+                    stagger: MOTION.revealStagger,
+                    duration: MOTION.revealDuration,
+                    ease: MOTION.revealEase,
                     overwrite: 'auto'
                 });
             }
@@ -634,7 +643,7 @@ function initProofCounters() {
         const value = { current: 0 };
         gsap.to(value, {
             current: end,
-            duration: 1.1,
+            duration: MOTION.counterDuration,
             ease: 'power2.out',
             onUpdate: () => {
                 counter.textContent = `${prefix}${Math.round(value.current)}${suffix}`;
