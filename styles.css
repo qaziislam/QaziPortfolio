@@ -356,6 +356,41 @@ h2 { font-family: var(--font-head); font-size: 8rem; margin: 0; line-height: 0.9
     font-size: 10px;
     letter-spacing: 1.6px;
 }
+.cred-archive {
+    margin-top: 16px;
+    border: 1px solid #2f2f2f;
+    background: rgba(10, 10, 10, 0.82);
+    padding: 14px;
+}
+.cred-archive-title {
+    margin: 0 0 10px;
+    color: #8f8f8f;
+    font-size: 10px;
+    letter-spacing: 1.6px;
+}
+.cred-archive-list {
+    display: grid;
+    gap: 8px;
+}
+.cred-archive-list a {
+    text-decoration: none;
+    border: 1px solid #373737;
+    padding: 8px 10px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    background: rgba(18, 18, 18, 0.82);
+    color: #e8e8e8;
+    transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.cred-archive-list a:link,
+.cred-archive-list a:visited {
+    color: #e8e8e8;
+}
+.cred-archive-list a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: translateX(2px);
+}
 
 /* LINKS */
 .tech-link { color: white; text-decoration: none; display: block; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px; font-size: 2rem; font-family: var(--font-head); transition: 0.3s; }
@@ -391,6 +426,7 @@ footer { width: 100%; border-top: 1px solid #333; padding: 40px 5%; margin-top: 
     .cred-grid { grid-template-columns: 1fr; gap: 14px; }
     .cred-card { padding: 18px; }
     .cred-card h3 { font-size: 1.7rem; }
+    .cred-archive { padding: 12px; }
     .scroll-item { width: 200px; height: 300px; }
     .logo-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; padding: 20px; }
     .client-logo { height: 40px; }
