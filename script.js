@@ -7,7 +7,8 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 const lowPowerByCores = Number.isFinite(navigator.hardwareConcurrency) && navigator.hardwareConcurrency <= 4;
 const lowPowerByMemory = Number.isFinite(navigator.deviceMemory) && navigator.deviceMemory <= 4;
 const isLowPowerDevice = lowPowerByCores || lowPowerByMemory;
-const allow3D = !prefersReducedMotion && !isLowPowerDevice;
+const allow3D = !prefersReducedMotion;
+const lowDetail3D = isLowPowerDevice;
 const MOTION = {
     splashMs: prefersReducedMotion ? 450 : 980,
     modelEntranceMs: 0.82,
@@ -304,7 +305,7 @@ function init3D() {
     if (!allow3D) {
         const stage = document.getElementById('mina-stage');
         if (stage) {
-            stage.style.opacity = '0.12';
+            stage.style.opacity = '0';
         }
         return;
     }
@@ -321,24 +322,24 @@ function init3D() {
     camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(0, 0, 6);
 
-    renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'high-performance' });
+    renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: !lowDetail3D, powerPreference: 'high-performance' });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.8));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, lowDetail3D ? 1.25 : 1.8));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.0;
 
     minaGroup = new THREE.Group();
     scene.add(minaGroup);
 
-    const redLight = new THREE.SpotLight(0xe30613, isMobile ? 45 : 34);
+    const redLight = new THREE.SpotLight(0xe30613, isMobile ? (lowDetail3D ? 35 : 45) : (lowDetail3D ? 28 : 34));
     redLight.position.set(-5, 2, -2);
     scene.add(redLight);
 
-    const blueLight = new THREE.SpotLight(0xaaccff, isMobile ? 24 : 16);
+    const blueLight = new THREE.SpotLight(0xaaccff, isMobile ? (lowDetail3D ? 18 : 24) : (lowDetail3D ? 12 : 16));
     blueLight.position.set(5, 5, 5);
     scene.add(blueLight);
 
-    const rimLight = new THREE.DirectionalLight(0xffffff, isMobile ? 1.6 : 1.2);
+    const rimLight = new THREE.DirectionalLight(0xffffff, isMobile ? (lowDetail3D ? 1.2 : 1.6) : (lowDetail3D ? 0.9 : 1.2));
     rimLight.position.set(0, 5, -5);
     scene.add(rimLight);
 
@@ -406,13 +407,13 @@ function startRenderLoop() {
 
         if (mina) {
             const time = Date.now() * 0.0035;
-            mina.position.y = Math.sin(time) * 0.05;
+            mina.position.y = Math.sin(time) * (lowDetail3D ? 0.03 : 0.05);
 
             if (isMobile) {
-                mina.rotation.y += 0.003;
+                mina.rotation.y += lowDetail3D ? 0.002 : 0.003;
             } else {
-                mina.rotation.y += (targetRotation.y - mina.rotation.y) * 0.08;
-                mina.rotation.x += (targetRotation.x - mina.rotation.x) * 0.08;
+                mina.rotation.y += (targetRotation.y - mina.rotation.y) * (lowDetail3D ? 0.06 : 0.08);
+                mina.rotation.x += (targetRotation.x - mina.rotation.x) * (lowDetail3D ? 0.06 : 0.08);
             }
         }
 
