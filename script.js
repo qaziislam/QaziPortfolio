@@ -30,10 +30,10 @@ const KEYFRAMES = {
     desktop: [
         { target: '#sec-hero', pos: { x: 0, y: -4, z: 0 }, rot: { x: 0.2, y: 0, z: 0 }, scale: 2.8 },
         { target: '#sec-profile', pos: { x: 2.5, y: -2, z: 0 }, rot: { x: 0, y: -0.8, z: 0 }, scale: 1.2 },
+        { target: '#sec-gallery', pos: { x: 3, y: 0, z: 0 }, rot: { x: 0, y: -0.5, z: 0 }, scale: 1.2 },
         { target: '#sec-history', pos: { x: 0, y: 2, z: -2 }, rot: { x: 0.3, y: 0, z: 0 }, scale: 1.0 },
         { target: '#sec-iman', pos: { x: 2.2, y: -0.8, z: 0.5 }, rot: { x: 0.08, y: -0.45, z: -0.06 }, scale: 1.1 },
         { target: '#sec-video', pos: { x: -3, y: 0, z: 0 }, rot: { x: 0, y: 0.5, z: 0 }, scale: 1.2 },
-        { target: '#sec-gallery', pos: { x: 3, y: 0, z: 0 }, rot: { x: 0, y: -0.5, z: 0 }, scale: 1.2 },
         { target: '#sec-clients', pos: { x: -3, y: -2, z: 0 }, rot: { x: 0, y: 0.5, z: 0 }, scale: 1.2 },
         { target: '#sec-cred', pos: { x: 1.6, y: 0.5, z: 1 }, rot: { x: 0.06, y: -0.35, z: -0.08 }, scale: 1.05 },
         { target: '#sec-tech', pos: { x: 2.5, y: -1.5, z: 1 }, rot: { x: 0.1, y: -0.5, z: -0.1 }, scale: 1.2 },
@@ -42,10 +42,10 @@ const KEYFRAMES = {
     mobile: [
         { target: '#sec-hero', pos: { x: 0, y: -2, z: -1 }, rot: { x: 0.2, y: 0, z: 0 }, scale: 1.5 },
         { target: '#sec-profile', pos: { x: 0, y: 1, z: -4 }, rot: { x: 0, y: -0.5, z: 0 }, scale: 1.0 },
+        { target: '#sec-gallery', pos: { x: 0, y: -4, z: -4 }, rot: { x: -0.2, y: 0, z: 0 }, scale: 1.0 },
         { target: '#sec-history', pos: { x: 0, y: 2, z: -4 }, rot: { x: -0.2, y: 0, z: 0 }, scale: 1.0 },
         { target: '#sec-iman', pos: { x: 0.4, y: 1.2, z: -3.6 }, rot: { x: 0.08, y: -0.25, z: 0 }, scale: 1.0 },
         { target: '#sec-video', pos: { x: 0, y: -4, z: -4 }, rot: { x: -0.2, y: 0, z: 0 }, scale: 1.0 },
-        { target: '#sec-gallery', pos: { x: 0, y: -4, z: -4 }, rot: { x: -0.2, y: 0, z: 0 }, scale: 1.0 },
         { target: '#sec-clients', pos: { x: 0, y: 2, z: -4 }, rot: { x: 0, y: 0, z: 0 }, scale: 1.0 },
         { target: '#sec-cred', pos: { x: 0.2, y: 1.4, z: -3.3 }, rot: { x: 0.05, y: -0.25, z: 0 }, scale: 1.0 },
         { target: '#sec-tech', pos: { x: 0, y: 1, z: -3 }, rot: { x: 0.1, y: -0.3, z: 0 }, scale: 1.0 },
@@ -737,7 +737,7 @@ function initProofCounters() {
 
 function initGalleryDrag() {
     const slider = document.querySelector('.gallery-scroll-container');
-    if (!slider) {
+    if (!slider || !window.matchMedia('(max-width: 768px)').matches) {
         return;
     }
 
