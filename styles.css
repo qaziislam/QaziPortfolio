@@ -328,23 +328,23 @@ h2 { font-family: var(--font-head); font-size: 8rem; margin: 0; line-height: 0.9
 .scroll-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(78%); transition: 0.45s ease; pointer-events: none; }
 .scroll-item:hover { border-color: #8a8a8a; }
 .scroll-item:hover img { filter: grayscale(0%); transform: scale(1.03); }
-.scroll-item:nth-child(1) { grid-column: span 4; grid-row: span 5; }
-.scroll-item:nth-child(2) { grid-column: span 3; grid-row: span 4; }
-.scroll-item:nth-child(3) { grid-column: span 2; grid-row: span 3; }
-.scroll-item:nth-child(4) { grid-column: span 3; grid-row: span 4; }
-.scroll-item:nth-child(5) { grid-column: span 2; grid-row: span 3; }
-.scroll-item:nth-child(6) { grid-column: span 3; grid-row: span 5; }
-.scroll-item:nth-child(7) { grid-column: span 3; grid-row: span 4; }
-.scroll-item:nth-child(8) { grid-column: span 4; grid-row: span 5; }
-.scroll-item:nth-child(9) { grid-column: span 2; grid-row: span 3; }
-.scroll-item:nth-child(10) { grid-column: span 3; grid-row: span 4; }
-.scroll-item:nth-child(11) { grid-column: span 3; grid-row: span 4; }
-.scroll-item:nth-child(12) { grid-column: span 2; grid-row: span 3; }
-.scroll-item:nth-child(13) { grid-column: span 4; grid-row: span 5; }
-.scroll-item:nth-child(14) { grid-column: span 3; grid-row: span 4; }
-.scroll-item:nth-child(15) { grid-column: span 2; grid-row: span 3; }
-.scroll-item:nth-child(16) { grid-column: span 3; grid-row: span 4; }
-.scroll-item:nth-child(17) { grid-column: span 4; grid-row: span 4; }
+.scroll-item:nth-child(1) { grid-column: span 4; grid-row: span 5; }   /* lilwayne */
+.scroll-item:nth-child(2) { grid-column: span 2; grid-row: span 3; }   /* smokey */
+.scroll-item:nth-child(3) { grid-column: span 3; grid-row: span 4; }   /* soylent */
+.scroll-item:nth-child(4) { grid-column: span 3; grid-row: span 4; }   /* flower */
+.scroll-item:nth-child(5) { grid-column: span 2; grid-row: span 3; }   /* alex */
+.scroll-item:nth-child(6) { grid-column: span 4; grid-row: span 5; }   /* qazi forest */
+.scroll-item:nth-child(7) { grid-column: span 2; grid-row: span 3; }   /* foodbank */
+.scroll-item:nth-child(8) { grid-column: span 3; grid-row: span 4; }   /* rep */
+.scroll-item:nth-child(9) { grid-column: span 3; grid-row: span 4; }   /* mom polaroid */
+.scroll-item:nth-child(10) { grid-column: span 4; grid-row: span 5; }  /* qazi dad */
+.scroll-item:nth-child(11) { grid-column: span 3; grid-row: span 4; }  /* alterra */
+.scroll-item:nth-child(12) { grid-column: span 2; grid-row: span 3; }  /* drone */
+.scroll-item:nth-child(13) { grid-column: span 2; grid-row: span 3; }  /* iman poster */
+.scroll-item:nth-child(14) { grid-column: span 4; grid-row: span 5; }  /* jabee rtj */
+.scroll-item:nth-child(15) { grid-column: span 3; grid-row: span 4; }  /* jabee thunder */
+.scroll-item:nth-child(16) { grid-column: span 3; grid-row: span 4; }  /* okc */
+.scroll-item:nth-child(17) { grid-column: span 2; grid-row: span 3; }  /* pokux */
 .scroll-hint { margin-top: 14px; font-size: 10px; color: #8e8e8e; letter-spacing: 1.5px; }
 
 /* CLIENTS */
