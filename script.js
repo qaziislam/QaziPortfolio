@@ -111,22 +111,22 @@ const GALLERY_DATA = {
 };
 
 const VISUAL_GALLERY_DATA = [
-    { src: 'assets/lilwayne.jpg', caption: 'Lil Wayne Concert' },
-    { src: 'assets/smokeyqazi.jpg', caption: 'Smokey Qazi' },
-    { src: 'assets/tianasoylent.jpg', caption: 'Tiana Soylent' },
-    { src: 'assets/cananbisflower.jpg', caption: 'Cannabis Flower Close-up' },
-    { src: 'assets/alexeppler.jpg', caption: 'Alex Eppler Portrait' },
-    { src: 'assets/qaziseattleforrest.jpg', caption: 'Qazi in Seattle Forest' },
-    { src: 'assets/foodbankcair.jpg', caption: 'CAIR Food Bank' },
-    { src: 'assets/repturner.jpg', caption: 'Representative Turner' },
-    { src: 'assets/mompoloroid.jpg', caption: 'Mom Polaroid' },
-    { src: 'assets/qazianddad.jpg', caption: 'Qazi and Dad' },
-    { src: 'assets/alterra_cannabis_greenery.jpg', caption: 'Alterra Cannabis Greenery' },
-    { src: 'assets/bangladesh_dronepicture.jpg', caption: 'Bangladesh Drone View' },
-    { src: 'assets/imandocumentaryposter.jpg', caption: 'IMAN Documentary Poster' },
     { src: 'assets/jabee_runthejewels.jpg', caption: 'Jabee with Run The Jewels' },
     { src: 'assets/jabee_thunderarena.jpg', caption: 'Jabee at Thunder Arena' },
+    { src: 'assets/lilwayne.jpg', caption: 'Lil Wayne Concert' },
+    { src: 'assets/qazianddad.jpg', caption: 'Qazi and Dad' },
+    { src: 'assets/repturner.jpg', caption: 'Representative Turner' },
+    { src: 'assets/tianasoylent.jpg', caption: 'Tiana Soylent' },
     { src: 'assets/okcdowntown.jpg', caption: 'OKC Downtown' },
+    { src: 'assets/bangladesh_dronepicture.jpg', caption: 'Bangladesh Drone View' },
+    { src: 'assets/alterra_cannabis_greenery.jpg', caption: 'Alterra Cannabis Greenery' },
+    { src: 'assets/qaziseattleforrest.jpg', caption: 'Qazi in Seattle Forest' },
+    { src: 'assets/alexeppler.jpg', caption: 'Alex Eppler Portrait' },
+    { src: 'assets/smokeyqazi.jpg', caption: 'Smokey Qazi' },
+    { src: 'assets/foodbankcair.jpg', caption: 'CAIR Food Bank' },
+    { src: 'assets/cananbisflower.jpg', caption: 'Cannabis Flower Close-up' },
+    { src: 'assets/imandocumentaryposter.jpg', caption: 'IMAN Documentary Poster' },
+    { src: 'assets/mompoloroid.jpg', caption: 'Mom Polaroid' },
     { src: 'assets/pokuxshopgood%202.jpg', caption: 'Pokux Shopgood' }
 ];
 

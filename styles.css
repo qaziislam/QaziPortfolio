@@ -324,10 +324,31 @@ h2 { font-family: var(--font-head); font-size: 8rem; margin: 0; line-height: 0.9
     transition: 0.25s ease;
     background: #000;
     min-height: 0;
+    position: relative;
 }
 .scroll-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(78%); transition: 0.45s ease; pointer-events: none; }
 .scroll-item:hover { border-color: #8a8a8a; }
 .scroll-item:hover img { filter: grayscale(0%); transform: scale(1.03); }
+.scroll-item::after {
+    content: attr(data-shot);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 8px 10px;
+    font-size: 9px;
+    letter-spacing: 1.3px;
+    color: #d6d6d6;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
+    opacity: 0;
+    transform: translateY(3px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+}
+.scroll-item:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
 .scroll-item:nth-child(1) { grid-column: span 4; grid-row: span 5; }   /* lilwayne */
 .scroll-item:nth-child(2) { grid-column: span 2; grid-row: span 3; }   /* smokey */
 .scroll-item:nth-child(3) { grid-column: span 3; grid-row: span 4; }   /* soylent */
@@ -472,6 +493,7 @@ footer { width: 100%; border-top: 1px solid #333; padding: 40px 5%; margin-top: 
     .gallery-scroll-container.active { cursor: grabbing; }
     .gallery-scroll-track { display: inline-flex; gap: 20px; width: auto; grid-template-columns: none; grid-auto-rows: auto; }
     .scroll-item { width: 200px; height: 300px; flex-shrink: 0; }
+    .scroll-item::after { opacity: 1; transform: none; }
     .scroll-item:nth-child(n) { grid-column: auto; grid-row: auto; }
     .cred-grid { grid-template-columns: 1fr; gap: 14px; }
     .cred-card { padding: 18px; }
