@@ -35,12 +35,23 @@
     </script>
 </head>
 <body class="no-scroll">
+    <noscript>
+        <style>
+            body.no-scroll { overflow: auto !important; height: auto !important; }
+            #splash-screen { display: none !important; }
+        </style>
+    </noscript>
     
-    <div id="splash-screen">
-        <div class="splash-content">
+    <div id="splash-screen" role="dialog" aria-label="Opening invocation">
+        <div class="splash-content" role="document">
+            <div class="splash-frame"></div>
             <div class="bismillah-text">﷽</div>
-            <div class="translation-text">IN THE NAME OF ALLAH<br><span style="color: #666;">THE MOST GRACIOUS, THE MOST MERCIFUL</span></div>
-            <div class="welcome-text">WELCOME TO MY SITE</div>
+            <div class="translation-text">IN THE NAME OF ALLAH<br><span class="translation-sub">THE MOST GRACIOUS, THE MOST MERCIFUL</span></div>
+            <div class="welcome-text">FAITH FIRST. EXECUTION SECOND.</div>
+            <div class="splash-actions">
+                <button type="button" id="splash-enter" class="splash-btn splash-btn-primary">ENTER</button>
+                <button type="button" id="splash-skip" class="splash-btn splash-btn-ghost">SKIP INTRO</button>
+            </div>
         </div>
     </div>
 

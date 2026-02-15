@@ -17,6 +17,7 @@ const MOTION = {
     counterDuration: 0.95,
     scrollScrub: 0.12
 };
+const SPLASH_SESSION_KEY = 'qazi_bismillah_seen_v1';
 
 const mobileQuery = window.matchMedia('(max-width: 767px)');
 let isMobile = mobileQuery.matches;
@@ -221,27 +222,82 @@ function revealSite() {
     }
 
     splash.dataset.revealed = 'true';
-    splash.style.transform = 'translateY(-100%)';
+    splash.classList.add('is-exiting');
 
     setTimeout(() => {
         document.body.classList.remove('no-scroll');
+        splash.classList.add('hidden');
         splash.style.display = 'none';
         if (mina) {
             gsap.fromTo(mina.scale, { x: 0.2, y: 0.2, z: 0.2 }, { x: mina.scale.x, y: mina.scale.y, z: mina.scale.z, duration: MOTION.modelEntranceMs, ease: 'power2.out' });
         }
-    }, prefersReducedMotion ? 180 : 620);
+    }, prefersReducedMotion ? 120 : 520);
 }
 
 function initSplash() {
-    const minSplashMs = MOTION.splashMs;
+    const splash = document.getElementById('splash-screen');
+    if (!splash) {
+        document.body.classList.remove('no-scroll');
+        return;
+    }
+
+    const splashEnter = document.getElementById('splash-enter');
+    const splashSkip = document.getElementById('splash-skip');
+
+    let hasSeenSplash = false;
+    try {
+        hasSeenSplash = window.sessionStorage.getItem(SPLASH_SESSION_KEY) === '1';
+    } catch {
+        hasSeenSplash = false;
+    }
+
+    if (hasSeenSplash) {
+        splash.classList.add('quick-pass');
+    }
+
+    const completeSplash = () => {
+        try {
+            window.sessionStorage.setItem(SPLASH_SESSION_KEY, '1');
+        } catch {
+            // session storage unavailable; continue without persistence
+        }
+        revealSite();
+    };
+
+    const forceFastEnter = () => {
+        if (splash.dataset.revealed === 'true') {
+            return;
+        }
+        splash.classList.add('quick-pass');
+        completeSplash();
+    };
+
+    if (splashEnter) {
+        splashEnter.addEventListener('click', forceFastEnter);
+    }
+    if (splashSkip) {
+        splashSkip.addEventListener('click', forceFastEnter);
+    }
+
+    document.addEventListener('keydown', (event) => {
+        if (splash.dataset.revealed === 'true') {
+            return;
+        }
+        if (event.key === 'Enter' || event.key === ' ' || event.key === 'Escape') {
+            event.preventDefault();
+            forceFastEnter();
+        }
+    });
+
+    const minSplashMs = hasSeenSplash ? (prefersReducedMotion ? 120 : 320) : MOTION.splashMs;
     const minTime = new Promise((resolve) => setTimeout(resolve, minSplashMs));
     const loadTime = new Promise((resolve) => window.addEventListener('load', resolve, { once: true }));
 
-    Promise.all([minTime, loadTime, modelLoadedPromise.catch(() => null)]).then(revealSite);
+    Promise.all([minTime, loadTime, modelLoadedPromise.catch(() => null)]).then(completeSplash);
 
     setTimeout(() => {
-        revealSite();
-    }, 4500);
+        completeSplash();
+    }, hasSeenSplash ? 2200 : 4500);
 }
 
 function init3D() {
