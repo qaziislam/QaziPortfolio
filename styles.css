@@ -189,11 +189,11 @@ h2 { font-family: var(--font-head); font-size: 8rem; margin: 0; line-height: 0.9
 .iman-grid {
     width: 100%;
     display: grid;
-    grid-template-columns: 320px minmax(0, 1fr);
+    grid-template-columns: 240px minmax(0, 1fr);
     grid-template-areas:
         "poster main"
         "poster aside";
-    gap: 20px;
+    gap: 16px;
     margin-top: 22px;
 }
 .iman-poster { 
@@ -201,8 +201,9 @@ h2 { font-family: var(--font-head); font-size: 8rem; margin: 0; line-height: 0.9
     margin: 0;
     border: 1px solid #3a3a3a;
     background: rgba(10, 10, 10, 0.9);
-    padding: 10px;
+    padding: 8px;
     align-self: start;
+    max-width: 240px;
 }
 .iman-poster img {
     width: 100%;
@@ -212,10 +213,10 @@ h2 { font-family: var(--font-head); font-size: 8rem; margin: 0; line-height: 0.9
     filter: grayscale(20%);
 }
 .iman-poster figcaption {
-    margin-top: 10px;
+    margin-top: 8px;
     color: #8f8f8f;
-    font-size: 10px;
-    letter-spacing: 1.4px;
+    font-size: 9px;
+    letter-spacing: 1.2px;
 }
 .iman-main,
 .iman-aside {
@@ -397,7 +398,7 @@ footer { width: 100%; border-top: 1px solid #333; padding: 40px 5%; margin-top: 
     .timeline-node.right .tm-content { text-align: left; }
     .tm-img { max-height: 250px; object-position: top; }
     .iman-grid { grid-template-columns: 1fr; grid-template-areas: "poster" "main" "aside"; gap: 14px; }
-    .iman-poster { max-width: 380px; }
+    .iman-poster { max-width: 260px; }
     .iman-main { padding: 18px; }
     .iman-main h3 { font-size: 1.85rem; }
     .iman-aside { padding: 16px; }
