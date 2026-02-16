@@ -1,0 +1,65 @@
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /styles.css?v=4.3 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/jabee_thunderarena.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/jabee_runthejewels.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /script.js?v=4.3 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/lilwayne.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/qaziwithrashidatalib.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/repturner.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/tianasoylent.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/thunder_dj.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/bangladesh_dronepicture.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/cannalineshoot1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/foodbankcair.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/qaziseattle.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/qaziatwashingtondcprotest.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/imandocumentaryposter.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/qazialaska.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/soylent_jen.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/soylent_michelle.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/pokuxshopgood.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/qazianddad.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/qazi-birth-2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/baby-qazi.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/lyrewoodlane.png HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/banglabazaar-inside.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/bpafirstplace.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:12] "GET /assets/sabah_vape_photography.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:13] "GET /assets/puppymina.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:13] "GET /assets/cannalineshoot2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:13] "GET /assets/momanddad.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:13] "GET /assets/qazicannalinebald.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:13] "GET /assets/qazi_noice.png HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:13] "GET /assets/thunderlogo.png HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:13] "GET /assets/cairlogo.png HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:13] "GET /assets/atlanticlogo.png HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:13] "GET /assets/dressforsuccessblack.png HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:13] "GET /assets/towerlogo.png HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:13] "GET /assets/soylentlogo.png HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:13] "GET /assets/qazi-reel-website.mp4 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Feb/2026 11:48:13] "GET /mina.glb HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 58074)
+Traceback (most recent call last):
+  File "C:\Users\Kazi\AppData\Local\Programs\Python\Python312\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\Kazi\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 1311, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "C:\Users\Kazi\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 672, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\Kazi\AppData\Local\Programs\Python\Python312\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\Kazi\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 436, in handle
+    self.handle_one_request()
+  File "C:\Users\Kazi\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 424, in handle_one_request
+    method()
+  File "C:\Users\Kazi\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 679, in do_GET
+    self.copyfile(f, self.wfile)
+  File "C:\Users\Kazi\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 878, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "C:\Users\Kazi\AppData\Local\Programs\Python\Python312\Lib\shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "C:\Users\Kazi\AppData\Local\Programs\Python\Python312\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+----------------------------------------

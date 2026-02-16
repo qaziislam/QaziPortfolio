@@ -15,7 +15,7 @@
     
     <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%20font-weight%3D%22bold%22%20font-family%3D%22sans-serif%22%20fill%3D%22red%22%3EQ%3C%2Ftext%3E%3C%2Fsvg%3E">
     
-    <link rel="stylesheet" href="styles.css?v=4.0">
+    <link rel="stylesheet" href="styles.css?v=4.3">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,13 +45,23 @@
 
     <div class="noise-overlay"></div>
     <div class="brand-badge">Q</div>
+    <nav class="jump-nav" aria-label="Section navigation">
+        <a href="#sec-hero">START</a>
+        <a href="#sec-gallery">WORK</a>
+        <a href="#sec-cred">PROOF</a>
+        <a href="#sec-contact">HIRE</a>
+    </nav>
 
     <div id="mina-stage">
         <canvas id="mina-canvas"></canvas>
     </div>
+    <div id="mina-gallery-callout" class="mina-gallery-callout" aria-hidden="true">
+        <span class="mina-callout-label">MINA SIGNAL</span>
+        <span class="mina-callout-copy">HOLD UP. QUICK SWEEP THROUGH THE ARCHIVE.</span>
+    </div>
 
     <div id="lightbox" class="lightbox hidden">
-        <span class="lightbox-close">&times;</span>
+        <button type="button" class="lightbox-close" aria-label="Close lightbox">&times;</button>
         <button id="lb-prev" class="lb-nav left">‹</button>
         
         <div class="lb-content-wrapper">
@@ -70,7 +80,7 @@
 
     <div id="funnel-modal" class="funnel-modal hidden">
         <div class="funnel-content">
-            <span class="funnel-close">&times;</span>
+            <button type="button" class="funnel-close" aria-label="Close funnel modal">&times;</button>
             <h2>INITIATE PROTOCOL</h2>
             <p>SELECT YOUR OBJECTIVE:</p>
             
@@ -95,8 +105,23 @@
         
         <section id="sec-hero">
             <div class="hud-top">SYSTEM: OPERATIONAL // OKC BASE</div>
-            <h1 class="giant-text">QAZI<br>ISLAM</h1>
-            <div class="sub-text">CREATIVE OPERATOR <span class="slash">//</span> FOUNDER <span class="slash">//</span> REVENUE ARCHITECT</div>
+            <h1 class="giant-text"><span class="hero-line">QAZI</span><span class="hero-line">ISLAM</span></h1>
+            <div class="sub-text">A VISUAL TIMELINE <span class="slash">//</span> FAILING FORWARD <span class="slash">//</span> EXECUTION UNDER PRESSURE</div>
+            <p class="hero-brief">For builders, founders, and teams who value grit, clarity, and outcomes. Real lessons, real losses, real wins.</p>
+            <div class="hero-signal-row" role="list" aria-label="Core services">
+                <span role="listitem">CREATIVE DIRECTION</span>
+                <span role="listitem">REVENUE OPS</span>
+                <span role="listitem">SYSTEMS BUILD</span>
+            </div>
+            <div class="hero-proof-row" role="list" aria-label="Trust signals">
+                <span role="listitem">500+ CLIENTS</span>
+                <span role="listitem">10+ YEARS WITH CAIR OK</span>
+                <span role="listitem">NATIONAL + STATE PRESS</span>
+            </div>
+            <div class="hero-action-row">
+                <a href="#sec-contact" class="hero-cta hero-cta-primary">START A PROJECT</a>
+                <a href="#sec-gallery" class="hero-cta hero-cta-secondary">VIEW WORK</a>
+            </div>
         </section>
 
         <section id="sec-profile" class="align-left">
@@ -105,11 +130,12 @@
                 <h2>PROFILE<br>BRIEF</h2>
             </div>
             <div class="lyrics-box">
-                <p>I BUILD BRANDS, STORIES, AND SYSTEMS.</p>
+                <p>I grew up in survival mode in NW Oklahoma City and turned that pressure into a career built on execution, service, and long-term trust.</p>
                 <ul style="list-style: none; padding: 0; margin: 20px 0; color: #ccc; font-size: 1rem; line-height: 1.6;">
-                    <li>// CREATIVE DIRECTION (VIDEO/PHOTO)</li>
-                    <li>// MULTIDISCIPLINARY BUILDER</li>
-                    <li>// REVENUE STRATEGY ($4M+/MO MANAGED)</li>
+                    <li>// CREATIVE DIRECTION ACROSS FILM, PHOTO, AND CAMPAIGNS</li>
+                    <li>// SYSTEM BUILDER FOR BRANDS, PRODUCTS, AND OPERATIONS</li>
+                    <li>// REVENUE-OPS EXPERIENCE (OVER $4M/MO MANAGED)</li>
+                    <li>// 500+ CLIENTS SERVED ACROSS MULTIPLE INDUSTRIES</li>
                 </ul>
                 <div class="stat-row">
                     <span>112K+ <small>COMMUNITY</small></span>
@@ -124,24 +150,44 @@
                     <h2>VISUAL<br>DATA</h2>
                 </div>
             </div>
-            <p class="gallery-subline">SELECTED STILLS // CAMPAIGN, CULTURE, AND FIELD WORK</p>
+            <p class="gallery-subline">A MOVING CONTACT SHEET // CAMPAIGNS, COMMUNITY, AND LIFE FRAMES</p>
+            <div class="gallery-intent-bar">
+                <div class="gallery-phase-copy">MINA CURATED SWEEP // PAUSE, SCAN, THEN DIVE DEEPER</div>
+                <a href="#sec-history" class="gallery-skip-link">SKIP SWEEP ↓</a>
+            </div>
+            <div class="gallery-progress"><span class="gallery-progress-fill"></span></div>
             <div class="gallery-scroll-container">
                 <div class="gallery-scroll-track">
-                    <div class="scroll-item is-feature" data-gallery-index="0" data-shot="RUN THE JEWELS"><img src="assets/jabee_runthejewels.jpg" loading="lazy"></div>
-                    <div class="scroll-item is-portrait is-tall" data-gallery-index="1" data-shot="THUNDER ARENA"><img src="assets/jabee_thunderarena.jpg" loading="lazy"></div>
-                    <div class="scroll-item is-wide" data-gallery-index="2" data-shot="LIL WAYNE"><img src="assets/lilwayne.jpg" loading="lazy"></div>
-                    <div class="scroll-item" data-gallery-index="3" data-shot="FAMILY ARCHIVE"><img src="assets/qazianddad.jpg" loading="lazy"></div>
-                    <div class="scroll-item is-portrait is-tall" data-gallery-index="4" data-shot="OKLAHOMA CAPITOL"><img src="assets/repturner.jpg" loading="lazy"></div>
-                    <div class="scroll-item is-portrait is-tall" data-gallery-index="5" data-shot="SOYLENT CAMPAIGN"><img src="assets/tianasoylent.jpg" loading="lazy"></div>
-                    <div class="scroll-item is-wide" data-gallery-index="6" data-shot="OKC DOWNTOWN"><img src="assets/okcdowntown.jpg" loading="lazy"></div>
-                    <div class="scroll-item" data-gallery-index="7" data-shot="BANGLADESH AERIAL"><img src="assets/bangladesh_dronepicture.jpg" loading="lazy"></div>
-                    <div class="scroll-item is-wide" data-gallery-index="8" data-shot="CANNABIS BRAND"><img src="assets/alterra_cannabis_greenery.jpg" loading="lazy"></div>
-                    <div class="scroll-item" data-gallery-index="9" data-shot="SEATTLE FOREST"><img src="assets/qaziseattleforrest.jpg" loading="lazy"></div>
-                    <div class="scroll-item" data-gallery-index="10" data-shot="COMMUNITY WORK"><img src="assets/foodbankcair.jpg" loading="lazy"></div>
-                    <div class="scroll-item is-portrait is-tall" data-gallery-index="11" data-shot="IMAN POSTER"><img src="assets/imandocumentaryposter.jpg" loading="lazy"></div>
+                    <button type="button" class="scroll-item is-feature" data-gallery-index="0" data-frame="01" data-shot="RUN THE JEWELS" aria-label="Open gallery image: Run The Jewels"><img src="assets/jabee_runthejewels.jpg" alt="Run The Jewels frame" loading="lazy"></button>
+                    <button type="button" class="scroll-item is-wide" data-gallery-index="1" data-frame="02" data-shot="THUNDER ARENA" aria-label="Open gallery image: Thunder Arena"><img src="assets/jabee_thunderarena.jpg" alt="Thunder Arena frame" loading="lazy"></button>
+                    <button type="button" class="scroll-item is-wide" data-gallery-index="2" data-frame="03" data-shot="LIL WAYNE" aria-label="Open gallery image: Lil Wayne"><img src="assets/lilwayne.jpg" alt="Lil Wayne performance frame" loading="lazy"></button>
+                    <button type="button" class="scroll-item is-portrait is-tall" data-gallery-index="3" data-frame="04" data-shot="RASHIDA TLAIB" aria-label="Open gallery image: Rashida Tlaib"><img src="assets/qaziwithrashidatalib.jpg" alt="Rashida Tlaib portrait frame" loading="lazy"></button>
+                    <button type="button" class="scroll-item is-portrait is-tall" data-gallery-index="4" data-frame="05" data-shot="OKLAHOMA CAPITOL" aria-label="Open gallery image: Oklahoma Capitol"><img src="assets/repturner.jpg" alt="Oklahoma Capitol frame" loading="lazy"></button>
+                    <button type="button" class="scroll-item" data-gallery-index="5" data-frame="06" data-shot="SOYLENT CAMPAIGN" aria-label="Open gallery image: Soylent Campaign"><img src="assets/tianasoylent.jpg" alt="Soylent campaign portrait" loading="lazy"></button>
+                    <button type="button" class="scroll-item is-wide" data-gallery-index="6" data-frame="07" data-shot="THUNDER TUNNELS" aria-label="Open gallery image: Thunder Tunnels"><img src="assets/thunder_dj.jpg" alt="Thunder tunnels session frame" loading="lazy"></button>
+                    <button type="button" class="scroll-item" data-gallery-index="7" data-frame="08" data-shot="BANGLADESH AERIAL" aria-label="Open gallery image: Bangladesh Aerial"><img src="assets/bangladesh_dronepicture.jpg" alt="Bangladesh aerial frame" loading="lazy"></button>
+                    <button type="button" class="scroll-item is-wide" data-gallery-index="8" data-frame="09" data-shot="CANNALINE SHOOT" aria-label="Open gallery image: Cannaline Shoot"><img src="assets/cannalineshoot1.jpg" alt="Cannaline field shoot frame" loading="lazy"></button>
+                    <button type="button" class="scroll-item" data-gallery-index="9" data-frame="10" data-shot="SEATTLE FOREST" aria-label="Open gallery image: Seattle Forest"><img src="assets/qaziseattle.jpg" alt="Seattle forest frame" loading="lazy"></button>
+                    <button type="button" class="scroll-item" data-gallery-index="10" data-frame="11" data-shot="COMMUNITY WORK" aria-label="Open gallery image: Community Work"><img src="assets/foodbankcair.jpg" alt="Community work frame" loading="lazy"></button>
+                    <button type="button" class="scroll-item is-portrait is-tall" data-gallery-index="11" data-frame="12" data-shot="IMAN POSTER" aria-label="Open gallery image: Iman Poster"><img src="assets/imandocumentaryposter.jpg" alt="IMAN documentary poster" loading="lazy"></button>
+                    <button type="button" class="scroll-item" data-gallery-index="12" data-frame="13" data-shot="DC PROTEST" aria-label="Open gallery image: DC Protest"><img src="assets/qaziatwashingtondcprotest.jpg" alt="Washington DC protest frame" loading="lazy"></button>
+                    <button type="button" class="scroll-item" data-gallery-index="13" data-frame="14" data-shot="ALASKA FIELD" aria-label="Open gallery image: Alaska Field"><img src="assets/qazialaska.jpg" alt="Alaska field frame" loading="lazy"></button>
+                    <button type="button" class="scroll-item" data-gallery-index="14" data-frame="15" data-shot="SOYLENT // JEN" aria-label="Open gallery image: Soylent Jen"><img src="assets/soylent_jen.jpg" alt="Soylent Jen portrait" loading="lazy"></button>
+                    <button type="button" class="scroll-item" data-gallery-index="15" data-frame="16" data-shot="SOYLENT // MICHELLE" aria-label="Open gallery image: Soylent Michelle"><img src="assets/soylent_michelle.jpg" alt="Soylent Michelle portrait" loading="lazy"></button>
+                    <button type="button" class="scroll-item is-wide" data-gallery-index="16" data-frame="17" data-shot="POKUX" aria-label="Open gallery image: Pokux"><img src="assets/pokuxshopgood.jpg" alt="Pokux campaign frame" loading="lazy"></button>
+                    <button type="button" class="scroll-item is-portrait is-tall" data-gallery-index="17" data-frame="18" data-shot="FAMILY ARCHIVE" aria-label="Open gallery image: Family Archive"><img src="assets/qazianddad.jpg" alt="Family archive frame" loading="lazy"></button>
                 </div>
             </div>
-            <div class="scroll-hint">OPEN ANY FRAME FOR FULL VIEW</div>
+            <div class="scroll-hint">SHORT HOLD FOR THE STORY BEAT // OPEN ANY FRAME OR SKIP AHEAD</div>
+        </section>
+
+        <section class="cta-band cta-band-mid">
+            <p class="cta-kicker">READY TO MOVE?</p>
+            <h3>Need campaign execution, creative direction, or systems that scale?</h3>
+            <div class="cta-actions">
+                <a href="#sec-contact" class="cta-btn cta-btn-primary">START A PROJECT</a>
+                <a href="#sec-cred" class="cta-btn cta-btn-secondary">SEE CREDENTIALS</a>
+            </div>
         </section>
 
         <section id="sec-history">
@@ -151,6 +197,7 @@
                     <h2>THE<br>ORIGIN</h2>
                 </div>
             </div>
+            <p class="timeline-intro">Every chapter below is a real place, real cost, and a real turning point.</p>
             
             <div class="timeline-wrap">
                 <div class="timeline-line"></div>
@@ -158,65 +205,122 @@
                 <div class="timeline-node">
                     <div class="tm-year">1994</div>
                     <div class="tm-content" data-gallery-key="birth">
-                        <h3>ORIGIN POINT</h3>
+                        <h3>THE ORIGIN</h3>
                         <p class="accent">OKC BORN</p>
-                        <p>Born in Oklahoma City. Foundation before momentum.</p>
-                        <img src="assets/qazibirth.jpg" alt="1994" class="tm-img" loading="lazy">
+                        <p>Born in Oklahoma City. Before momentum, there was family, pressure, and foundation.</p>
+                        <p>Little margin for error shaped how I approach work, responsibility, and purpose.</p>
+                        <img src="assets/qazi-birth-2.jpg" alt="1994" class="tm-img" loading="lazy">
+                        <span class="tap-hint">VIEW MEDIA</span>
+                    </div>
+                </div>
+
+                <div class="timeline-node">
+                    <div class="tm-year">2001-2012</div>
+                    <div class="tm-content" data-gallery-key="target">
+                        <h3>THE TARGET</h3>
+                        <p class="accent">POST-9/11 // SCHOOL YEARS</p>
+                        <p>After 9/11, I was treated like a suspect as a child. I was called racial slurs, labeled a terrorist, and physically bullied from elementary through high school because of my skin color, religion, and name.</p>
+                        <p>Teachers often watched it happen and did nothing. That school reality, layered with long work shifts after class, built years of exhaustion, fear, and isolation.</p>
+                        <img src="assets/baby-qazi.jpg" alt="School years archive" class="tm-img" loading="lazy">
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
 
                 <div class="timeline-node right">
-                    <div class="tm-year">200X</div>
+                    <div class="tm-year">2000-2012</div>
                     <div class="tm-content" data-gallery-key="lyrewood">
-                        <h3>7015 LYREWOOD LANE</h3>
-                        <p class="accent">L-BLOCK</p>
-                        <p>Early years in \"Firewood.\" Limited resources, strong family unit.</p>
+                        <h3>THE BLOCK // LYREWOOD LANE</h3>
+                        <p class="accent">NW 63RD TO WILSHIRE CORRIDOR</p>
+                        <p>Known in our circle as L-BLOCK, this was home base through survival-mode years: violence nearby, open drug activity, and constant police pressure.</p>
+                        <p>My family held the same house for over 20 years, watched the neighborhood evolve, and kept service, respect, and community care at the center.</p>
                         <img src="assets/lyrewoodlane.png" alt="Lyrewood" class="tm-img" loading="lazy">
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
 
                 <div class="timeline-node">
-                    <div class="tm-year">2010</div>
+                    <div class="tm-year">1998-2012</div>
                     <div class="tm-content" data-gallery-key="bangla">
-                        <h3>BANGLA BAZAAR</h3>
+                        <h3>THE BAZAAR</h3>
                         <p class="accent">THE INTEGRITY</p>
-                        <p>Watched my parents run 15-hour shifts. Work ethic became baseline.</p>
-                        <img src="assets/banglabazaar_outside.jpg" alt="Store" class="tm-img" loading="lazy">
+                        <p>From age six into my mid-teens, I worked inside the full meat pipeline and learned hard labor early: slaughter, processing, hauling, and prep under pressure.</p>
+                        <p>After school it was often 4PM to midnight at the store, then back to class in the morning. That schedule defined my discipline and fatigue for years.</p>
+                        <p>Bangla Bazaar fed families, supplied halal essentials, and became a cultural anchor with Bollywood media and groceries people otherwise drove to Dallas to find.</p>
+                        <p>Our family ran the original Portland location from 1998 to 2012 before selling; later operations moved to Edmond and eventually rebranded.</p>
+                        <img src="assets/banglabazaar-inside.jpg" alt="Bangla Bazaar family archive" class="tm-img" loading="lazy">
+                        <span class="tap-hint">VIEW MEDIA</span>
+                    </div>
+                </div>
+
+                <div class="timeline-node">
+                    <div class="tm-year">2013-2015</div>
+                    <div class="tm-content" data-gallery-key="bpa">
+                        <h3>THE FOUNDATION</h3>
+                        <p class="accent">FRANCIS TUTTLE // WEB + GRAPHIC DESIGN</p>
+                        <p>Formal training in web design/development and graphic design/development through Francis Tuttle across high school and college years.</p>
+                        <p>At BPA Nationals in Anaheim, I won 1st place in Web Design &amp; Development and proved early I could execute on a national stage.</p>
+                        <img src="assets/bpafirstplace.jpg" alt="BPA first place" class="tm-img" loading="lazy">
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
 
                 <div class="timeline-node right">
-                    <div class="tm-year">2012-18</div>
+                    <div class="tm-year">2012-2018</div>
                     <div class="tm-content" data-gallery-key="grind">
                         <h3>THE GRIND</h3>
-                        <p class="accent">WEDDINGS / A/V / AGENCY</p>
-                        <p>One-man execution years. Learned to ship fast across every role.</p>
+                        <p class="accent">IMAGELINE STUDIOS / IMAGELINE MOMENTS / SYN3RGY ERA</p>
+                        <p>I built Imageline Studios and Imageline Moments while working a five-year day-job run at SYN3RGY to keep income stable and stack runway.</p>
+                        <p>After a decade in weddings, I stepped away from that lane and focused on corporate ads and systems-heavy execution.</p>
                         <img src="assets/sabah_vape_photography.jpg" alt="The Grind" class="tm-img" loading="lazy">
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
 
                 <div class="timeline-node">
-                    <div class="tm-year">2018</div>
+                    <div class="tm-year">2017-2019</div>
+                    <div class="tm-content" data-gallery-key="roots">
+                        <h3>THE ROOTS PROJECT</h3>
+                        <p class="accent">OKLAHOMA HIP-HOP ARCHIVE</p>
+                        <p>I built The Roots Project as a focused archive of Oklahoma's best hip-hop artists, documenting straight-to-camera performances with no fluff.</p>
+                        <p>That curation run sharpened my ear, pacing, and artist-first direction while preserving local voices that deserved a wider stage.</p>
+                        <img src="https://img.youtube.com/vi/tF120629k3A/maxresdefault.jpg" alt="The Roots Project playlist thumbnail" class="tm-img" loading="lazy">
+                        <span class="tap-hint">VIEW MEDIA</span>
+                    </div>
+                </div>
+
+                <div class="timeline-node">
+                    <div class="tm-year">2018-2019</div>
                     <div class="tm-content" data-gallery-key="mina">
-                        <h3>MINA</h3>
-                        <p class="accent">THE SAVIOR</p>
-                        <p>Mina entered my life and carried me through the hardest chapter.</p>
-                        <img src="assets/minaonthehunt.jpg" alt="Mina" class="tm-img" loading="lazy">
+                        <h3>THE SAVIOR</h3>
+                        <p class="accent">MINA // COMPANION ERA</p>
+                        <p>Mina entered my life at my lowest point and became a daily reason to keep moving.</p>
+                        <p>In a season of grief and collapse, her presence gave me structure, routine, and emotional ground.</p>
+                        <img src="assets/puppymina.jpg" alt="Mina" class="tm-img" loading="lazy">
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
 
                 <div class="timeline-node right">
-                    <div class="tm-year">2019</div>
-                    <div class="tm-content" data-gallery-key="agencies">
-                        <h3>THE FOUNDER</h3>
-                        <p class="accent">IMAGELINE / CANNALINE</p>
-                        <p>Launched agencies as Oklahoma's market expanded. Operator mode began.</p>
-                        <img src="assets/alterra_cannabis_greenery.jpg" alt="Cannabis Agency" class="tm-img" loading="lazy">
+                    <div class="tm-year">2019-PRESENT</div>
+                    <div class="tm-content" data-gallery-key="imageline">
+                        <h3>THE UMBRELLA</h3>
+                        <p class="accent">IMAGELINE STUDIOS // UMBRELLA AGENCY</p>
+                        <p>Imageline Studios became the umbrella agency for strategy, production, and execution across verticals, from community campaigns to corporate advertising.</p>
+                        <p>I worked up to a brick-and-mortar studio, then had to release that model as grief and financial pressure hit at the same time.</p>
+                        <p>I shifted into freelance execution to stabilize and rebuild.</p>
+                        <img src="assets/pokuxshopgood.jpg" alt="Imageline Studios umbrella agency work" class="tm-img" loading="lazy">
+                        <span class="tap-hint">VIEW MEDIA</span>
+                    </div>
+                </div>
+
+                <div class="timeline-node">
+                    <div class="tm-year">2020-2024</div>
+                    <div class="tm-content" data-gallery-key="cannaline">
+                        <h3>THE CANNALINE ERA</h3>
+                        <p class="accent">CANNABIS-FOCUSED AGENCY UNDER IMAGELINE</p>
+                        <p>Cannaline Marketing operated under Imageline as the cannabis-forward arm in one of the most volatile markets I have worked in.</p>
+                        <p>That chapter forced fast adaptation across compliance shifts, unstable operators, and constant pivots, sharpening risk management and execution discipline.</p>
+                        <img src="assets/cannalineshoot2.jpg" alt="Cannaline Marketing field shoot" class="tm-img" loading="lazy">
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
@@ -226,8 +330,10 @@
                     <div class="tm-content" data-gallery-key="mom">
                         <h3>THE MATRIARCH</h3>
                         <p class="accent">APRIL FOREVER</p>
-                        <p>Lost my mother to cancer. Her legacy reframed everything I build.</p>
-                        <img src="assets/maaportrait.jpg" alt="Maa" class="tm-img" loading="lazy">
+                        <p>Lost my mother to cancer, then traveled to Bangladesh for a month to bury her while everything else was falling apart.</p>
+                        <p>She was my best friend, and watching her go from 100 to 0 in one year broke me in a way that never fully leaves.</p>
+                        <p>Her legacy became the standard behind every project I touch.</p>
+                        <img src="assets/momanddad.jpg" alt="Maa" class="tm-img" loading="lazy">
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
@@ -236,9 +342,11 @@
                     <div class="tm-year">2023</div>
                     <div class="tm-content" data-gallery-key="cair">
                         <h3>THE PROJECT</h3>
-                        <p class="accent">IMAN DOC / THE CRASH</p>
-                        <p>Directed IMAN. Then macro shock hit and survival discipline took over.</p>
-                        <img src="assets/cairbeyondtheballet.jpg" alt="CAIR" class="tm-img" loading="lazy">
+                        <p class="accent">IMAN DOC / CAIR DECADE OF WORK</p>
+                        <p>I took a stability reset through Leasecake for six months, then was laid off during the Silicon Valley Bank fallout.</p>
+                        <p>After that, I doubled down on OAO, continued full-time CAIR execution, and produced IMAN for two years end-to-end.</p>
+                        <p>While grieving my mother and watching genocide footage daily, I hit one of my darkest periods. It hardened my commitment to justice and purposeful story work.</p>
+                        <img src="assets/imandocumentaryposter.jpg" alt="IMAN Documentary Poster" class="tm-img" loading="lazy">
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
@@ -248,8 +356,9 @@
                     <div class="tm-content" data-gallery-key="oao">
                         <h3>THE RESISTANCE</h3>
                         <p class="accent">GAZA / OAO</p>
-                        <p>Community organizing and movement work. Built with purpose under pressure.</p>
-                        <img src="assets/oaolandrally.jpg" alt="OAO Rally" class="tm-img" loading="lazy">
+                        <p>Community organizing and movement work under pressure, with service and discipline over spectacle.</p>
+                        <p>This chapter focused on showing up consistently for people while carrying grief and outrage in real time.</p>
+                        <img src="assets/qaziatwashingtondcprotest.jpg" alt="OAO Rally" class="tm-img" loading="lazy">
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
@@ -257,10 +366,11 @@
                 <div class="timeline-node right">
                     <div class="tm-year">2025</div>
                     <div class="tm-content" data-gallery-key="topcrop">
-                        <h3>CONTENT DIRECTOR</h3>
-                        <p class="accent">TOP CROP // THE ASCENSION</p>
-                        <p>Oversaw multi-state digital infrastructure and scaled execution quality.</p>
-                        <img src="assets/cananbisflower.jpg" alt="Top Crop" class="tm-img" loading="lazy">
+                        <h3>THE ASCENSION</h3>
+                        <p class="accent">TOP CROP // SYSTEMS BUILD ERA</p>
+                        <p>A close friend helped me find a new path through systems building at Top Crop during my rebuild.</p>
+                        <p>That path became real: I now serve as Content Director, leading multi-state digital infrastructure and raising execution standards across teams and markets.</p>
+                        <img src="assets/qazicannalinebald.jpg" alt="Top Crop" class="tm-img" loading="lazy">
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
@@ -270,7 +380,8 @@
                     <div class="tm-content" data-gallery-key="now">
                         <h3>THE EXECUTION</h3>
                         <p class="accent">BIG DAWG ERA</p>
-                        <p>Current chapter: scaling systems, directing stories, building legacy.</p>
+                        <p>Current chapter: scale systems, direct stories, and build legacy work that outlives the algorithm.</p>
+                        <p>Personal chapter too: marrying Nicole on November 7, 2026, and building our own wedding platform at qaziandnicole.com.</p>
                         <img src="assets/qazi_noice.png" alt="Big Dawg" class="tm-img" loading="lazy">
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
@@ -284,14 +395,14 @@
                 <h2>IMAN<br>DOCUMENTARY</h2>
             </div>
             <div class="iman-grid">
-                <figure class="iman-poster">
+                <figure class="iman-poster" data-gallery-key="iman">
                     <img src="assets/imandocumentaryposter.jpg" alt="IMAN documentary poster" loading="lazy">
                     <figcaption>ARCHIVAL POSTER // IMAN: TWO JOURNEYS OF FAITH</figcaption>
                 </figure>
                 <article class="iman-content">
                     <p class="iman-kicker">OKLAHOMA HISTORY / COMMUNITY RECORD</p>
-                    <h3>A two-year documentary effort preserving an under-told chapter of Muslim life in Oklahoma.</h3>
-                    <p>IMAN: Two Journeys of Faith, Rooted in Oklahoma's Heartland follows two American Muslim women and places their stories within Oklahoma's civic and cultural timeline.</p>
+                    <h3>A two-year documentary record preserving an under-told chapter of Muslim life in Oklahoma.</h3>
+                    <p>IMAN: Two Journeys of Faith, Rooted in Oklahoma's Heartland follows two American Muslim women and anchors their stories inside Oklahoma's broader civic timeline.</p>
                     <ul class="iman-facts">
                         <li><span>ROLE</span><strong>DIRECTOR / CREATIVE LEAD</strong></li>
                         <li><span>PRODUCTION</span><strong>APPROX. TWO YEARS</strong></li>
@@ -310,7 +421,7 @@
         <section id="sec-video" class="align-center has-bg-video">
             <div class="bg-video-layer">
                 <video autoplay muted loop playsinline>
-                    <source src="assets/qazi%20reel%20website.mp4" type="video/mp4">
+                    <source src="assets/qazi-reel-website.mp4" type="video/mp4">
                 </video>
                 <div class="bg-overlay"></div>
             </div>
@@ -320,69 +431,69 @@
                     <h2 class="outline-text">FILM ARCHIVE</h2>
                 </div>
                 <div class="video-grid">
-                    <div class="video-card" data-gallery-index="0">
+                    <button type="button" class="video-card" data-gallery-index="0" aria-label="Open video: Oregon Trip">
                         <img src="https://img.youtube.com/vi/-Ayp30uJSPk/maxresdefault.jpg" alt="Oregon" loading="lazy">
                         <div class="vid-meta">
                             <span class="vid-meta-title">OREGON TRIP</span>
                             <span class="vid-meta-sub">FILM // DIRECTION</span>
                         </div>
-                    </div>
-                    <div class="video-card" data-gallery-index="1">
+                    </button>
+                    <button type="button" class="video-card" data-gallery-index="1" aria-label="Open video: OKC Palestine Protest">
                         <img src="https://img.youtube.com/vi/pdJg_Wlb8Ac/maxresdefault.jpg" alt="OAO Protest" loading="lazy">
                         <div class="vid-meta">
                             <span class="vid-meta-title">OKC PALESTINE PROTEST</span>
                             <span class="vid-meta-sub">DOCUMENTARY // FIELD COVERAGE</span>
                         </div>
-                    </div>
-                    <div class="video-card" data-gallery-index="2">
+                    </button>
+                    <button type="button" class="video-card" data-gallery-index="2" aria-label="Open video: Chronclub Vegas">
                         <img src="https://img.youtube.com/vi/YAjpdOEYs8Q/maxresdefault.jpg" alt="ChronClub" loading="lazy">
                         <div class="vid-meta">
                             <span class="vid-meta-title">CHRONCLUB VEGAS</span>
                             <span class="vid-meta-sub">BRAND // CAMPAIGN</span>
                         </div>
-                    </div>
-                    <div class="video-card" data-gallery-index="3">
+                    </button>
+                    <button type="button" class="video-card" data-gallery-index="3" aria-label="Open video: Bangladesh 120FPS">
                         <img src="https://img.youtube.com/vi/yMO3nwPEQ7g/maxresdefault.jpg" alt="Bangladesh" loading="lazy">
                         <div class="vid-meta">
                             <span class="vid-meta-title">BANGLADESH 120FPS</span>
                             <span class="vid-meta-sub">PERSONAL // CINEMATIC TRAVEL</span>
                         </div>
-                    </div>
-                    <div class="video-card" data-gallery-index="4">
+                    </button>
+                    <button type="button" class="video-card" data-gallery-index="4" aria-label="Open video: March on Washington">
                         <img src="https://img.youtube.com/vi/2La7TDYkng8/maxresdefault.jpg" alt="March" loading="lazy">
                         <div class="vid-meta">
                             <span class="vid-meta-title">MARCH ON WASHINGTON</span>
                             <span class="vid-meta-sub">DOCUMENTARY // EDIT</span>
                         </div>
-                    </div>
-                    <div class="video-card" data-gallery-index="5">
+                    </button>
+                    <button type="button" class="video-card" data-gallery-index="5" aria-label="Open video: Timberland Pioneers">
                         <img src="https://img.youtube.com/vi/7RKnyG7L5L0/maxresdefault.jpg" alt="Timberland" loading="lazy">
                         <div class="vid-meta">
                             <span class="vid-meta-title">TIMBERLAND PIONEERS</span>
                             <span class="vid-meta-sub">BRAND // COMMERCIAL</span>
                         </div>
-                    </div>
-                    <div class="video-card" data-gallery-index="6">
+                    </button>
+                    <button type="button" class="video-card" data-gallery-index="6" aria-label="Open video: Spherex Commercial">
                         <img src="https://img.youtube.com/vi/CfDc66a5mVU/maxresdefault.jpg" alt="Spherex" loading="lazy">
                         <div class="vid-meta">
                             <span class="vid-meta-title">SPHEREX COMMERCIAL</span>
                             <span class="vid-meta-sub">AD // PRODUCTION</span>
                         </div>
-                    </div>
-                    <div class="video-card" data-gallery-index="7">
+                    </button>
+                    <button type="button" class="video-card" data-gallery-index="7" aria-label="Open video: Sundeep First Light">
                         <img src="https://img.youtube.com/vi/1NY4IrxMcCk/maxresdefault.jpg" alt="Sundeep" loading="lazy">
                         <div class="vid-meta">
                             <span class="vid-meta-title">SUNDEEP: FIRST LIGHT</span>
                             <span class="vid-meta-sub">PROFILE // DIRECTION</span>
                         </div>
-                    </div>
-                    <div class="video-card" data-gallery-index="8">
+                    </button>
+                    <button type="button" class="video-card" data-gallery-index="8" aria-label="Open video: Masood Haq Campaign">
                         <img src="https://img.youtube.com/vi/mWHXkGMUehg/maxresdefault.jpg" alt="Campaign" loading="lazy">
                         <div class="vid-meta">
                             <span class="vid-meta-title">MASOOD HAQ CAMPAIGN</span>
                             <span class="vid-meta-sub">POLITICAL // CAMPAIGN FILM</span>
                         </div>
-                    </div>
+                    </button>
                 </div>
             </div>
         </section>
@@ -407,45 +518,73 @@
                 <span class="track-num">06</span>
                 <h2>PRESS +<br>CREDENTIALS</h2>
             </div>
-            <div class="cred-grid">
-                <a href="https://www.thenation.com/article/society/mauree-turner-alissandra-murray/" target="_blank" rel="noopener noreferrer" class="cred-card">
-                    <span class="cred-source">THE NATION</span>
-                    <h3>NATIONAL FEATURE CONTEXT</h3>
-                    <p>National feature context tied to Oklahoma political and social documentation.</p>
-                    <span class="cred-link">OPEN SOURCE ↗</span>
-                </a>
-                <a href="https://www.politico.com/newsletters/the-recast/2023/03/10/oklahoma-rep-mauree-turner-trans-rights-00086593" target="_blank" rel="noopener noreferrer" class="cred-card">
-                    <span class="cred-source">POLITICO / THE RECAST</span>
-                    <h3>NATIONAL NEWSLETTER FEATURE</h3>
-                    <p>Politico Recast feature tied to Oklahoma reporting and movement context.</p>
-                    <span class="cred-link">OPEN SOURCE ↗</span>
-                </a>
-                <a href="https://www.oklahoman.com/story/news/2025/04/29/muslim-day-at-the-capitol-oklahoma-city/83158429007/?gnt-cfr=1&gca-cat=p&gca-uir=true&gca-epti=undefined&gca-ft=0&gca-ds=sophi" target="_blank" rel="noopener noreferrer" class="cred-card">
-                    <span class="cred-source">THE OKLAHOMAN</span>
-                    <h3>STATEWIDE COVERAGE</h3>
-                    <p>Muslim Day at the Capitol coverage in Oklahoma's primary daily news publication.</p>
-                    <span class="cred-link">OPEN SOURCE ↗</span>
-                </a>
-                <a href="https://www.okhistory.org/calendar/event/iman-two-journeys-of-faith-rooted-in-oklahomas-heartland-film-screening-and-discussion-panel/" target="_blank" rel="noopener noreferrer" class="cred-card">
-                    <span class="cred-source">OKLAHOMA HISTORICAL SOCIETY</span>
-                    <h3>IMAN PUBLIC HISTORY EVENT</h3>
-                    <p>Official listing for screening and panel at the Oklahoma History Center.</p>
-                    <span class="cred-link">OPEN SOURCE ↗</span>
-                </a>
-            </div>
-            <div class="cred-archive">
-                <p class="cred-archive-title">SELECTED PUBLISHED MENTIONS</p>
-                <div class="cred-archive-list">
-                    <a href="https://www.oklahoman.com/story/news/2025/04/29/muslim-day-at-the-capitol-oklahoma-city/83158429007/?gnt-cfr=1&gca-cat=p&gca-uir=true&gca-epti=undefined&gca-ft=0&gca-ds=sophi" target="_blank" rel="noopener noreferrer">THE OKLAHOMAN // MUSLIM DAY AT THE CAPITOL (2025) ↗</a>
-                    <a href="https://www.oklahoman.com/picture-gallery/news/religion/2024/05/13/muslim-day-2024-oklahoma-capitol-photos/73677008007/" target="_blank" rel="noopener noreferrer">THE OKLAHOMAN // MUSLIM DAY 2024 PHOTO GALLERY ↗</a>
-                    <a href="https://www.oklahoman.com/picture-gallery/news/2022/03/10/muslim-day-oklahoma-state-capitol/6990164001/" target="_blank" rel="noopener noreferrer">THE OKLAHOMAN // MUSLIM DAY 2022 PHOTO GALLERY ↗</a>
-                    <a href="https://www.cairoklahoma.com/film-project/" target="_blank" rel="noopener noreferrer">CAIR OKLAHOMA // IMAN FILM PROJECT ↗</a>
-                    <a href="https://www.youtube.com/watch?v=A2Q4Wx179_k" target="_blank" rel="noopener noreferrer">IMAN // OFFICIAL TRAILER ↗</a>
-                    <a href="https://voyagedallas.com/interview/meet-qazi-islam-imagelinestudios-oklahoma-city/" target="_blank" rel="noopener noreferrer">VOYAGE DALLAS // FEATURE INTERVIEW ↗</a>
-                    <a href="https://wecreateinteractive.com/meet-the-advisory-board/" target="_blank" rel="noopener noreferrer">WE CREATE INTERACTIVE // ADVISORY LISTING ↗</a>
-                    <a href="https://journalrecord.com/2023/02/24/new-nonprofit-seeks-to-invest-in-small-businesses/" target="_blank" rel="noopener noreferrer">THE JOURNAL RECORD // PHOTO CREDIT MENTION ↗</a>
-                    <a href="https://apps.apple.com/us/app/load-easy/id6450004533" target="_blank" rel="noopener noreferrer">APPLE APP STORE // LOADEASY LISTING ↗</a>
+            <div class="cred-shell">
+                <div class="cred-lead">
+                    <p class="cred-kicker">DOCUMENTED WORK // RECOGNIZED EXECUTION</p>
+                    <p class="cred-intro">Campaign, documentary, and movement work that was independently published by state and national outlets.</p>
+                    <div class="cred-pill-row">
+                        <span class="cred-pill">NATIONAL PRESS</span>
+                        <span class="cred-pill">STATE COVERAGE</span>
+                        <span class="cred-pill">PUBLIC HISTORY</span>
+                    </div>
                 </div>
+                <div class="cred-grid">
+                    <a href="https://www.thenation.com/article/society/mauree-turner-alissandra-murray/" target="_blank" rel="noopener noreferrer" class="cred-card">
+                        <span class="cred-source">THE NATION // 2023</span>
+                        <h3>NATIONAL FEATURE CONTEXT</h3>
+                        <p>Coverage tied to Oklahoma political and social documentation where visual reporting helped shape public context.</p>
+                        <span class="cred-link">READ FEATURE ↗</span>
+                    </a>
+                    <a href="https://www.politico.com/newsletters/the-recast/2023/03/10/oklahoma-rep-mauree-turner-trans-rights-00086593" target="_blank" rel="noopener noreferrer" class="cred-card">
+                        <span class="cred-source">POLITICO / THE RECAST // 2023</span>
+                        <h3>NATIONAL NEWSLETTER FEATURE</h3>
+                        <p>Reporting and visual context supporting civil rights coverage in a national political publication.</p>
+                        <span class="cred-link">READ FEATURE ↗</span>
+                    </a>
+                    <a href="https://www.oklahoman.com/story/news/2025/04/29/muslim-day-at-the-capitol-oklahoma-city/83158429007/?gnt-cfr=1&gca-cat=p&gca-uir=true&gca-epti=undefined&gca-ft=0&gca-ds=sophi" target="_blank" rel="noopener noreferrer" class="cred-card">
+                        <span class="cred-source">THE OKLAHOMAN // 2025</span>
+                        <h3>STATEWIDE COVERAGE</h3>
+                        <p>Coverage in Oklahoma's primary daily publication for Muslim Day at the Capitol and related civic storytelling.</p>
+                        <span class="cred-link">READ FEATURE ↗</span>
+                    </a>
+                    <a href="https://www.okhistory.org/calendar/event/iman-two-journeys-of-faith-rooted-in-oklahomas-heartland-film-screening-and-discussion-panel/" target="_blank" rel="noopener noreferrer" class="cred-card">
+                        <span class="cred-source">OKLAHOMA HISTORICAL SOCIETY // 2024</span>
+                        <h3>IMAN PUBLIC HISTORY EVENT</h3>
+                        <p>Official Oklahoma History Center screening and panel listing for IMAN: Two Journeys of Faith.</p>
+                        <span class="cred-link">VIEW LISTING ↗</span>
+                    </a>
+                </div>
+                <aside class="cred-rail">
+                    <div class="cred-metrics">
+                        <p class="cred-metrics-title">TRACK RECORD</p>
+                        <div class="cred-metric"><span>500+</span><small>Client engagements</small></div>
+                        <div class="cred-metric"><span>10+ YEARS</span><small>CAIR Oklahoma collaboration</small></div>
+                        <div class="cred-metric"><span>GLOBAL</span><small>Campaign and production footprint</small></div>
+                    </div>
+                    <div class="cred-archive">
+                        <p class="cred-archive-title">SELECTED PUBLISHED MENTIONS</p>
+                        <div class="cred-archive-list">
+                            <a href="https://www.oklahoman.com/story/news/2025/04/29/muslim-day-at-the-capitol-oklahoma-city/83158429007/?gnt-cfr=1&gca-cat=p&gca-uir=true&gca-epti=undefined&gca-ft=0&gca-ds=sophi" target="_blank" rel="noopener noreferrer">THE OKLAHOMAN // MUSLIM DAY AT THE CAPITOL (2025) ↗</a>
+                            <a href="https://www.oklahoman.com/picture-gallery/news/religion/2024/05/13/muslim-day-2024-oklahoma-capitol-photos/73677008007/" target="_blank" rel="noopener noreferrer">THE OKLAHOMAN // MUSLIM DAY 2024 PHOTO GALLERY ↗</a>
+                            <a href="https://www.oklahoman.com/picture-gallery/news/2022/03/10/muslim-day-oklahoma-state-capitol/6990164001/" target="_blank" rel="noopener noreferrer">THE OKLAHOMAN // MUSLIM DAY 2022 PHOTO GALLERY ↗</a>
+                            <a href="https://www.cairoklahoma.com/film-project/" target="_blank" rel="noopener noreferrer">CAIR OKLAHOMA // IMAN FILM PROJECT ↗</a>
+                            <a href="https://www.youtube.com/watch?v=A2Q4Wx179_k" target="_blank" rel="noopener noreferrer">IMAN // OFFICIAL TRAILER ↗</a>
+                            <a href="https://voyagedallas.com/interview/meet-qazi-islam-imagelinestudios-oklahoma-city/" target="_blank" rel="noopener noreferrer">VOYAGE DALLAS // FEATURE INTERVIEW ↗</a>
+                            <a href="https://wecreateinteractive.com/meet-the-advisory-board/" target="_blank" rel="noopener noreferrer">WE CREATE INTERACTIVE // ADVISORY LISTING ↗</a>
+                            <a href="https://journalrecord.com/2023/02/24/new-nonprofit-seeks-to-invest-in-small-businesses/" target="_blank" rel="noopener noreferrer">THE JOURNAL RECORD // PHOTO CREDIT MENTION ↗</a>
+                            <a href="https://apps.apple.com/us/app/load-easy/id6450004533" target="_blank" rel="noopener noreferrer">APPLE APP STORE // LOADEASY LISTING ↗</a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section class="cta-band cta-band-proof">
+            <p class="cta-kicker">LET'S EXECUTE</p>
+            <h3>If the proof checks out, let's talk scope and timeline.</h3>
+            <div class="cta-actions">
+                <a href="#sec-contact" class="cta-btn cta-btn-primary">BOOK THE CONVERSATION</a>
+                <a href="#sec-tech" class="cta-btn cta-btn-secondary">VIEW LIVE PROPERTIES</a>
             </div>
         </section>
 
@@ -454,19 +593,82 @@
                 <span class="track-num">07</span>
                 <h2>THE<br>GRID</h2>
             </div>
-            <div class="lyrics-box">
-                <a href="https://loadeasy.io" target="_blank" class="tech-link">
-                    LOADEASY.IO ↗ <span class="tag">FINTECH</span>
-                </a>
-                <a href="http://thechronclub.com/" target="_blank" class="tech-link">
-                    THECHRONCLUB.COM ↗ <span class="tag">DIGITAL EXP</span>
-                </a>
-                <div class="tech-ticker">THE COMPLETE ECOSYSTEM // FROM PIXEL TO SERVER</div>
+            <div class="tech-shell">
+                <p class="tech-lead">Live properties and campaign infrastructure with cleaner previews, platform context, and direct access.</p>
+                <div class="tech-grid">
+                    <a href="https://loadeasy.io" target="_blank" rel="noopener noreferrer" class="tech-card is-feature">
+                        <span class="tech-shot">
+                            <img
+                                class="tech-preview"
+                                src="https://s.wordpress.com/mshots/v1/https://loadeasy.io?w=1600"
+                                data-preview-secondary="https://image.thum.io/get/width/1600/noanimate/https://loadeasy.io"
+                                data-site="LOADEASY.IO"
+                                alt="Loadeasy website thumbnail"
+                                loading="lazy">
+                        </span>
+                        <div class="tech-card-meta">
+                            <span class="tech-card-tag">FINTECH / PLATFORM</span>
+                            <strong>LOADEASY.IO ↗</strong>
+                            <p>Product platform and operational systems for logistics and finance workflows.</p>
+                        </div>
+                    </a>
+                    <a href="https://thechronclub.com/" target="_blank" rel="noopener noreferrer" class="tech-card">
+                        <span class="tech-shot">
+                            <img
+                                class="tech-preview"
+                                src="https://s.wordpress.com/mshots/v1/https://thechronclub.com?w=1600"
+                                data-preview-secondary="https://image.thum.io/get/width/1600/noanimate/https://thechronclub.com"
+                                data-site="THECHRONCLUB.COM"
+                                alt="The Chron Club website thumbnail"
+                                loading="lazy">
+                        </span>
+                        <div class="tech-card-meta">
+                            <span class="tech-card-tag">CULTURE / COMMERCE</span>
+                            <strong>THECHRONCLUB.COM ↗</strong>
+                            <p>Culture-forward digital experience built for campaign positioning and conversion.</p>
+                        </div>
+                    </a>
+                    <a href="https://okendoccupation.com/" target="_blank" rel="noopener noreferrer" class="tech-card">
+                        <span class="tech-shot">
+                            <img
+                                class="tech-preview"
+                                src="https://s.wordpress.com/mshots/v1/https://okendoccupation.com?w=1600"
+                                data-preview-secondary="https://image.thum.io/get/width/1600/noanimate/https://okendoccupation.com"
+                                data-site="OKENDOCCUPATION.COM"
+                                alt="OK End Occupation website thumbnail"
+                                loading="lazy">
+                        </span>
+                        <div class="tech-card-meta">
+                            <span class="tech-card-tag">ADVOCACY / MOVEMENT</span>
+                            <strong>OKENDOCCUPATION.COM ↗</strong>
+                            <p>Movement infrastructure focused on messaging clarity, updates, and mobilization.</p>
+                        </div>
+                    </a>
+                    <a href="https://qaziandnicole.com/" target="_blank" rel="noopener noreferrer" class="tech-card">
+                        <span class="tech-shot">
+                            <img
+                                class="tech-preview"
+                                src="https://s.wordpress.com/mshots/v1/https://qaziandnicole.com?w=1600"
+                                data-preview-secondary="https://image.thum.io/get/width/1600/noanimate/https://qaziandnicole.com"
+                                data-site="QAZIANDNICOLE.COM"
+                                alt="Qazi and Nicole wedding website thumbnail"
+                                loading="lazy">
+                        </span>
+                        <div class="tech-card-meta">
+                            <span class="tech-card-tag">PERSONAL / WEDDING WEB</span>
+                            <strong>QAZIANDNICOLE.COM ↗</strong>
+                            <p>Custom wedding site I built for Nicole and me, documenting our story and upcoming November 7, 2026 wedding.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="tech-ticker">LIVE PROPERTIES // PRODUCT SYSTEMS, CULTURE EXPERIENCES, MOVEMENT INFRASTRUCTURE, AND PERSONAL BUILDS</div>
             </div>
         </section>
 
         <section id="sec-contact" class="align-center">
-            <a href="#" id="secure-contact-link" class="giant-link" style="cursor: pointer;">INITIATE<br>LINK</a>
+            <a href="#" id="secure-contact-link" class="giant-link js-initiate" style="cursor: pointer;">INITIATE<br>LINK</a>
+            <p class="contact-brief">OPEN TO HIGH-IMPACT LEADERSHIP AND CREATIVE-OPERATIONS ENGAGEMENTS.</p>
+            <p class="contact-focus">CURRENT FOCUS: CORPORATE ADS // CREATIVE OPERATIONS // SYSTEMS THAT SCALE</p>
         </section>
 
         <footer>
@@ -477,7 +679,8 @@
         </footer>
 
     </main>
+    <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">TOP</button>
 
-    <script type="module" src="script.js?v=4.0"></script>
+    <script type="module" src="script.js?v=4.3"></script>
 </body>
 </html>
