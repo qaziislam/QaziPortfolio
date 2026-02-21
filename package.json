@@ -1,0 +1,19 @@
+{
+  "name": "qazi-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Qazi Portfolio site tooling for audits and tests.",
+  "type": "module",
+  "scripts": {
+    "serve": "serve . -l 8080",
+    "lighthouse": "lighthouse http://localhost:8080 --output html --output-path ./lighthouse-report.html --only-categories=performance,accessibility,best-practices,seo",
+    "images:optimize": "npx @squoosh/cli --webp '{\"quality\":78}' --avif '{\"cqLevel\":33}' assets/*.{jpg,png} -d assets/optimized && npx @squoosh/cli --webp '{\"quality\":78}' --avif '{\"cqLevel\":33}' screenshots/*.png -d assets/optimized",
+    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "lighthouse": "^12.8.2",
+    "serve": "^14.2.4"
+  }
+}

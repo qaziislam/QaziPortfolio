@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qazi Islam | Awards Kit</title>
+    <meta name="description" content="Awards kit and printable summary for Qazi Islam portfolio submissions.">
+    <link rel="canonical" href="https://qaziislam.com/awards.html">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <style>
+        :root {
+            --bg: #070707;
+            --fg: #f3f3f3;
+            --accent: #e30613;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "JetBrains Mono", monospace;
+            background: radial-gradient(circle at 12% 10%, rgba(227, 6, 19, 0.16), transparent 42%), var(--bg);
+            color: var(--fg);
+        }
+
+        .wrap {
+            width: min(980px, 92vw);
+            margin: 36px auto;
+            display: grid;
+            gap: 16px;
+        }
+
+        .panel {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(14, 14, 14, 0.88);
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+            letter-spacing: 0.06em;
+        }
+
+        p {
+            margin: 0;
+            color: #d3d3d3;
+        }
+
+        .hero-media {
+            width: 100%;
+            display: block;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 8px;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn {
+            text-decoration: none;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            border-color: var(--accent);
+            background: rgba(227, 6, 19, 0.22);
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                color: #111;
+            }
+
+            .actions {
+                display: none;
+            }
+
+            .panel {
+                border-color: #bbb;
+                background: #fff;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="wrap" id="printable">
+        <section class="panel">
+            <h1>Qazi Islam Awards Kit</h1>
+            <p>Submission summary, hero motion reference, and printable snapshot of portfolio impact.</p>
+        </section>
+
+        <section class="panel">
+            <video class="hero-media" src="assets/qazi-reel-website.mp4" autoplay muted loop playsinline controls
+                poster="assets/qazi_noice.png"></video>
+        </section>
+
+        <section class="panel">
+            <picture>
+                <source srcset="assets/optimized/qa-desktop-hero-2026-02-16-sweep2.avif" type="image/avif">
+                <source srcset="assets/optimized/qa-desktop-hero-2026-02-16-sweep2.webp" type="image/webp">
+                <img class="hero-media" src="screenshots/qa-desktop-hero-2026-02-16-sweep2.png"
+                    alt="Hero animation reference frame" loading="lazy" decoding="async">
+            </picture>
+        </section>
+
+        <section class="panel actions">
+            <a class="btn" href="index.html#sec-awards">Back To Portfolio</a>
+            <a class="btn" href="#" onclick="window.print(); return false;">Print / Save As PDF</a>
+        </section>
+    </main>
+</body>
+
+</html>

@@ -1,26 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="description" content="Qazi Islam: Creative Operator, Multidisciplinary Builder, and Revenue Architect based in OKC.">
+
+    <meta name="description"
+        content="Qazi Islam: Creative Operator, Multidisciplinary Builder, and Revenue Architect based in OKC.">
     <meta property="og:title" content="QAZI ISLAM | BIG DAWGS">
     <meta property="og:image" content="assets/qazi_noice.png">
+    <meta property="og:image" content="assets/jabee_runthejewels.jpg">
+    <meta property="og:image" content="assets/imandocumentaryposter.jpg">
+    <meta property="og:image" content="assets/thunder_dj.jpg">
     <meta property="og:description" content="Creative Operator // Revenue Architect">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://qaziislam.com">
-    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="QAZI ISLAM | BIG DAWGS">
+    <meta name="twitter:description" content="Creative Operator // Revenue Architect">
+    <meta name="twitter:image" content="https://qaziislam.com/assets/qazi_noice.png">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+
     <title>QAZI ISLAM | BIG DAWGS</title>
-    
-    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%20font-weight%3D%22bold%22%20font-family%3D%22sans-serif%22%20fill%3D%22red%22%3EQ%3C%2Ftext%3E%3C%2Fsvg%3E">
-    
-    <link rel="stylesheet" href="styles.css?v=4.3">
-    
+
+    <!-- Security & SEO -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://unpkg.com https://cdnjs.cloudflare.com; frame-src 'self' https://www.youtube.com;">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <link rel="canonical" href="https://qaziislam.com">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "name": "Qazi Islam",
+          "url": "https://qaziislam.com",
+          "image": "https://qaziislam.com/assets/qazi_noice.png",
+          "sameAs": [
+            "https://www.linkedin.com/in/qaziislam",
+            "https://www.instagram.com/qaziislam"
+          ],
+          "jobTitle": "Creative Director & Revenue Architect",
+          "description": "Creative Operator, Multidisciplinary Builder, and Revenue Architect based in OKC."
+        },
+        {
+          "@type": "ItemList",
+          "name": "Featured Work Gallery",
+          "itemListElement": [
+            {
+              "@type": "ImageObject",
+              "position": 1,
+              "name": "Run The Jewels",
+              "contentUrl": "https://qaziislam.com/assets/jabee_runthejewels.jpg"
+            },
+            {
+              "@type": "ImageObject",
+              "position": 2,
+              "name": "Thunder Arena",
+              "contentUrl": "https://qaziislam.com/assets/jabee_thunderarena.jpg"
+            },
+            {
+              "@type": "ImageObject",
+              "position": 3,
+              "name": "Iman Documentary Poster",
+              "contentUrl": "https://qaziislam.com/assets/imandocumentaryposter.jpg"
+            },
+            {
+              "@type": "ImageObject",
+              "position": 4,
+              "name": "Thunder Tunnels",
+              "contentUrl": "https://qaziislam.com/assets/thunder_dj.jpg"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%20font-weight%3D%22bold%22%20font-family%3D%22sans-serif%22%20fill%3D%22red%22%3EQ%3C%2Ftext%3E%3C%2Fsvg%3E">
+
+    <link rel="stylesheet" href="styles.css?v=6.9">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
 
@@ -33,17 +102,40 @@
       }
     </script>
 </head>
+
 <body class="no-scroll">
-    
+
     <div id="splash-screen">
         <div class="splash-content">
-            <div class="bismillah-text">﷽</div>
-            <div class="translation-text">IN THE NAME OF ALLAH<br><span style="color: #666;">THE MOST GRACIOUS, THE MOST MERCIFUL</span></div>
-            <div class="welcome-text">WELCOME TO MY SITE</div>
+            <p class="splash-kicker">Bismillah</p>
+            <div class="bismillah-text" lang="ar" dir="rtl">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+            <div class="translation-text">In the name of Allah, the Most Gracious, the Most Merciful.</div>
+            <div class="welcome-text">Welcome</div>
+            <button id="splash-enter" class="splash-enter-btn" type="button" aria-label="Enter site">Enter Site</button>
         </div>
     </div>
 
     <div class="noise-overlay"></div>
+    <div id="bg-gradient-animation" class="bg-gradient-animation" aria-hidden="true">
+        <svg class="bg-gradient-svg">
+            <defs>
+                <filter id="bgBlur">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
+                        result="goo" />
+                    <feBlend in="SourceGraphic" in2="goo" />
+                </filter>
+            </defs>
+        </svg>
+        <div id="bg-gradients-container" class="bg-gradients-container">
+            <div class="bg-blob bg-first"></div>
+            <div class="bg-blob bg-second"></div>
+            <div class="bg-blob bg-third"></div>
+            <div class="bg-blob bg-fourth"></div>
+            <div class="bg-blob bg-fifth"></div>
+            <div id="bg-gradient-pointer" class="bg-blob bg-pointer"></div>
+        </div>
+    </div>
     <div class="brand-badge">Q</div>
     <nav class="jump-nav" aria-label="Section navigation">
         <a href="#sec-hero">START</a>
@@ -60,21 +152,22 @@
         <span class="mina-callout-copy">HOLD UP. QUICK SWEEP THROUGH THE ARCHIVE.</span>
     </div>
 
-    <div id="lightbox" class="lightbox hidden">
+    <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true" aria-hidden="true">
         <button type="button" class="lightbox-close" aria-label="Close lightbox">&times;</button>
-        <button id="lb-prev" class="lb-nav left">‹</button>
-        
+        <button id="lb-prev" class="lb-nav left" type="button" aria-label="Previous gallery item">‹</button>
+
         <div class="lb-content-wrapper">
-            <img id="lightbox-img" class="lb-media hidden" src="" alt="Gallery View">
+            <img loading="eager" decoding="async" id="lightbox-img" class="lb-media hidden" src="" alt="Gallery View">
             <video id="lightbox-vid" class="lb-media hidden" controls autoplay loop playsinline>
                 <source src="" type="video/mp4">
             </video>
             <div id="lightbox-yt" class="lb-media hidden video-wrapper">
-                <iframe id="yt-player" width="100%" height="100%" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <iframe id="yt-player" width="100%" height="100%" src="" frameborder="0"
+                    allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
         </div>
 
-        <button id="lb-next" class="lb-nav right">›</button>
+        <button id="lb-next" class="lb-nav right" type="button" aria-label="Next gallery item">›</button>
         <div id="lb-caption"></div>
     </div>
 
@@ -83,7 +176,7 @@
             <button type="button" class="funnel-close" aria-label="Close funnel modal">&times;</button>
             <h2>INITIATE PROTOCOL</h2>
             <p>SELECT YOUR OBJECTIVE:</p>
-            
+
             <div class="funnel-options">
                 <a href="#" data-subject="New Project Inquiry" class="funnel-btn">
                     <span class="btn-title">BUILD A SYSTEM</span>
@@ -102,12 +195,14 @@
     </div>
 
     <main id="scroll-stream">
-        
+
         <section id="sec-hero">
             <div class="hud-top">SYSTEM: OPERATIONAL // OKC BASE</div>
             <h1 class="giant-text"><span class="hero-line">QAZI</span><span class="hero-line">ISLAM</span></h1>
-            <div class="sub-text">A VISUAL TIMELINE <span class="slash">//</span> FAILING FORWARD <span class="slash">//</span> EXECUTION UNDER PRESSURE</div>
-            <p class="hero-brief">For builders, founders, and teams who value grit, clarity, and outcomes. Real lessons, real losses, real wins.</p>
+            <div class="sub-text">A VISUAL TIMELINE <span class="slash">//</span> FAILING FORWARD <span
+                    class="slash">//</span> EXECUTION UNDER PRESSURE</div>
+            <p class="hero-brief">For builders, founders, and teams who value grit, clarity, and outcomes. Real lessons,
+                real losses, real wins.</p>
             <div class="hero-signal-row" role="list" aria-label="Core services">
                 <span role="listitem">CREATIVE DIRECTION</span>
                 <span role="listitem">REVENUE OPS</span>
@@ -130,8 +225,10 @@
                 <h2>PROFILE<br>BRIEF</h2>
             </div>
             <div class="lyrics-box">
-                <p>I grew up in survival mode in NW Oklahoma City and turned that pressure into a career built on execution, service, and long-term trust.</p>
-                <ul style="list-style: none; padding: 0; margin: 20px 0; color: #ccc; font-size: 1rem; line-height: 1.6;">
+                <p>I grew up in survival mode in NW Oklahoma City and turned that pressure into a career built on
+                    execution, service, and long-term trust.</p>
+                <ul
+                    style="list-style: none; padding: 0; margin: 20px 0; color: #ccc; font-size: 1rem; line-height: 1.6;">
                     <li>// CREATIVE DIRECTION ACROSS FILM, PHOTO, AND CAMPAIGNS</li>
                     <li>// SYSTEM BUILDER FOR BRANDS, PRODUCTS, AND OPERATIONS</li>
                     <li>// REVENUE-OPS EXPERIENCE (OVER $4M/MO MANAGED)</li>
@@ -158,24 +255,134 @@
             <div class="gallery-progress"><span class="gallery-progress-fill"></span></div>
             <div class="gallery-scroll-container">
                 <div class="gallery-scroll-track">
-                    <button type="button" class="scroll-item is-feature" data-gallery-index="0" data-frame="01" data-shot="RUN THE JEWELS" aria-label="Open gallery image: Run The Jewels"><img src="assets/jabee_runthejewels.jpg" alt="Run The Jewels frame" loading="lazy"></button>
-                    <button type="button" class="scroll-item is-wide" data-gallery-index="1" data-frame="02" data-shot="THUNDER ARENA" aria-label="Open gallery image: Thunder Arena"><img src="assets/jabee_thunderarena.jpg" alt="Thunder Arena frame" loading="lazy"></button>
-                    <button type="button" class="scroll-item is-wide" data-gallery-index="2" data-frame="03" data-shot="LIL WAYNE" aria-label="Open gallery image: Lil Wayne"><img src="assets/lilwayne.jpg" alt="Lil Wayne performance frame" loading="lazy"></button>
-                    <button type="button" class="scroll-item is-portrait is-tall" data-gallery-index="3" data-frame="04" data-shot="RASHIDA TLAIB" aria-label="Open gallery image: Rashida Tlaib"><img src="assets/qaziwithrashidatalib.jpg" alt="Rashida Tlaib portrait frame" loading="lazy"></button>
-                    <button type="button" class="scroll-item is-portrait is-tall" data-gallery-index="4" data-frame="05" data-shot="OKLAHOMA CAPITOL" aria-label="Open gallery image: Oklahoma Capitol"><img src="assets/repturner.jpg" alt="Oklahoma Capitol frame" loading="lazy"></button>
-                    <button type="button" class="scroll-item" data-gallery-index="5" data-frame="06" data-shot="SOYLENT CAMPAIGN" aria-label="Open gallery image: Soylent Campaign"><img src="assets/tianasoylent.jpg" alt="Soylent campaign portrait" loading="lazy"></button>
-                    <button type="button" class="scroll-item is-wide" data-gallery-index="6" data-frame="07" data-shot="THUNDER TUNNELS" aria-label="Open gallery image: Thunder Tunnels"><img src="assets/thunder_dj.jpg" alt="Thunder tunnels session frame" loading="lazy"></button>
-                    <button type="button" class="scroll-item" data-gallery-index="7" data-frame="08" data-shot="BANGLADESH AERIAL" aria-label="Open gallery image: Bangladesh Aerial"><img src="assets/bangladesh_dronepicture.jpg" alt="Bangladesh aerial frame" loading="lazy"></button>
-                    <button type="button" class="scroll-item is-wide" data-gallery-index="8" data-frame="09" data-shot="CANNALINE SHOOT" aria-label="Open gallery image: Cannaline Shoot"><img src="assets/cannalineshoot1.jpg" alt="Cannaline field shoot frame" loading="lazy"></button>
-                    <button type="button" class="scroll-item" data-gallery-index="9" data-frame="10" data-shot="SEATTLE FOREST" aria-label="Open gallery image: Seattle Forest"><img src="assets/qaziseattle.jpg" alt="Seattle forest frame" loading="lazy"></button>
-                    <button type="button" class="scroll-item" data-gallery-index="10" data-frame="11" data-shot="COMMUNITY WORK" aria-label="Open gallery image: Community Work"><img src="assets/foodbankcair.jpg" alt="Community work frame" loading="lazy"></button>
-                    <button type="button" class="scroll-item is-portrait is-tall" data-gallery-index="11" data-frame="12" data-shot="IMAN POSTER" aria-label="Open gallery image: Iman Poster"><img src="assets/imandocumentaryposter.jpg" alt="IMAN documentary poster" loading="lazy"></button>
-                    <button type="button" class="scroll-item" data-gallery-index="12" data-frame="13" data-shot="DC PROTEST" aria-label="Open gallery image: DC Protest"><img src="assets/qaziatwashingtondcprotest.jpg" alt="Washington DC protest frame" loading="lazy"></button>
-                    <button type="button" class="scroll-item" data-gallery-index="13" data-frame="14" data-shot="ALASKA FIELD" aria-label="Open gallery image: Alaska Field"><img src="assets/qazialaska.jpg" alt="Alaska field frame" loading="lazy"></button>
-                    <button type="button" class="scroll-item" data-gallery-index="14" data-frame="15" data-shot="SOYLENT // JEN" aria-label="Open gallery image: Soylent Jen"><img src="assets/soylent_jen.jpg" alt="Soylent Jen portrait" loading="lazy"></button>
-                    <button type="button" class="scroll-item" data-gallery-index="15" data-frame="16" data-shot="SOYLENT // MICHELLE" aria-label="Open gallery image: Soylent Michelle"><img src="assets/soylent_michelle.jpg" alt="Soylent Michelle portrait" loading="lazy"></button>
-                    <button type="button" class="scroll-item is-wide" data-gallery-index="16" data-frame="17" data-shot="POKUX" aria-label="Open gallery image: Pokux"><img src="assets/pokuxshopgood.jpg" alt="Pokux campaign frame" loading="lazy"></button>
-                    <button type="button" class="scroll-item is-portrait is-tall" data-gallery-index="17" data-frame="18" data-shot="FAMILY ARCHIVE" aria-label="Open gallery image: Family Archive"><img src="assets/qazianddad.jpg" alt="Family archive frame" loading="lazy"></button>
+                    <button type="button" class="scroll-item is-feature" data-gallery-index="0" data-frame="01"
+                        data-shot="RUN THE JEWELS" aria-label="Open gallery image: Run The Jewels"><picture>
+                            <source srcset="assets/optimized/jabee_runthejewels.avif" type="image/avif">
+                            <source srcset="assets/optimized/jabee_runthejewels.webp" type="image/webp">
+                            <img decoding="async" src="assets/jabee_runthejewels.jpg"
+                                srcset="assets/jabee_runthejewels.jpg 1x" alt="Run The Jewels frame" loading="lazy">
+                        </picture></button>
+                    <button type="button" class="scroll-item is-wide" data-gallery-index="1" data-frame="02"
+                        data-shot="THUNDER ARENA" aria-label="Open gallery image: Thunder Arena"><picture>
+                            <source srcset="assets/optimized/jabee_thunderarena.avif" type="image/avif">
+                            <source srcset="assets/optimized/jabee_thunderarena.webp" type="image/webp">
+                            <img decoding="async" src="assets/jabee_thunderarena.jpg"
+                                srcset="assets/jabee_thunderarena.jpg 1x" alt="Thunder Arena frame" loading="lazy">
+                        </picture></button>
+                    <button type="button" class="scroll-item is-wide" data-gallery-index="2" data-frame="03"
+                        data-shot="LIL WAYNE" aria-label="Open gallery image: Lil Wayne"><picture>
+                            <source srcset="assets/optimized/lilwayne.avif" type="image/avif">
+                            <source srcset="assets/optimized/lilwayne.webp" type="image/webp">
+                            <img decoding="async" src="assets/lilwayne.jpg" alt="Lil Wayne performance frame"
+                                loading="lazy" srcset="assets/lilwayne.jpg 1x">
+                        </picture></button>
+                    <button type="button" class="scroll-item is-portrait is-tall" data-gallery-index="3" data-frame="04"
+                        data-shot="RASHIDA TLAIB" aria-label="Open gallery image: Rashida Tlaib"><picture>
+                            <source srcset="assets/optimized/qaziwithrashidatalib.avif" type="image/avif">
+                            <source srcset="assets/optimized/qaziwithrashidatalib.webp" type="image/webp">
+                            <img decoding="async" src="assets/qaziwithrashidatalib.jpg"
+                                srcset="assets/qaziwithrashidatalib.jpg 1x" alt="Rashida Tlaib portrait frame"
+                                loading="lazy">
+                        </picture></button>
+                    <button type="button" class="scroll-item is-portrait is-tall" data-gallery-index="4" data-frame="05"
+                        data-shot="OKLAHOMA CAPITOL" aria-label="Open gallery image: Oklahoma Capitol"><picture>
+                            <source srcset="assets/optimized/repturner.avif" type="image/avif">
+                            <source srcset="assets/optimized/repturner.webp" type="image/webp">
+                            <img decoding="async" src="assets/repturner.jpg" alt="Oklahoma Capitol frame"
+                                loading="lazy" srcset="assets/repturner.jpg 1x">
+                        </picture></button>
+                    <button type="button" class="scroll-item" data-gallery-index="5" data-frame="06"
+                        data-shot="SOYLENT CAMPAIGN" aria-label="Open gallery image: Soylent Campaign"><picture>
+                            <source srcset="assets/optimized/tianasoylent.avif" type="image/avif">
+                            <source srcset="assets/optimized/tianasoylent.webp" type="image/webp">
+                            <img decoding="async" src="assets/tianasoylent.jpg" alt="Soylent campaign portrait"
+                                loading="lazy" srcset="assets/tianasoylent.jpg 1x">
+                        </picture></button>
+                    <button type="button" class="scroll-item is-wide" data-gallery-index="6" data-frame="07"
+                        data-shot="THUNDER TUNNELS" aria-label="Open gallery image: Thunder Tunnels"><picture>
+                            <source srcset="assets/optimized/thunder_dj.avif" type="image/avif">
+                            <source srcset="assets/optimized/thunder_dj.webp" type="image/webp">
+                            <img decoding="async" src="assets/thunder_dj.jpg" alt="Thunder tunnels session frame"
+                                loading="lazy" srcset="assets/thunder_dj.jpg 1x">
+                        </picture></button>
+                    <button type="button" class="scroll-item" data-gallery-index="7" data-frame="08"
+                        data-shot="BANGLADESH AERIAL" aria-label="Open gallery image: Bangladesh Aerial"><picture>
+                            <source srcset="assets/optimized/bangladesh_dronepicture.avif" type="image/avif">
+                            <source srcset="assets/optimized/bangladesh_dronepicture.webp" type="image/webp">
+                            <img decoding="async" src="assets/bangladesh_dronepicture.jpg" alt="Bangladesh aerial frame"
+                                loading="lazy" srcset="assets/bangladesh_dronepicture.jpg 1x">
+                        </picture></button>
+                    <button type="button" class="scroll-item is-wide" data-gallery-index="8" data-frame="09"
+                        data-shot="CANNALINE SHOOT" aria-label="Open gallery image: Cannaline Shoot"><picture>
+                            <source srcset="assets/optimized/cannalineshoot1.avif" type="image/avif">
+                            <source srcset="assets/optimized/cannalineshoot1.webp" type="image/webp">
+                            <img decoding="async" src="assets/cannalineshoot1.jpg" alt="Cannaline field shoot frame"
+                                loading="lazy" srcset="assets/cannalineshoot1.jpg 1x">
+                        </picture></button>
+                    <button type="button" class="scroll-item" data-gallery-index="9" data-frame="10"
+                        data-shot="SEATTLE FOREST" aria-label="Open gallery image: Seattle Forest"><picture>
+                            <source srcset="assets/optimized/lilwayne.avif" type="image/avif">
+                            <source srcset="assets/optimized/lilwayne.webp" type="image/webp">
+                            <img decoding="async" src="assets/lilwayne.jpg" srcset="assets/lilwayne.jpg 1x"
+                                alt="Lil Wayne performance frame" loading="lazy">
+                        </picture></button>
+                    <button type="button" class="scroll-item" data-gallery-index="10" data-frame="11"
+                        data-shot="COMMUNITY WORK" aria-label="Open gallery image: Community Work"><picture>
+                            <source srcset="assets/optimized/foodbankcair.avif" type="image/avif">
+                            <source srcset="assets/optimized/foodbankcair.webp" type="image/webp">
+                            <img decoding="async" src="assets/foodbankcair.jpg" alt="Community work frame"
+                                loading="lazy" srcset="assets/foodbankcair.jpg 1x">
+                        </picture></button>
+                    <button type="button" class="scroll-item is-portrait is-tall" data-gallery-index="11"
+                        data-frame="12" data-shot="IMAN POSTER" aria-label="Open gallery image: Iman Poster"><picture>
+                            <source srcset="assets/optimized/imandocumentaryposter.avif" type="image/avif">
+                            <source srcset="assets/optimized/imandocumentaryposter.webp" type="image/webp">
+                            <img decoding="async" src="assets/imandocumentaryposter.jpg" alt="IMAN documentary poster"
+                                loading="lazy" srcset="assets/imandocumentaryposter.jpg 1x">
+                        </picture></button>
+                    <button type="button" class="scroll-item" data-gallery-index="12" data-frame="13"
+                        data-shot="DC PROTEST" aria-label="Open gallery image: DC Protest"><picture>
+                            <source srcset="assets/optimized/qaziatwashingtondcprotest.avif" type="image/avif">
+                            <source srcset="assets/optimized/qaziatwashingtondcprotest.webp" type="image/webp">
+                            <img decoding="async" src="assets/qaziatwashingtondcprotest.jpg"
+                                alt="Washington DC protest frame" loading="lazy"
+                                srcset="assets/qaziatwashingtondcprotest.jpg 1x">
+                        </picture></button>
+                    <button type="button" class="scroll-item" data-gallery-index="13" data-frame="14"
+                        data-shot="ALASKA FIELD" aria-label="Open gallery image: Alaska Field"><picture>
+                            <source srcset="assets/optimized/qazialaska.avif" type="image/avif">
+                            <source srcset="assets/optimized/qazialaska.webp" type="image/webp">
+                            <img decoding="async" src="assets/qazialaska.jpg" alt="Alaska field frame" loading="lazy"
+                                srcset="assets/qazialaska.jpg 1x">
+                        </picture></button>
+                    <button type="button" class="scroll-item" data-gallery-index="14" data-frame="15"
+                        data-shot="SOYLENT // JEN" aria-label="Open gallery image: Soylent Jen"><picture>
+                            <source srcset="assets/optimized/soylent_jen.avif" type="image/avif">
+                            <source srcset="assets/optimized/soylent_jen.webp" type="image/webp">
+                            <img decoding="async" src="assets/soylent_jen.jpg" alt="Soylent Jen portrait"
+                                loading="lazy" srcset="assets/soylent_jen.jpg 1x">
+                        </picture></button>
+                    <button type="button" class="scroll-item" data-gallery-index="15" data-frame="16"
+                        data-shot="SOYLENT // MICHELLE" aria-label="Open gallery image: Soylent Michelle"><picture>
+                            <source srcset="assets/optimized/soylent_michelle.avif" type="image/avif">
+                            <source srcset="assets/optimized/soylent_michelle.webp" type="image/webp">
+                            <img decoding="async" src="assets/soylent_michelle.jpg" alt="Soylent Michelle portrait"
+                                loading="lazy" srcset="assets/soylent_michelle.jpg 1x">
+                        </picture></button>
+                    <button type="button" class="scroll-item is-wide" data-gallery-index="16" data-frame="17"
+                        data-shot="POKUX" aria-label="Open gallery image: Pokux"><picture>
+                            <source srcset="assets/optimized/pokuxshopgood.avif" type="image/avif">
+                            <source srcset="assets/optimized/pokuxshopgood.webp" type="image/webp">
+                            <img decoding="async" src="assets/pokuxshopgood.jpg" alt="Pokux campaign frame"
+                                loading="lazy" srcset="assets/pokuxshopgood.jpg 1x">
+                        </picture></button>
+                    <button type="button" class="scroll-item is-portrait is-tall" data-gallery-index="17"
+                        data-frame="18" data-shot="FAMILY ARCHIVE" aria-label="Open gallery image: Family Archive"><picture>
+                            <source srcset="assets/optimized/qazianddad.avif" type="image/avif">
+                            <source srcset="assets/optimized/qazianddad.webp" type="image/webp">
+                            <img decoding="async" src="assets/qazianddad.jpg" alt="Family archive frame" loading="lazy"
+                                srcset="assets/qazianddad.jpg 1x">
+                        </picture></button>
                 </div>
             </div>
             <div class="scroll-hint">SHORT HOLD FOR THE STORY BEAT // OPEN ANY FRAME OR SKIP AHEAD</div>
@@ -198,7 +405,7 @@
                 </div>
             </div>
             <p class="timeline-intro">Every chapter below is a real place, real cost, and a real turning point.</p>
-            
+
             <div class="timeline-wrap">
                 <div class="timeline-line"></div>
 
@@ -209,7 +416,12 @@
                         <p class="accent">OKC BORN</p>
                         <p>Born in Oklahoma City. Before momentum, there was family, pressure, and foundation.</p>
                         <p>Little margin for error shaped how I approach work, responsibility, and purpose.</p>
-                        <img src="assets/qazi-birth-2.jpg" alt="1994" class="tm-img" loading="lazy">
+                        <picture>
+                            <source srcset="assets/optimized/qazi-birth-2.avif" type="image/avif">
+                            <source srcset="assets/optimized/qazi-birth-2.webp" type="image/webp">
+                            <img decoding="async" src="assets/qazi-birth-2.jpg" alt="1994" class="tm-img"
+                                loading="lazy" srcset="assets/qazi-birth-2.jpg 1x">
+                        </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
@@ -219,9 +431,17 @@
                     <div class="tm-content" data-gallery-key="target">
                         <h3>THE TARGET</h3>
                         <p class="accent">POST-9/11 // SCHOOL YEARS</p>
-                        <p>After 9/11, I was treated like a suspect as a child. I was called racial slurs, labeled a terrorist, and physically bullied from elementary through high school because of my skin color, religion, and name.</p>
-                        <p>Teachers often watched it happen and did nothing. That school reality, layered with long work shifts after class, built years of exhaustion, fear, and isolation.</p>
-                        <img src="assets/baby-qazi.jpg" alt="School years archive" class="tm-img" loading="lazy">
+                        <p>After 9/11, I was treated like a suspect as a child. I was called racial slurs, labeled a
+                            terrorist, and physically bullied from elementary through high school because of my skin
+                            color, religion, and name.</p>
+                        <p>Teachers often watched it happen and did nothing. That school reality, layered with long work
+                            shifts after class, built years of exhaustion, fear, and isolation.</p>
+                        <picture>
+                            <source srcset="assets/optimized/baby-qazi.avif" type="image/avif">
+                            <source srcset="assets/optimized/baby-qazi.webp" type="image/webp">
+                            <img decoding="async" src="assets/baby-qazi.jpg" alt="School years archive" class="tm-img"
+                                loading="lazy" srcset="assets/baby-qazi.jpg 1x">
+                        </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
@@ -231,9 +451,16 @@
                     <div class="tm-content" data-gallery-key="lyrewood">
                         <h3>THE BLOCK // LYREWOOD LANE</h3>
                         <p class="accent">NW 63RD TO WILSHIRE CORRIDOR</p>
-                        <p>Known in our circle as L-BLOCK, this was home base through survival-mode years: violence nearby, open drug activity, and constant police pressure.</p>
-                        <p>My family held the same house for over 20 years, watched the neighborhood evolve, and kept service, respect, and community care at the center.</p>
-                        <img src="assets/lyrewoodlane.png" alt="Lyrewood" class="tm-img" loading="lazy">
+                        <p>Known in our circle as L-BLOCK, this was home base through survival-mode years: violence
+                            nearby, open drug activity, and constant police pressure.</p>
+                        <p>My family held the same house for over 20 years, watched the neighborhood evolve, and kept
+                            service, respect, and community care at the center.</p>
+                        <picture>
+                            <source srcset="assets/optimized/lyrewoodlane.avif" type="image/avif">
+                            <source srcset="assets/optimized/lyrewoodlane.webp" type="image/webp">
+                            <img decoding="async" src="assets/lyrewoodlane.png" alt="Lyrewood" class="tm-img"
+                                loading="lazy" srcset="assets/lyrewoodlane.png 1x">
+                        </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
@@ -243,11 +470,21 @@
                     <div class="tm-content" data-gallery-key="bangla">
                         <h3>THE BAZAAR</h3>
                         <p class="accent">THE INTEGRITY</p>
-                        <p>From age six into my mid-teens, I worked inside the full meat pipeline and learned hard labor early: slaughter, processing, hauling, and prep under pressure.</p>
-                        <p>After school it was often 4PM to midnight at the store, then back to class in the morning. That schedule defined my discipline and fatigue for years.</p>
-                        <p>Bangla Bazaar fed families, supplied halal essentials, and became a cultural anchor with Bollywood media and groceries people otherwise drove to Dallas to find.</p>
-                        <p>Our family ran the original Portland location from 1998 to 2012 before selling; later operations moved to Edmond and eventually rebranded.</p>
-                        <img src="assets/banglabazaar-inside.jpg" alt="Bangla Bazaar family archive" class="tm-img" loading="lazy">
+                        <p>From age six into my mid-teens, I worked inside the full meat pipeline and learned hard labor
+                            early: slaughter, processing, hauling, and prep under pressure.</p>
+                        <p>After school it was often 4PM to midnight at the store, then back to class in the morning.
+                            That schedule defined my discipline and fatigue for years.</p>
+                        <p>Bangla Bazaar fed families, supplied halal essentials, and became a cultural anchor with
+                            Bollywood media and groceries people otherwise drove to Dallas to find.</p>
+                        <p>Our family ran the original Portland location from 1998 to 2012 before selling; later
+                            operations moved to Edmond and eventually rebranded.</p>
+                        <picture>
+                            <source srcset="assets/optimized/banglabazaar-inside.avif" type="image/avif">
+                            <source srcset="assets/optimized/banglabazaar-inside.webp" type="image/webp">
+                            <img decoding="async" src="assets/banglabazaar-inside.jpg"
+                                alt="Bangla Bazaar family archive" class="tm-img" loading="lazy"
+                                srcset="assets/banglabazaar-inside.jpg 1x">
+                        </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
@@ -257,9 +494,16 @@
                     <div class="tm-content" data-gallery-key="bpa">
                         <h3>THE FOUNDATION</h3>
                         <p class="accent">FRANCIS TUTTLE // WEB + GRAPHIC DESIGN</p>
-                        <p>Formal training in web design/development and graphic design/development through Francis Tuttle across high school and college years.</p>
-                        <p>At BPA Nationals in Anaheim, I won 1st place in Web Design &amp; Development and proved early I could execute on a national stage.</p>
-                        <img src="assets/bpafirstplace.jpg" alt="BPA first place" class="tm-img" loading="lazy">
+                        <p>Formal training in web design/development and graphic design/development through Francis
+                            Tuttle across high school and college years.</p>
+                        <p>At BPA Nationals in Anaheim, I won 1st place in Web Design &amp; Development and proved early
+                            I could execute on a national stage.</p>
+                        <picture>
+                            <source srcset="assets/optimized/bpafirstplace.avif" type="image/avif">
+                            <source srcset="assets/optimized/bpafirstplace.webp" type="image/webp">
+                            <img decoding="async" src="assets/bpafirstplace.jpg" alt="BPA first place" class="tm-img"
+                                loading="lazy" srcset="assets/bpafirstplace.jpg 1x">
+                        </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
@@ -269,9 +513,16 @@
                     <div class="tm-content" data-gallery-key="grind">
                         <h3>THE GRIND</h3>
                         <p class="accent">IMAGELINE STUDIOS / IMAGELINE MOMENTS / SYN3RGY ERA</p>
-                        <p>I built Imageline Studios and Imageline Moments while working a five-year day-job run at SYN3RGY to keep income stable and stack runway.</p>
-                        <p>After a decade in weddings, I stepped away from that lane and focused on corporate ads and systems-heavy execution.</p>
-                        <img src="assets/sabah_vape_photography.jpg" alt="The Grind" class="tm-img" loading="lazy">
+                        <p>I built Imageline Studios and Imageline Moments while working a five-year day-job run at
+                            SYN3RGY to keep income stable and stack runway.</p>
+                        <p>After a decade in weddings, I stepped away from that lane and focused on corporate ads and
+                            systems-heavy execution.</p>
+                        <picture>
+                            <source srcset="assets/optimized/sabah_vape_photography.avif" type="image/avif">
+                            <source srcset="assets/optimized/sabah_vape_photography.webp" type="image/webp">
+                            <img decoding="async" src="assets/sabah_vape_photography.jpg" alt="The Grind" class="tm-img"
+                                loading="lazy" srcset="assets/sabah_vape_photography.jpg 1x">
+                        </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
@@ -281,9 +532,12 @@
                     <div class="tm-content" data-gallery-key="roots">
                         <h3>THE ROOTS PROJECT</h3>
                         <p class="accent">OKLAHOMA HIP-HOP ARCHIVE</p>
-                        <p>I built The Roots Project as a focused archive of Oklahoma's best hip-hop artists, documenting straight-to-camera performances with no fluff.</p>
-                        <p>That curation run sharpened my ear, pacing, and artist-first direction while preserving local voices that deserved a wider stage.</p>
-                        <img src="https://img.youtube.com/vi/tF120629k3A/maxresdefault.jpg" alt="The Roots Project playlist thumbnail" class="tm-img" loading="lazy">
+                        <p>I built The Roots Project as a focused archive of Oklahoma's best hip-hop artists,
+                            documenting straight-to-camera performances with no fluff.</p>
+                        <p>That curation run sharpened my ear, pacing, and artist-first direction while preserving local
+                            voices that deserved a wider stage.</p>
+                        <img decoding="async" src="https://img.youtube.com/vi/tF120629k3A/maxresdefault.jpg"
+                            alt="The Roots Project playlist thumbnail" class="tm-img" loading="lazy">
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
@@ -294,8 +548,14 @@
                         <h3>THE SAVIOR</h3>
                         <p class="accent">MINA // COMPANION ERA</p>
                         <p>Mina entered my life at my lowest point and became a daily reason to keep moving.</p>
-                        <p>In a season of grief and collapse, her presence gave me structure, routine, and emotional ground.</p>
-                        <img src="assets/puppymina.jpg" alt="Mina" class="tm-img" loading="lazy">
+                        <p>In a season of grief and collapse, her presence gave me structure, routine, and emotional
+                            ground.</p>
+                        <picture>
+                            <source srcset="assets/optimized/puppymina.avif" type="image/avif">
+                            <source srcset="assets/optimized/puppymina.webp" type="image/webp">
+                            <img decoding="async" src="assets/puppymina.jpg" alt="Mina" class="tm-img" loading="lazy"
+                                srcset="assets/puppymina.jpg 1x">
+                        </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
@@ -305,10 +565,18 @@
                     <div class="tm-content" data-gallery-key="imageline">
                         <h3>THE UMBRELLA</h3>
                         <p class="accent">IMAGELINE STUDIOS // UMBRELLA AGENCY</p>
-                        <p>Imageline Studios became the umbrella agency for strategy, production, and execution across verticals, from community campaigns to corporate advertising.</p>
-                        <p>I worked up to a brick-and-mortar studio, then had to release that model as grief and financial pressure hit at the same time.</p>
+                        <p>Imageline Studios became the umbrella agency for strategy, production, and execution across
+                            verticals, from community campaigns to corporate advertising.</p>
+                        <p>I worked up to a brick-and-mortar studio, then had to release that model as grief and
+                            financial pressure hit at the same time.</p>
                         <p>I shifted into freelance execution to stabilize and rebuild.</p>
-                        <img src="assets/pokuxshopgood.jpg" alt="Imageline Studios umbrella agency work" class="tm-img" loading="lazy">
+                        <picture>
+                            <source srcset="assets/optimized/pokuxshopgood.avif" type="image/avif">
+                            <source srcset="assets/optimized/pokuxshopgood.webp" type="image/webp">
+                            <img decoding="async" src="assets/pokuxshopgood.jpg"
+                                alt="Imageline Studios umbrella agency work" class="tm-img" loading="lazy"
+                                srcset="assets/pokuxshopgood.jpg 1x">
+                        </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
@@ -318,9 +586,16 @@
                     <div class="tm-content" data-gallery-key="cannaline">
                         <h3>THE CANNALINE ERA</h3>
                         <p class="accent">CANNABIS-FOCUSED AGENCY UNDER IMAGELINE</p>
-                        <p>Cannaline Marketing operated under Imageline as the cannabis-forward arm in one of the most volatile markets I have worked in.</p>
-                        <p>That chapter forced fast adaptation across compliance shifts, unstable operators, and constant pivots, sharpening risk management and execution discipline.</p>
-                        <img src="assets/cannalineshoot2.jpg" alt="Cannaline Marketing field shoot" class="tm-img" loading="lazy">
+                        <p>Cannaline Marketing operated under Imageline as the cannabis-forward arm in one of the most
+                            volatile markets I have worked in.</p>
+                        <p>That chapter forced fast adaptation across compliance shifts, unstable operators, and
+                            constant pivots, sharpening risk management and execution discipline.</p>
+                        <picture>
+                            <source srcset="assets/optimized/cannalineshoot2.avif" type="image/avif">
+                            <source srcset="assets/optimized/cannalineshoot2.webp" type="image/webp">
+                            <img decoding="async" src="assets/cannalineshoot2.jpg" alt="Cannaline Marketing field shoot"
+                                class="tm-img" loading="lazy" srcset="assets/cannalineshoot2.jpg 1x">
+                        </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
@@ -330,10 +605,17 @@
                     <div class="tm-content" data-gallery-key="mom">
                         <h3>THE MATRIARCH</h3>
                         <p class="accent">APRIL FOREVER</p>
-                        <p>Lost my mother to cancer, then traveled to Bangladesh for a month to bury her while everything else was falling apart.</p>
-                        <p>She was my best friend, and watching her go from 100 to 0 in one year broke me in a way that never fully leaves.</p>
+                        <p>Lost my mother to cancer, then traveled to Bangladesh for a month to bury her while
+                            everything else was falling apart.</p>
+                        <p>She was my best friend, and watching her go from 100 to 0 in one year broke me in a way that
+                            never fully leaves.</p>
                         <p>Her legacy became the standard behind every project I touch.</p>
-                        <img src="assets/momanddad.jpg" alt="Maa" class="tm-img" loading="lazy">
+                        <picture>
+                            <source srcset="assets/optimized/momanddad.avif" type="image/avif">
+                            <source srcset="assets/optimized/momanddad.webp" type="image/webp">
+                            <img decoding="async" src="assets/momanddad.jpg" alt="Maa" class="tm-img" loading="lazy"
+                                srcset="assets/momanddad.jpg 1x">
+                        </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
@@ -343,10 +625,18 @@
                     <div class="tm-content" data-gallery-key="cair">
                         <h3>THE PROJECT</h3>
                         <p class="accent">IMAN DOC / CAIR DECADE OF WORK</p>
-                        <p>I took a stability reset through Leasecake for six months, then was laid off during the Silicon Valley Bank fallout.</p>
-                        <p>After that, I doubled down on OAO, continued full-time CAIR execution, and produced IMAN for two years end-to-end.</p>
-                        <p>While grieving my mother and watching genocide footage daily, I hit one of my darkest periods. It hardened my commitment to justice and purposeful story work.</p>
-                        <img src="assets/imandocumentaryposter.jpg" alt="IMAN Documentary Poster" class="tm-img" loading="lazy">
+                        <p>I took a stability reset through Leasecake for six months, then was laid off during the
+                            Silicon Valley Bank fallout.</p>
+                        <p>After that, I doubled down on OAO, continued full-time CAIR execution, and produced IMAN for
+                            two years end-to-end.</p>
+                        <p>While grieving my mother and watching genocide footage daily, I hit one of my darkest
+                            periods. It hardened my commitment to justice and purposeful story work.</p>
+                        <picture>
+                            <source srcset="assets/optimized/imandocumentaryposter.avif" type="image/avif">
+                            <source srcset="assets/optimized/imandocumentaryposter.webp" type="image/webp">
+                            <img decoding="async" src="assets/imandocumentaryposter.jpg" alt="IMAN Documentary Poster"
+                                class="tm-img" loading="lazy" srcset="assets/imandocumentaryposter.jpg 1x">
+                        </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
@@ -356,9 +646,16 @@
                     <div class="tm-content" data-gallery-key="oao">
                         <h3>THE RESISTANCE</h3>
                         <p class="accent">GAZA / OAO</p>
-                        <p>Community organizing and movement work under pressure, with service and discipline over spectacle.</p>
-                        <p>This chapter focused on showing up consistently for people while carrying grief and outrage in real time.</p>
-                        <img src="assets/qaziatwashingtondcprotest.jpg" alt="OAO Rally" class="tm-img" loading="lazy">
+                        <p>Community organizing and movement work under pressure, with service and discipline over
+                            spectacle.</p>
+                        <p>This chapter focused on showing up consistently for people while carrying grief and outrage
+                            in real time.</p>
+                        <picture>
+                            <source srcset="assets/optimized/qaziatwashingtondcprotest.avif" type="image/avif">
+                            <source srcset="assets/optimized/qaziatwashingtondcprotest.webp" type="image/webp">
+                            <img decoding="async" src="assets/qaziatwashingtondcprotest.jpg" alt="OAO Rally"
+                                class="tm-img" loading="lazy" srcset="assets/qaziatwashingtondcprotest.jpg 1x">
+                        </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
@@ -368,9 +665,16 @@
                     <div class="tm-content" data-gallery-key="topcrop">
                         <h3>THE ASCENSION</h3>
                         <p class="accent">TOP CROP // SYSTEMS BUILD ERA</p>
-                        <p>A close friend helped me find a new path through systems building at Top Crop during my rebuild.</p>
-                        <p>That path became real: I now serve as Content Director, leading multi-state digital infrastructure and raising execution standards across teams and markets.</p>
-                        <img src="assets/qazicannalinebald.jpg" alt="Top Crop" class="tm-img" loading="lazy">
+                        <p>A close friend helped me find a new path through systems building at Top Crop during my
+                            rebuild.</p>
+                        <p>That path became real: I now serve as Content Director, leading multi-state digital
+                            infrastructure and raising execution standards across teams and markets.</p>
+                        <picture>
+                            <source srcset="assets/optimized/qazicannalinebald.avif" type="image/avif">
+                            <source srcset="assets/optimized/qazicannalinebald.webp" type="image/webp">
+                            <img decoding="async" src="assets/qazicannalinebald.jpg" alt="Top Crop" class="tm-img"
+                                loading="lazy" srcset="assets/qazicannalinebald.jpg 1x">
+                        </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
@@ -380,9 +684,16 @@
                     <div class="tm-content" data-gallery-key="now">
                         <h3>THE EXECUTION</h3>
                         <p class="accent">BIG DAWG ERA</p>
-                        <p>Current chapter: scale systems, direct stories, and build legacy work that outlives the algorithm.</p>
-                        <p>Personal chapter too: marrying Nicole on November 7, 2026, and building our own wedding platform at qaziandnicole.com.</p>
-                        <img src="assets/qazi_noice.png" alt="Big Dawg" class="tm-img" loading="lazy">
+                        <p>Current chapter: scale systems, direct stories, and build legacy work that outlives the
+                            algorithm.</p>
+                        <p>Personal chapter too: marrying Nicole on November 7, 2026, and building our own wedding
+                            platform at qaziandnicole.com.</p>
+                        <picture>
+                            <source srcset="assets/optimized/qazi_noice.avif" type="image/avif">
+                            <source srcset="assets/optimized/qazi_noice.webp" type="image/webp">
+                            <img decoding="async" src="assets/qazi_noice.png" alt="Big Dawg" class="tm-img"
+                                loading="lazy" srcset="assets/qazi_noice.png 1x">
+                        </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
@@ -396,23 +707,34 @@
             </div>
             <div class="iman-grid">
                 <figure class="iman-poster" data-gallery-key="iman">
-                    <img src="assets/imandocumentaryposter.jpg" alt="IMAN documentary poster" loading="lazy">
+                    <picture>
+                        <source srcset="assets/optimized/imandocumentaryposter.avif" type="image/avif">
+                        <source srcset="assets/optimized/imandocumentaryposter.webp" type="image/webp">
+                        <img decoding="async" src="assets/imandocumentaryposter.jpg" alt="IMAN documentary poster"
+                            loading="lazy" srcset="assets/imandocumentaryposter.jpg 1x">
+                    </picture>
                     <figcaption>ARCHIVAL POSTER // IMAN: TWO JOURNEYS OF FAITH</figcaption>
                 </figure>
                 <article class="iman-content">
                     <p class="iman-kicker">OKLAHOMA HISTORY / COMMUNITY RECORD</p>
                     <h3>A two-year documentary record preserving an under-told chapter of Muslim life in Oklahoma.</h3>
-                    <p>IMAN: Two Journeys of Faith, Rooted in Oklahoma's Heartland follows two American Muslim women and anchors their stories inside Oklahoma's broader civic timeline.</p>
+                    <p>IMAN: Two Journeys of Faith, Rooted in Oklahoma's Heartland follows two American Muslim women and
+                        anchors their stories inside Oklahoma's broader civic timeline.</p>
                     <ul class="iman-facts">
                         <li><span>ROLE</span><strong>DIRECTOR / CREATIVE LEAD</strong></li>
                         <li><span>PRODUCTION</span><strong>APPROX. TWO YEARS</strong></li>
-                        <li><span>PUBLIC RECORD</span><strong>OKLAHOMA HISTORY CENTER SCREENING + PANEL (APRIL 10, 2025)</strong></li>
-                        <li><span>PROGRAM CONTEXT</span><strong>SUPPORTED IN PART BY NEH UNITED WE STAND / OKLAHOMA HUMANITIES (PER PUBLISHED MATERIALS)</strong></li>
+                        <li><span>PUBLIC RECORD</span><strong>OKLAHOMA HISTORY CENTER SCREENING + PANEL (APRIL 10,
+                                2025)</strong></li>
+                        <li><span>PROGRAM CONTEXT</span><strong>SUPPORTED IN PART BY NEH UNITED WE STAND / OKLAHOMA
+                                HUMANITIES (PER PUBLISHED MATERIALS)</strong></li>
                     </ul>
                     <div class="iman-links">
-                        <a href="https://www.okhistory.org/calendar/event/iman-two-journeys-of-faith-rooted-in-oklahomas-heartland-film-screening-and-discussion-panel/" target="_blank" rel="noopener noreferrer" class="iman-link-btn">OHS EVENT LISTING ↗</a>
-                        <a href="https://www.cairoklahoma.com/film-project/" target="_blank" rel="noopener noreferrer" class="iman-link-btn">CAIR FILM PROJECT ↗</a>
-                        <a href="https://www.youtube.com/watch?v=A2Q4Wx179_k" target="_blank" rel="noopener noreferrer" class="iman-link-btn">OFFICIAL TRAILER ↗</a>
+                        <a href="https://www.okhistory.org/calendar/event/iman-two-journeys-of-faith-rooted-in-oklahomas-heartland-film-screening-and-discussion-panel/"
+                            target="_blank" rel="noopener noreferrer" class="iman-link-btn">OHS EVENT LISTING ↗</a>
+                        <a href="https://www.cairoklahoma.com/film-project/" target="_blank" rel="noopener noreferrer"
+                            class="iman-link-btn">CAIR FILM PROJECT ↗</a>
+                        <a href="https://www.youtube.com/watch?v=A2Q4Wx179_k" target="_blank" rel="noopener noreferrer"
+                            class="iman-link-btn">OFFICIAL TRAILER ↗</a>
                     </div>
                 </article>
             </div>
@@ -427,68 +749,84 @@
             </div>
 
             <div class="content-layer">
-                 <div class="section-header-center">
+                <div class="section-header-center">
                     <h2 class="outline-text">FILM ARCHIVE</h2>
                 </div>
                 <div class="video-grid">
-                    <button type="button" class="video-card" data-gallery-index="0" aria-label="Open video: Oregon Trip">
-                        <img src="https://img.youtube.com/vi/-Ayp30uJSPk/maxresdefault.jpg" alt="Oregon" loading="lazy">
+                    <button type="button" class="video-card" data-gallery-index="0"
+                        aria-label="Open video: Oregon Trip">
+                        <img decoding="async" src="https://img.youtube.com/vi/-Ayp30uJSPk/maxresdefault.jpg" alt="Oregon" loading="lazy">
                         <div class="vid-meta">
                             <span class="vid-meta-title">OREGON TRIP</span>
                             <span class="vid-meta-sub">FILM // DIRECTION</span>
                         </div>
                     </button>
-                    <button type="button" class="video-card" data-gallery-index="1" aria-label="Open video: OKC Palestine Protest">
-                        <img src="https://img.youtube.com/vi/pdJg_Wlb8Ac/maxresdefault.jpg" alt="OAO Protest" loading="lazy">
+                    <button type="button" class="video-card" data-gallery-index="1"
+                        aria-label="Open video: OKC Palestine Protest">
+                        <img decoding="async" src="https://img.youtube.com/vi/pdJg_Wlb8Ac/maxresdefault.jpg" alt="OAO Protest"
+                            loading="lazy">
                         <div class="vid-meta">
                             <span class="vid-meta-title">OKC PALESTINE PROTEST</span>
                             <span class="vid-meta-sub">DOCUMENTARY // FIELD COVERAGE</span>
                         </div>
                     </button>
-                    <button type="button" class="video-card" data-gallery-index="2" aria-label="Open video: Chronclub Vegas">
-                        <img src="https://img.youtube.com/vi/YAjpdOEYs8Q/maxresdefault.jpg" alt="ChronClub" loading="lazy">
+                    <button type="button" class="video-card" data-gallery-index="2"
+                        aria-label="Open video: Chronclub Vegas">
+                        <img decoding="async" src="https://img.youtube.com/vi/YAjpdOEYs8Q/maxresdefault.jpg" alt="ChronClub"
+                            loading="lazy">
                         <div class="vid-meta">
                             <span class="vid-meta-title">CHRONCLUB VEGAS</span>
                             <span class="vid-meta-sub">BRAND // CAMPAIGN</span>
                         </div>
                     </button>
-                    <button type="button" class="video-card" data-gallery-index="3" aria-label="Open video: Bangladesh 120FPS">
-                        <img src="https://img.youtube.com/vi/yMO3nwPEQ7g/maxresdefault.jpg" alt="Bangladesh" loading="lazy">
+                    <button type="button" class="video-card" data-gallery-index="3"
+                        aria-label="Open video: Bangladesh 120FPS">
+                        <img decoding="async" src="https://img.youtube.com/vi/yMO3nwPEQ7g/maxresdefault.jpg" alt="Bangladesh"
+                            loading="lazy">
                         <div class="vid-meta">
                             <span class="vid-meta-title">BANGLADESH 120FPS</span>
                             <span class="vid-meta-sub">PERSONAL // CINEMATIC TRAVEL</span>
                         </div>
                     </button>
-                    <button type="button" class="video-card" data-gallery-index="4" aria-label="Open video: March on Washington">
-                        <img src="https://img.youtube.com/vi/2La7TDYkng8/maxresdefault.jpg" alt="March" loading="lazy">
+                    <button type="button" class="video-card" data-gallery-index="4"
+                        aria-label="Open video: March on Washington">
+                        <img decoding="async" src="https://img.youtube.com/vi/2La7TDYkng8/maxresdefault.jpg" alt="March" loading="lazy">
                         <div class="vid-meta">
                             <span class="vid-meta-title">MARCH ON WASHINGTON</span>
                             <span class="vid-meta-sub">DOCUMENTARY // EDIT</span>
                         </div>
                     </button>
-                    <button type="button" class="video-card" data-gallery-index="5" aria-label="Open video: Timberland Pioneers">
-                        <img src="https://img.youtube.com/vi/7RKnyG7L5L0/maxresdefault.jpg" alt="Timberland" loading="lazy">
+                    <button type="button" class="video-card" data-gallery-index="5"
+                        aria-label="Open video: Timberland Pioneers">
+                        <img decoding="async" src="https://img.youtube.com/vi/7RKnyG7L5L0/maxresdefault.jpg" alt="Timberland"
+                            loading="lazy">
                         <div class="vid-meta">
                             <span class="vid-meta-title">TIMBERLAND PIONEERS</span>
                             <span class="vid-meta-sub">BRAND // COMMERCIAL</span>
                         </div>
                     </button>
-                    <button type="button" class="video-card" data-gallery-index="6" aria-label="Open video: Spherex Commercial">
-                        <img src="https://img.youtube.com/vi/CfDc66a5mVU/maxresdefault.jpg" alt="Spherex" loading="lazy">
+                    <button type="button" class="video-card" data-gallery-index="6"
+                        aria-label="Open video: Spherex Commercial">
+                        <img decoding="async" src="https://img.youtube.com/vi/CfDc66a5mVU/maxresdefault.jpg" alt="Spherex"
+                            loading="lazy">
                         <div class="vid-meta">
                             <span class="vid-meta-title">SPHEREX COMMERCIAL</span>
                             <span class="vid-meta-sub">AD // PRODUCTION</span>
                         </div>
                     </button>
-                    <button type="button" class="video-card" data-gallery-index="7" aria-label="Open video: Sundeep First Light">
-                        <img src="https://img.youtube.com/vi/1NY4IrxMcCk/maxresdefault.jpg" alt="Sundeep" loading="lazy">
+                    <button type="button" class="video-card" data-gallery-index="7"
+                        aria-label="Open video: Sundeep First Light">
+                        <img decoding="async" src="https://img.youtube.com/vi/1NY4IrxMcCk/maxresdefault.jpg" alt="Sundeep"
+                            loading="lazy">
                         <div class="vid-meta">
                             <span class="vid-meta-title">SUNDEEP: FIRST LIGHT</span>
                             <span class="vid-meta-sub">PROFILE // DIRECTION</span>
                         </div>
                     </button>
-                    <button type="button" class="video-card" data-gallery-index="8" aria-label="Open video: Masood Haq Campaign">
-                        <img src="https://img.youtube.com/vi/mWHXkGMUehg/maxresdefault.jpg" alt="Campaign" loading="lazy">
+                    <button type="button" class="video-card" data-gallery-index="8"
+                        aria-label="Open video: Masood Haq Campaign">
+                        <img decoding="async" src="https://img.youtube.com/vi/mWHXkGMUehg/maxresdefault.jpg" alt="Campaign"
+                            loading="lazy">
                         <div class="vid-meta">
                             <span class="vid-meta-title">MASOOD HAQ CAMPAIGN</span>
                             <span class="vid-meta-sub">POLITICAL // CAMPAIGN FILM</span>
@@ -498,30 +836,107 @@
             </div>
         </section>
 
+        <section id="sec-behind" class="align-center">
+            <div class="section-header-center">
+                <div class="track-info center">
+                    <span class="track-num">05</span>
+                    <h2>BEHIND<br>THE SCENES</h2>
+                </div>
+            </div>
+            <p class="behind-subline">On-set moments, edits in progress, and production energy.</p>
+            <div class="behind-video-shell glass-panel">
+                <video class="behind-video" src="assets/qazi-reel-website.mp4" autoplay muted loop playsinline
+                    controls preload="metadata" poster="assets/qazi_noice.png"
+                    aria-label="Behind the scenes highlight reel"></video>
+            </div>
+        </section>
+
+        <section id="sec-testimonials" class="align-center">
+            <div class="section-header-center">
+                <div class="track-info center">
+                    <span class="track-num">06</span>
+                    <h2>TRUST<br>SIGNAL</h2>
+                </div>
+            </div>
+            <div class="testimonials-shell glass-panel" role="region" aria-label="Client testimonials">
+                <button id="testimonials-prev" class="testimonial-nav" type="button"
+                    aria-label="Show previous testimonial">‹</button>
+                <div class="testimonials-window">
+                    <div id="testimonials-track" class="testimonials-track">
+                        <article class="testimonial-slide is-active" aria-hidden="false">
+                            <p>"Qazi turns chaos into a clean launch plan and executes faster than most teams."</p>
+                            <strong>Partner, SaaS Founder</strong>
+                        </article>
+                        <article class="testimonial-slide" aria-hidden="true">
+                            <p>"Creative direction and ops discipline in one operator. The campaigns shipped on time."</p>
+                            <strong>Marketing Lead, CPG</strong>
+                        </article>
+                        <article class="testimonial-slide" aria-hidden="true">
+                            <p>"From field content to distribution strategy, every deliverable had intent and impact."</p>
+                            <strong>Director, Nonprofit Initiative</strong>
+                        </article>
+                    </div>
+                </div>
+                <button id="testimonials-next" class="testimonial-nav" type="button"
+                    aria-label="Show next testimonial">›</button>
+            </div>
+        </section>
+
         <section id="sec-clients" class="align-center">
             <div class="track-info">
-                <span class="track-num">05</span>
+                <span class="track-num">07</span>
                 <h2>TRUSTED<br>BY</h2>
             </div>
             <div class="logo-grid">
-                <img src="assets/thunderlogo.png" alt="OKC Thunder" class="client-logo">
-                <img src="assets/cairlogo.png" alt="CAIR" class="client-logo">
-                <img src="assets/atlanticlogo.png" alt="Atlantic" class="client-logo">
-                <img src="assets/dressforsuccessblack.png" alt="Dress For Success" class="client-logo invert-logo">
-                <img src="assets/towerlogo.png" alt="Tower" class="client-logo">
-                <img src="assets/soylentlogo.png" alt="Soylent" class="client-logo"> 
+                <picture>
+                    <source srcset="assets/optimized/thunderlogo.avif" type="image/avif">
+                    <source srcset="assets/optimized/thunderlogo.webp" type="image/webp">
+                    <img loading="lazy" decoding="async" src="assets/thunderlogo.png" alt="OKC Thunder" class="client-logo"
+                        srcset="assets/thunderlogo.png 1x">
+                </picture>
+                <picture>
+                    <source srcset="assets/optimized/cairlogo.avif" type="image/avif">
+                    <source srcset="assets/optimized/cairlogo.webp" type="image/webp">
+                    <img loading="lazy" decoding="async" src="assets/cairlogo.png" alt="CAIR" class="client-logo"
+                        srcset="assets/cairlogo.png 1x">
+                </picture>
+                <picture>
+                    <source srcset="assets/optimized/atlanticlogo.avif" type="image/avif">
+                    <source srcset="assets/optimized/atlanticlogo.webp" type="image/webp">
+                    <img loading="lazy" decoding="async" src="assets/atlanticlogo.png" alt="Atlantic" class="client-logo"
+                        srcset="assets/atlanticlogo.png 1x">
+                </picture>
+                <picture>
+                    <source srcset="assets/optimized/dressforsuccessblack.avif" type="image/avif">
+                    <source srcset="assets/optimized/dressforsuccessblack.webp" type="image/webp">
+                    <img loading="lazy" decoding="async" src="assets/dressforsuccessblack.png" alt="Dress For Success"
+                        class="client-logo invert-logo" srcset="assets/dressforsuccessblack.png 1x">
+                </picture>
+                <picture>
+                    <source srcset="assets/optimized/towerlogo.avif" type="image/avif">
+                    <source srcset="assets/optimized/towerlogo.webp" type="image/webp">
+                    <img loading="lazy" decoding="async" src="assets/towerlogo.png" alt="Tower" class="client-logo"
+                        srcset="assets/towerlogo.png 1x">
+                </picture>
+                <picture>
+                    <source srcset="assets/optimized/soylentlogo.avif" type="image/avif">
+                    <source srcset="assets/optimized/soylentlogo.webp" type="image/webp">
+                    <img loading="lazy" decoding="async" src="assets/soylentlogo.png" alt="Soylent" class="client-logo"
+                        srcset="assets/soylentlogo.png 1x">
+                </picture>
             </div>
         </section>
 
         <section id="sec-cred" class="align-left">
             <div class="track-info">
-                <span class="track-num">06</span>
+                <span class="track-num">08</span>
                 <h2>PRESS +<br>CREDENTIALS</h2>
             </div>
             <div class="cred-shell">
                 <div class="cred-lead">
                     <p class="cred-kicker">DOCUMENTED WORK // RECOGNIZED EXECUTION</p>
-                    <p class="cred-intro">Campaign, documentary, and movement work that was independently published by state and national outlets.</p>
+                    <p class="cred-intro">Campaign, documentary, and movement work that was independently published by
+                        state and national outlets.</p>
                     <div class="cred-pill-row">
                         <span class="cred-pill">NATIONAL PRESS</span>
                         <span class="cred-pill">STATE COVERAGE</span>
@@ -529,28 +944,36 @@
                     </div>
                 </div>
                 <div class="cred-grid">
-                    <a href="https://www.thenation.com/article/society/mauree-turner-alissandra-murray/" target="_blank" rel="noopener noreferrer" class="cred-card">
+                    <a href="https://www.thenation.com/article/society/mauree-turner-alissandra-murray/" target="_blank"
+                        rel="noopener noreferrer" class="cred-card">
                         <span class="cred-source">THE NATION // 2023</span>
                         <h3>NATIONAL FEATURE CONTEXT</h3>
-                        <p>Coverage tied to Oklahoma political and social documentation where visual reporting helped shape public context.</p>
+                        <p>Coverage tied to Oklahoma political and social documentation where visual reporting helped
+                            shape public context.</p>
                         <span class="cred-link">READ FEATURE ↗</span>
                     </a>
-                    <a href="https://www.politico.com/newsletters/the-recast/2023/03/10/oklahoma-rep-mauree-turner-trans-rights-00086593" target="_blank" rel="noopener noreferrer" class="cred-card">
+                    <a href="https://www.politico.com/newsletters/the-recast/2023/03/10/oklahoma-rep-mauree-turner-trans-rights-00086593"
+                        target="_blank" rel="noopener noreferrer" class="cred-card">
                         <span class="cred-source">POLITICO / THE RECAST // 2023</span>
                         <h3>NATIONAL NEWSLETTER FEATURE</h3>
-                        <p>Reporting and visual context supporting civil rights coverage in a national political publication.</p>
+                        <p>Reporting and visual context supporting civil rights coverage in a national political
+                            publication.</p>
                         <span class="cred-link">READ FEATURE ↗</span>
                     </a>
-                    <a href="https://www.oklahoman.com/story/news/2025/04/29/muslim-day-at-the-capitol-oklahoma-city/83158429007/?gnt-cfr=1&gca-cat=p&gca-uir=true&gca-epti=undefined&gca-ft=0&gca-ds=sophi" target="_blank" rel="noopener noreferrer" class="cred-card">
+                    <a href="https://www.oklahoman.com/story/news/2025/04/29/muslim-day-at-the-capitol-oklahoma-city/83158429007/?gnt-cfr=1&gca-cat=p&gca-uir=true&gca-epti=undefined&gca-ft=0&gca-ds=sophi"
+                        target="_blank" rel="noopener noreferrer" class="cred-card">
                         <span class="cred-source">THE OKLAHOMAN // 2025</span>
                         <h3>STATEWIDE COVERAGE</h3>
-                        <p>Coverage in Oklahoma's primary daily publication for Muslim Day at the Capitol and related civic storytelling.</p>
+                        <p>Coverage in Oklahoma's primary daily publication for Muslim Day at the Capitol and related
+                            civic storytelling.</p>
                         <span class="cred-link">READ FEATURE ↗</span>
                     </a>
-                    <a href="https://www.okhistory.org/calendar/event/iman-two-journeys-of-faith-rooted-in-oklahomas-heartland-film-screening-and-discussion-panel/" target="_blank" rel="noopener noreferrer" class="cred-card">
+                    <a href="https://www.okhistory.org/calendar/event/iman-two-journeys-of-faith-rooted-in-oklahomas-heartland-film-screening-and-discussion-panel/"
+                        target="_blank" rel="noopener noreferrer" class="cred-card">
                         <span class="cred-source">OKLAHOMA HISTORICAL SOCIETY // 2024</span>
                         <h3>IMAN PUBLIC HISTORY EVENT</h3>
-                        <p>Official Oklahoma History Center screening and panel listing for IMAN: Two Journeys of Faith.</p>
+                        <p>Official Oklahoma History Center screening and panel listing for IMAN: Two Journeys of Faith.
+                        </p>
                         <span class="cred-link">VIEW LISTING ↗</span>
                     </a>
                 </div>
@@ -559,20 +982,34 @@
                         <p class="cred-metrics-title">TRACK RECORD</p>
                         <div class="cred-metric"><span>500+</span><small>Client engagements</small></div>
                         <div class="cred-metric"><span>10+ YEARS</span><small>CAIR Oklahoma collaboration</small></div>
-                        <div class="cred-metric"><span>GLOBAL</span><small>Campaign and production footprint</small></div>
+                        <div class="cred-metric"><span>GLOBAL</span><small>Campaign and production footprint</small>
+                        </div>
                     </div>
                     <div class="cred-archive">
                         <p class="cred-archive-title">SELECTED PUBLISHED MENTIONS</p>
                         <div class="cred-archive-list">
-                            <a href="https://www.oklahoman.com/story/news/2025/04/29/muslim-day-at-the-capitol-oklahoma-city/83158429007/?gnt-cfr=1&gca-cat=p&gca-uir=true&gca-epti=undefined&gca-ft=0&gca-ds=sophi" target="_blank" rel="noopener noreferrer">THE OKLAHOMAN // MUSLIM DAY AT THE CAPITOL (2025) ↗</a>
-                            <a href="https://www.oklahoman.com/picture-gallery/news/religion/2024/05/13/muslim-day-2024-oklahoma-capitol-photos/73677008007/" target="_blank" rel="noopener noreferrer">THE OKLAHOMAN // MUSLIM DAY 2024 PHOTO GALLERY ↗</a>
-                            <a href="https://www.oklahoman.com/picture-gallery/news/2022/03/10/muslim-day-oklahoma-state-capitol/6990164001/" target="_blank" rel="noopener noreferrer">THE OKLAHOMAN // MUSLIM DAY 2022 PHOTO GALLERY ↗</a>
-                            <a href="https://www.cairoklahoma.com/film-project/" target="_blank" rel="noopener noreferrer">CAIR OKLAHOMA // IMAN FILM PROJECT ↗</a>
-                            <a href="https://www.youtube.com/watch?v=A2Q4Wx179_k" target="_blank" rel="noopener noreferrer">IMAN // OFFICIAL TRAILER ↗</a>
-                            <a href="https://voyagedallas.com/interview/meet-qazi-islam-imagelinestudios-oklahoma-city/" target="_blank" rel="noopener noreferrer">VOYAGE DALLAS // FEATURE INTERVIEW ↗</a>
-                            <a href="https://wecreateinteractive.com/meet-the-advisory-board/" target="_blank" rel="noopener noreferrer">WE CREATE INTERACTIVE // ADVISORY LISTING ↗</a>
-                            <a href="https://journalrecord.com/2023/02/24/new-nonprofit-seeks-to-invest-in-small-businesses/" target="_blank" rel="noopener noreferrer">THE JOURNAL RECORD // PHOTO CREDIT MENTION ↗</a>
-                            <a href="https://apps.apple.com/us/app/load-easy/id6450004533" target="_blank" rel="noopener noreferrer">APPLE APP STORE // LOADEASY LISTING ↗</a>
+                            <a href="https://www.oklahoman.com/story/news/2025/04/29/muslim-day-at-the-capitol-oklahoma-city/83158429007/?gnt-cfr=1&gca-cat=p&gca-uir=true&gca-epti=undefined&gca-ft=0&gca-ds=sophi"
+                                target="_blank" rel="noopener noreferrer">THE OKLAHOMAN // MUSLIM DAY AT THE CAPITOL
+                                (2025) ↗</a>
+                            <a href="https://www.oklahoman.com/picture-gallery/news/religion/2024/05/13/muslim-day-2024-oklahoma-capitol-photos/73677008007/"
+                                target="_blank" rel="noopener noreferrer">THE OKLAHOMAN // MUSLIM DAY 2024 PHOTO GALLERY
+                                ↗</a>
+                            <a href="https://www.oklahoman.com/picture-gallery/news/2022/03/10/muslim-day-oklahoma-state-capitol/6990164001/"
+                                target="_blank" rel="noopener noreferrer">THE OKLAHOMAN // MUSLIM DAY 2022 PHOTO GALLERY
+                                ↗</a>
+                            <a href="https://www.cairoklahoma.com/film-project/" target="_blank"
+                                rel="noopener noreferrer">CAIR OKLAHOMA // IMAN FILM PROJECT ↗</a>
+                            <a href="https://www.youtube.com/watch?v=A2Q4Wx179_k" target="_blank"
+                                rel="noopener noreferrer">IMAN // OFFICIAL TRAILER ↗</a>
+                            <a href="https://voyagedallas.com/interview/meet-qazi-islam-imagelinestudios-oklahoma-city/"
+                                target="_blank" rel="noopener noreferrer">VOYAGE DALLAS // FEATURE INTERVIEW ↗</a>
+                            <a href="https://wecreateinteractive.com/meet-the-advisory-board/" target="_blank"
+                                rel="noopener noreferrer">WE CREATE INTERACTIVE // ADVISORY LISTING ↗</a>
+                            <a href="https://journalrecord.com/2023/02/24/new-nonprofit-seeks-to-invest-in-small-businesses/"
+                                target="_blank" rel="noopener noreferrer">THE JOURNAL RECORD // PHOTO CREDIT MENTION
+                                ↗</a>
+                            <a href="https://apps.apple.com/us/app/load-easy/id6450004533" target="_blank"
+                                rel="noopener noreferrer">APPLE APP STORE // LOADEASY LISTING ↗</a>
                         </div>
                     </div>
                 </aside>
@@ -590,21 +1027,19 @@
 
         <section id="sec-tech" class="align-left">
             <div class="track-info">
-                <span class="track-num">07</span>
+                <span class="track-num">09</span>
                 <h2>THE<br>GRID</h2>
             </div>
             <div class="tech-shell">
-                <p class="tech-lead">Live properties and campaign infrastructure with cleaner previews, platform context, and direct access.</p>
+                <p class="tech-lead">Live properties and campaign infrastructure with cleaner previews, platform
+                    context, and direct access.</p>
                 <div class="tech-grid">
-                    <a href="https://loadeasy.io" target="_blank" rel="noopener noreferrer" class="tech-card is-feature">
+                    <a href="https://loadeasy.io" target="_blank" rel="noopener noreferrer"
+                        class="tech-card is-feature">
                         <span class="tech-shot">
-                            <img
-                                class="tech-preview"
-                                src="https://s.wordpress.com/mshots/v1/https://loadeasy.io?w=1600"
+                            <img decoding="async" class="tech-preview" src="https://s.wordpress.com/mshots/v1/https://loadeasy.io?w=1600"
                                 data-preview-secondary="https://image.thum.io/get/width/1600/noanimate/https://loadeasy.io"
-                                data-site="LOADEASY.IO"
-                                alt="Loadeasy website thumbnail"
-                                loading="lazy">
+                                data-site="LOADEASY.IO" alt="Loadeasy website thumbnail" loading="lazy">
                         </span>
                         <div class="tech-card-meta">
                             <span class="tech-card-tag">FINTECH / PLATFORM</span>
@@ -614,13 +1049,10 @@
                     </a>
                     <a href="https://thechronclub.com/" target="_blank" rel="noopener noreferrer" class="tech-card">
                         <span class="tech-shot">
-                            <img
-                                class="tech-preview"
+                            <img decoding="async" class="tech-preview"
                                 src="https://s.wordpress.com/mshots/v1/https://thechronclub.com?w=1600"
                                 data-preview-secondary="https://image.thum.io/get/width/1600/noanimate/https://thechronclub.com"
-                                data-site="THECHRONCLUB.COM"
-                                alt="The Chron Club website thumbnail"
-                                loading="lazy">
+                                data-site="THECHRONCLUB.COM" alt="The Chron Club website thumbnail" loading="lazy">
                         </span>
                         <div class="tech-card-meta">
                             <span class="tech-card-tag">CULTURE / COMMERCE</span>
@@ -630,12 +1062,10 @@
                     </a>
                     <a href="https://okendoccupation.com/" target="_blank" rel="noopener noreferrer" class="tech-card">
                         <span class="tech-shot">
-                            <img
-                                class="tech-preview"
+                            <img decoding="async" class="tech-preview"
                                 src="https://s.wordpress.com/mshots/v1/https://okendoccupation.com?w=1600"
                                 data-preview-secondary="https://image.thum.io/get/width/1600/noanimate/https://okendoccupation.com"
-                                data-site="OKENDOCCUPATION.COM"
-                                alt="OK End Occupation website thumbnail"
+                                data-site="OKENDOCCUPATION.COM" alt="OK End Occupation website thumbnail"
                                 loading="lazy">
                         </span>
                         <div class="tech-card-meta">
@@ -646,27 +1076,51 @@
                     </a>
                     <a href="https://qaziandnicole.com/" target="_blank" rel="noopener noreferrer" class="tech-card">
                         <span class="tech-shot">
-                            <img
-                                class="tech-preview"
+                            <img decoding="async" class="tech-preview"
                                 src="https://s.wordpress.com/mshots/v1/https://qaziandnicole.com?w=1600"
                                 data-preview-secondary="https://image.thum.io/get/width/1600/noanimate/https://qaziandnicole.com"
-                                data-site="QAZIANDNICOLE.COM"
-                                alt="Qazi and Nicole wedding website thumbnail"
+                                data-site="QAZIANDNICOLE.COM" alt="Qazi and Nicole wedding website thumbnail"
                                 loading="lazy">
                         </span>
                         <div class="tech-card-meta">
                             <span class="tech-card-tag">PERSONAL / WEDDING WEB</span>
                             <strong>QAZIANDNICOLE.COM ↗</strong>
-                            <p>Custom wedding site I built for Nicole and me, documenting our story and upcoming November 7, 2026 wedding.</p>
+                            <p>Custom wedding site I built for Nicole and me, documenting our story and upcoming
+                                November 7, 2026 wedding.</p>
                         </div>
                     </a>
                 </div>
-                <div class="tech-ticker">LIVE PROPERTIES // PRODUCT SYSTEMS, CULTURE EXPERIENCES, MOVEMENT INFRASTRUCTURE, AND PERSONAL BUILDS</div>
+                <div class="tech-ticker">LIVE PROPERTIES // PRODUCT SYSTEMS, CULTURE EXPERIENCES, MOVEMENT
+                    INFRASTRUCTURE, AND PERSONAL BUILDS</div>
+            </div>
+        </section>
+
+        <section id="sec-awards" class="align-center">
+            <div class="section-header-center">
+                <div class="track-info center">
+                    <span class="track-num">10</span>
+                    <h2>AWARDS<br>KIT</h2>
+                </div>
+            </div>
+            <p class="awards-subline">Submission-ready package with print view and motion reference.</p>
+            <div class="awards-shell glass-panel">
+                <picture>
+                    <source srcset="assets/optimized/qa-desktop-hero-2026-02-16-sweep2.avif" type="image/avif">
+                    <source srcset="assets/optimized/qa-desktop-hero-2026-02-16-sweep2.webp" type="image/webp">
+                    <img decoding="async" src="screenshots/qa-desktop-hero-2026-02-16-sweep2.png"
+                        alt="Hero animation reference frame for awards submissions" loading="lazy"
+                        srcset="screenshots/qa-desktop-hero-2026-02-16-sweep2.png 1x">
+                </picture>
+                <div class="awards-actions">
+                    <a href="awards.html" class="cta-btn cta-btn-primary">OPEN AWARDS PAGE</a>
+                    <a href="awards.html#printable" class="cta-btn cta-btn-secondary">PRINTABLE PDF VIEW</a>
+                </div>
             </div>
         </section>
 
         <section id="sec-contact" class="align-center">
-            <a href="#" id="secure-contact-link" class="giant-link js-initiate" style="cursor: pointer;">INITIATE<br>LINK</a>
+            <a href="#" id="secure-contact-link" class="giant-link js-initiate"
+                style="cursor: pointer;">INITIATE<br>LINK</a>
             <p class="contact-brief">OPEN TO HIGH-IMPACT LEADERSHIP AND CREATIVE-OPERATIONS ENGAGEMENTS.</p>
             <p class="contact-focus">CURRENT FOCUS: CORPORATE ADS // CREATIVE OPERATIONS // SYSTEMS THAT SCALE</p>
         </section>
@@ -679,8 +1133,12 @@
         </footer>
 
     </main>
-    <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">TOP</button>
+    <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">↑</button>
 
-    <script type="module" src="script.js?v=4.3"></script>
+    <script type="module" src="script.js?v=6.9"></script>
 </body>
+
 </html>
+
+
+

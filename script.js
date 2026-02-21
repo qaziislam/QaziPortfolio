@@ -1,5 +1,6 @@
 import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
 import { GLTFLoader } from 'https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
+import { registerServiceWorker } from './lib/service-worker-registration.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,7 +11,7 @@ const isLowPowerDevice = lowPowerByCores || lowPowerByMemory;
 const allow3D = !prefersReducedMotion;
 const lowDetail3D = isLowPowerDevice;
 const MOTION = {
-    splashMs: prefersReducedMotion ? 900 : 2400,
+    splashMs: prefersReducedMotion ? 1200 : 4600,
     modelEntranceMs: 0.82,
     revealStagger: 0.085,
     revealDuration: 0.66,
@@ -24,7 +25,7 @@ const GALLERY_SCROLL_EXPERIENCE = {
     desktopPinVhMax: 1.2,
     desktopScrub: 0.72
 };
-const SPLASH_SESSION_KEY = 'qazi_bismillah_seen_v1';
+const SPLASH_SESSION_KEY = 'qazi_bismillah_seen_v2';
 const CENTER_LOOK_DAMPING = 0.09;
 const CENTER_LOOK_YAW_OFFSET = 0;
 const DEFAULT_LOOK_TARGET = { x: 0, z: 4.8 };
@@ -37,6 +38,7 @@ mobileQuery.addEventListener('change', (event) => {
     isMobile = event.matches;
     viewportProfile = getViewportProfile();
     currentKeyframes = getKeyframesForViewport();
+    syncTimelineSideLayout();
     activeLookTarget = { ...(currentKeyframes[0]?.look || DEFAULT_LOOK_TARGET) };
     if (allow3D && minaGroup && mina) {
         initScrollAnimations();
@@ -55,64 +57,64 @@ function getViewportProfile() {
 
 const KEYFRAME_LIBRARY = {
     desktop: [
-        { target: '#sec-hero', pos: { x: 3.0, y: -1.22, z: 0.46 }, rot: { x: 0.08, y: 0, z: 0 }, scale: 2.0, look: { x: -1.55, z: 3.1 } },
-        { target: '#sec-profile', pos: { x: 2.75, y: -1.28, z: 0.22 }, rot: { x: 0.05, y: 0, z: 0.01 }, scale: 1.0, look: { x: -1.2, z: 2.15 } },
-        { target: '#sec-gallery', pos: { x: 2.95, y: -1.02, z: 0.24 }, rot: { x: 0.04, y: 0, z: 0 }, scale: 1.0, look: { x: 0.0, z: 2.05 } },
-        { target: '#sec-history', pos: { x: 2.7, y: 0.18, z: 0.14 }, rot: { x: 0.06, y: 0, z: 0 }, scale: 0.98, look: { x: -0.95, z: 1.75 } },
-        { target: '#sec-iman', pos: { x: 2.9, y: -0.22, z: 0.32 }, rot: { x: 0.07, y: 0, z: -0.01 }, scale: 1.02, look: { x: -0.9, z: 1.82 } },
-        { target: '#sec-video', pos: { x: -2.45, y: -0.55, z: 0.2 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 1.0, look: { x: 0.75, z: 1.95 } },
-        { target: '#sec-clients', pos: { x: 2.35, y: -1.08, z: 0.15 }, rot: { x: 0.04, y: 0, z: 0 }, scale: 0.98, look: { x: -0.82, z: 2.08 } },
-        { target: '#sec-cred', pos: { x: 2.25, y: -0.28, z: 0.36 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.98, look: { x: -0.85, z: 2.26 } },
-        { target: '#sec-tech', pos: { x: 2.3, y: -0.95, z: 0.22 }, rot: { x: 0.06, y: 0, z: -0.01 }, scale: 0.98, look: { x: -0.92, z: 2.36 } },
-        { target: '#sec-contact', pos: { x: 0.0, y: -0.24, z: 0.44 }, rot: { x: 0.03, y: 0, z: 0 }, scale: 0.8, look: { x: 0.0, z: 4.55 } }
+        { target: '#sec-hero', pos: { x: 2.96, y: -1.18, z: 0.44 }, rot: { x: 0.08, y: 0, z: 0 }, scale: 1.7, look: { x: -1.52, z: 3.04 } },
+        { target: '#sec-profile', pos: { x: 3.08, y: -1.24, z: 0.24 }, rot: { x: 0.05, y: 0, z: 0.01 }, scale: 0.82, look: { x: -1.24, z: 2.14 } },
+        { target: '#sec-gallery', pos: { x: 3.16, y: -1.0, z: 0.26 }, rot: { x: 0.04, y: 0, z: 0 }, scale: 0.78, look: { x: -0.24, z: 2.04 } },
+        { target: '#sec-history', pos: { x: 2.96, y: 0.18, z: 0.16 }, rot: { x: 0.06, y: 0, z: 0 }, scale: 0.84, look: { x: -1.02, z: 1.74 } },
+        { target: '#sec-iman', pos: { x: 3.04, y: -0.22, z: 0.3 }, rot: { x: 0.07, y: 0, z: -0.01 }, scale: 0.82, look: { x: -0.98, z: 1.8 } },
+        { target: '#sec-video', pos: { x: 2.86, y: -0.5, z: 0.22 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.78, look: { x: -0.34, z: 1.94 } },
+        { target: '#sec-clients', pos: { x: 3.22, y: -1.04, z: 0.16 }, rot: { x: 0.04, y: 0, z: 0 }, scale: 0.74, look: { x: -1.1, z: 2.06 } },
+        { target: '#sec-cred', pos: { x: 4.48, y: -0.34, z: 0.42 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.54, look: { x: -1.72, z: 2.24 } },
+        { target: '#sec-tech', pos: { x: 3.82, y: -0.98, z: 0.28 }, rot: { x: 0.06, y: 0, z: -0.01 }, scale: 0.62, look: { x: -1.38, z: 2.26 } },
+        { target: '#sec-contact', pos: { x: 0.0, y: -0.24, z: 0.42 }, rot: { x: 0.03, y: 0, z: 0 }, scale: 0.76, look: { x: 0.0, z: 4.4 } }
     ],
     laptop: [
-        { target: '#sec-hero', pos: { x: 2.55, y: -1.16, z: 0.32 }, rot: { x: 0.08, y: 0, z: 0 }, scale: 1.72, look: { x: -1.35, z: 2.85 } },
-        { target: '#sec-profile', pos: { x: 2.3, y: -1.2, z: 0.18 }, rot: { x: 0.05, y: 0, z: 0.01 }, scale: 0.96, look: { x: -1.0, z: 2.0 } },
-        { target: '#sec-gallery', pos: { x: 2.45, y: -0.95, z: 0.2 }, rot: { x: 0.04, y: 0, z: 0 }, scale: 0.96, look: { x: 0.0, z: 1.9 } },
-        { target: '#sec-history', pos: { x: 2.3, y: 0.12, z: 0.1 }, rot: { x: 0.06, y: 0, z: 0 }, scale: 0.94, look: { x: -0.85, z: 1.65 } },
-        { target: '#sec-iman', pos: { x: 2.45, y: -0.18, z: 0.28 }, rot: { x: 0.07, y: 0, z: -0.01 }, scale: 0.98, look: { x: -0.8, z: 1.72 } },
-        { target: '#sec-video', pos: { x: -2.15, y: -0.48, z: 0.16 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.96, look: { x: 0.7, z: 1.8 } },
-        { target: '#sec-clients', pos: { x: 2.08, y: -1.0, z: 0.14 }, rot: { x: 0.04, y: 0, z: 0 }, scale: 0.94, look: { x: -0.72, z: 1.92 } },
-        { target: '#sec-cred', pos: { x: 2.02, y: -0.24, z: 0.3 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.94, look: { x: -0.78, z: 2.04 } },
-        { target: '#sec-tech', pos: { x: 2.05, y: -0.88, z: 0.2 }, rot: { x: 0.06, y: 0, z: -0.01 }, scale: 0.94, look: { x: -0.82, z: 2.15 } },
-        { target: '#sec-contact', pos: { x: 0.0, y: -0.22, z: 0.42 }, rot: { x: 0.03, y: 0, z: 0 }, scale: 0.78, look: { x: 0.0, z: 4.2 } }
+        { target: '#sec-hero', pos: { x: 2.6, y: -1.12, z: 0.32 }, rot: { x: 0.08, y: 0, z: 0 }, scale: 1.42, look: { x: -1.28, z: 2.76 } },
+        { target: '#sec-profile', pos: { x: 2.72, y: -1.18, z: 0.2 }, rot: { x: 0.05, y: 0, z: 0.01 }, scale: 0.8, look: { x: -1.08, z: 1.98 } },
+        { target: '#sec-gallery', pos: { x: 2.78, y: -0.94, z: 0.22 }, rot: { x: 0.04, y: 0, z: 0 }, scale: 0.76, look: { x: -0.2, z: 1.92 } },
+        { target: '#sec-history', pos: { x: 2.64, y: 0.14, z: 0.12 }, rot: { x: 0.06, y: 0, z: 0 }, scale: 0.82, look: { x: -0.9, z: 1.62 } },
+        { target: '#sec-iman', pos: { x: 2.7, y: -0.18, z: 0.26 }, rot: { x: 0.07, y: 0, z: -0.01 }, scale: 0.8, look: { x: -0.88, z: 1.68 } },
+        { target: '#sec-video', pos: { x: 2.56, y: -0.48, z: 0.2 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.76, look: { x: -0.28, z: 1.76 } },
+        { target: '#sec-clients', pos: { x: 2.82, y: -0.98, z: 0.16 }, rot: { x: 0.04, y: 0, z: 0 }, scale: 0.72, look: { x: -0.94, z: 1.88 } },
+        { target: '#sec-cred', pos: { x: 3.72, y: -0.3, z: 0.34 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.52, look: { x: -1.42, z: 2.06 } },
+        { target: '#sec-tech', pos: { x: 3.32, y: -0.92, z: 0.24 }, rot: { x: 0.06, y: 0, z: -0.01 }, scale: 0.6, look: { x: -1.2, z: 2.1 } },
+        { target: '#sec-contact', pos: { x: 0.0, y: -0.22, z: 0.4 }, rot: { x: 0.03, y: 0, z: 0 }, scale: 0.74, look: { x: 0.0, z: 4.0 } }
     ],
     tablet: [
-        { target: '#sec-hero', pos: { x: 1.45, y: -1.1, z: -0.15 }, rot: { x: 0.08, y: 0, z: 0 }, scale: 1.44, look: { x: -0.8, z: 2.4 } },
-        { target: '#sec-profile', pos: { x: 1.5, y: -1.0, z: -1.1 }, rot: { x: 0.06, y: 0, z: 0 }, scale: 0.92, look: { x: -0.62, z: 1.45 } },
-        { target: '#sec-gallery', pos: { x: 1.65, y: -0.92, z: -1.18 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.92, look: { x: -0.06, z: 1.4 } },
-        { target: '#sec-history', pos: { x: 1.65, y: 0.18, z: -1.08 }, rot: { x: 0.06, y: 0, z: 0 }, scale: 0.9, look: { x: -0.6, z: 1.2 } },
-        { target: '#sec-iman', pos: { x: 1.75, y: -0.12, z: -0.94 }, rot: { x: 0.06, y: 0, z: -0.01 }, scale: 0.96, look: { x: -0.55, z: 1.25 } },
-        { target: '#sec-video', pos: { x: -1.6, y: -0.5, z: -1.14 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.92, look: { x: 0.52, z: 1.3 } },
-        { target: '#sec-clients', pos: { x: 1.52, y: -0.9, z: -1.1 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.9, look: { x: -0.52, z: 1.35 } },
-        { target: '#sec-cred', pos: { x: 1.5, y: -0.2, z: -0.88 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.9, look: { x: -0.52, z: 1.58 } },
-        { target: '#sec-tech', pos: { x: 1.45, y: -0.82, z: -0.95 }, rot: { x: 0.06, y: 0, z: -0.01 }, scale: 0.9, look: { x: -0.48, z: 1.6 } },
-        { target: '#sec-contact', pos: { x: 0.0, y: -0.3, z: -0.42 }, rot: { x: 0.04, y: 0, z: 0 }, scale: 0.82, look: { x: 0.0, z: 2.85 } }
+        { target: '#sec-hero', pos: { x: 1.18, y: -1.04, z: -0.18 }, rot: { x: 0.08, y: 0, z: 0 }, scale: 1.26, look: { x: -0.64, z: 2.24 } },
+        { target: '#sec-profile', pos: { x: 1.24, y: -0.98, z: -1.14 }, rot: { x: 0.06, y: 0, z: 0 }, scale: 0.86, look: { x: -0.46, z: 1.36 } },
+        { target: '#sec-gallery', pos: { x: 1.34, y: -0.9, z: -1.2 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.86, look: { x: -0.08, z: 1.32 } },
+        { target: '#sec-history', pos: { x: 1.28, y: 0.18, z: -1.12 }, rot: { x: 0.06, y: 0, z: 0 }, scale: 0.84, look: { x: -0.46, z: 1.12 } },
+        { target: '#sec-iman', pos: { x: 1.36, y: -0.1, z: -0.98 }, rot: { x: 0.06, y: 0, z: -0.01 }, scale: 0.88, look: { x: -0.42, z: 1.16 } },
+        { target: '#sec-video', pos: { x: -1.34, y: -0.5, z: -1.18 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.86, look: { x: 0.44, z: 1.2 } },
+        { target: '#sec-clients', pos: { x: 1.24, y: -0.88, z: -1.12 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.84, look: { x: -0.42, z: 1.24 } },
+        { target: '#sec-cred', pos: { x: 1.2, y: -0.18, z: -0.92 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.84, look: { x: -0.42, z: 1.44 } },
+        { target: '#sec-tech', pos: { x: 1.2, y: -0.8, z: -0.98 }, rot: { x: 0.06, y: 0, z: -0.01 }, scale: 0.84, look: { x: -0.38, z: 1.46 } },
+        { target: '#sec-contact', pos: { x: 0.0, y: -0.3, z: -0.44 }, rot: { x: 0.04, y: 0, z: 0 }, scale: 0.78, look: { x: 0.0, z: 2.7 } }
     ],
     mobile: [
-        { target: '#sec-hero', pos: { x: 1.06, y: -1.0, z: -0.86 }, rot: { x: 0.07, y: 0, z: 0 }, scale: 1.0, look: { x: -0.5, z: 2.7 } },
-        { target: '#sec-profile', pos: { x: -0.72, y: -0.88, z: -2.22 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.86, look: { x: 0.24, z: 1.24 } },
-        { target: '#sec-gallery', pos: { x: 0.78, y: -0.96, z: -2.3 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.86, look: { x: -0.06, z: 1.2 } },
-        { target: '#sec-history', pos: { x: -0.74, y: 0.2, z: -2.08 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.84, look: { x: 0.24, z: 1.06 } },
-        { target: '#sec-iman', pos: { x: 0.78, y: -0.1, z: -1.96 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.86, look: { x: -0.28, z: 1.14 } },
-        { target: '#sec-video', pos: { x: -0.72, y: -0.56, z: -2.12 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.84, look: { x: 0.22, z: 1.08 } },
-        { target: '#sec-clients', pos: { x: 0.72, y: 0.18, z: -2.04 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.84, look: { x: -0.22, z: 1.14 } },
-        { target: '#sec-cred', pos: { x: -0.7, y: -0.04, z: -1.88 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.84, look: { x: 0.2, z: 1.3 } },
-        { target: '#sec-tech', pos: { x: 0.72, y: -0.54, z: -1.9 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.84, look: { x: -0.18, z: 1.36 } },
-        { target: '#sec-contact', pos: { x: 0.0, y: -0.34, z: -1.08 }, rot: { x: 0.04, y: 0, z: 0 }, scale: 0.8, look: { x: 0.0, z: 3.2 } }
+        { target: '#sec-hero', pos: { x: 0.88, y: -0.98, z: -0.88 }, rot: { x: 0.07, y: 0, z: 0 }, scale: 0.92, look: { x: -0.36, z: 2.54 } },
+        { target: '#sec-profile', pos: { x: 0.94, y: -0.88, z: -2.24 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.8, look: { x: -0.24, z: 1.22 } },
+        { target: '#sec-gallery', pos: { x: 0.84, y: -0.96, z: -2.32 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.8, look: { x: -0.14, z: 1.18 } },
+        { target: '#sec-history', pos: { x: 0.96, y: 0.2, z: -2.14 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.78, look: { x: -0.24, z: 1.02 } },
+        { target: '#sec-iman', pos: { x: 0.9, y: -0.1, z: -2.0 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.8, look: { x: -0.22, z: 1.1 } },
+        { target: '#sec-video', pos: { x: -0.78, y: -0.56, z: -2.14 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.8, look: { x: 0.2, z: 1.02 } },
+        { target: '#sec-clients', pos: { x: 0.88, y: 0.18, z: -2.08 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.8, look: { x: -0.2, z: 1.1 } },
+        { target: '#sec-cred', pos: { x: 0.92, y: -0.04, z: -1.92 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.8, look: { x: -0.2, z: 1.24 } },
+        { target: '#sec-tech', pos: { x: 0.92, y: -0.54, z: -1.94 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.8, look: { x: -0.16, z: 1.3 } },
+        { target: '#sec-contact', pos: { x: 0.0, y: -0.34, z: -1.08 }, rot: { x: 0.04, y: 0, z: 0 }, scale: 0.76, look: { x: 0.0, z: 3.0 } }
     ],
     small_mobile: [
-        { target: '#sec-hero', pos: { x: 0.92, y: -0.94, z: -0.86 }, rot: { x: 0.07, y: 0, z: 0 }, scale: 0.96, look: { x: -0.42, z: 2.38 } },
-        { target: '#sec-profile', pos: { x: -0.64, y: -0.82, z: -2.12 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.8, look: { x: 0.2, z: 1.12 } },
-        { target: '#sec-gallery', pos: { x: 0.7, y: -0.92, z: -2.18 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.8, look: { x: -0.04, z: 1.08 } },
-        { target: '#sec-history', pos: { x: -0.66, y: 0.2, z: -2.02 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.78, look: { x: 0.2, z: 0.98 } },
-        { target: '#sec-iman', pos: { x: 0.72, y: -0.1, z: -1.9 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.8, look: { x: -0.22, z: 1.04 } },
-        { target: '#sec-video', pos: { x: -0.64, y: -0.54, z: -2.04 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.78, look: { x: 0.18, z: 1.0 } },
-        { target: '#sec-clients', pos: { x: 0.66, y: 0.18, z: -1.98 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.78, look: { x: -0.2, z: 1.06 } },
-        { target: '#sec-cred', pos: { x: -0.62, y: -0.04, z: -1.84 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.78, look: { x: 0.18, z: 1.2 } },
-        { target: '#sec-tech', pos: { x: 0.64, y: -0.5, z: -1.86 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.78, look: { x: -0.16, z: 1.26 } },
-        { target: '#sec-contact', pos: { x: 0.0, y: -0.26, z: -1.02 }, rot: { x: 0.04, y: 0, z: 0 }, scale: 0.74, look: { x: 0.0, z: 2.8 } }
+        { target: '#sec-hero', pos: { x: 0.76, y: -0.94, z: -0.9 }, rot: { x: 0.07, y: 0, z: 0 }, scale: 0.84, look: { x: -0.3, z: 2.26 } },
+        { target: '#sec-profile', pos: { x: 0.82, y: -0.82, z: -2.14 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.74, look: { x: -0.2, z: 1.1 } },
+        { target: '#sec-gallery', pos: { x: 0.74, y: -0.92, z: -2.2 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.74, look: { x: -0.12, z: 1.04 } },
+        { target: '#sec-history', pos: { x: 0.82, y: 0.2, z: -2.04 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.72, look: { x: -0.2, z: 0.94 } },
+        { target: '#sec-iman', pos: { x: 0.78, y: -0.1, z: -1.92 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.74, look: { x: -0.18, z: 1.0 } },
+        { target: '#sec-video', pos: { x: -0.68, y: -0.54, z: -2.06 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.72, look: { x: 0.16, z: 0.96 } },
+        { target: '#sec-clients', pos: { x: 0.76, y: 0.18, z: -2.0 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.72, look: { x: -0.16, z: 1.0 } },
+        { target: '#sec-cred', pos: { x: 0.8, y: -0.04, z: -1.86 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.72, look: { x: -0.16, z: 1.14 } },
+        { target: '#sec-tech', pos: { x: 0.8, y: -0.5, z: -1.88 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.72, look: { x: -0.14, z: 1.18 } },
+        { target: '#sec-contact', pos: { x: 0.0, y: -0.26, z: -1.02 }, rot: { x: 0.04, y: 0, z: 0 }, scale: 0.7, look: { x: 0.0, z: 2.62 } }
     ]
 };
 
@@ -222,7 +224,7 @@ const GALLERY_DATA = {
         { src: 'assets/qazi_noice.png', caption: 'Qazi: Big Dawg Era' },
         { src: 'assets/qazialaska.jpg', caption: 'Alaska Chapter // Field Frame' },
         { src: 'assets/qaziminanicole.jpg', caption: 'Qazi, Mina, Nicole // Wedding Chapter (Nov 7, 2026)' },
-        { src: 'assets/qazianddad.jpg', caption: 'Qazi and Dad' }
+        { src: 'assets/qazianddad.jpg', caption: 'Family Archive // Qazi and Dad' }
     ]
 };
 
@@ -298,6 +300,8 @@ let currentIndex = 0;
 let lightboxSwapRaf = null;
 let galleryPinTrigger = null;
 let galleryDidDrag = false;
+let lightboxPreviouslyFocused = null;
+const LIGHTBOX_FOCUSABLE_SELECTOR = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
 function initContactActions() {
     const funnel = document.getElementById('funnel-modal');
@@ -449,6 +453,32 @@ function initJumpNavVisibility() {
     mobileNavQuery.addEventListener('change', update);
 }
 
+function initHashAnchorNavigation() {
+    document.addEventListener('click', (event) => {
+        const link = event.target.closest('a[href^="#"]');
+        if (!link) {
+            return;
+        }
+
+        const href = link.getAttribute('href') || '';
+        if (href === '#' || href.length <= 1) {
+            return;
+        }
+
+        const targetId = decodeURIComponent(href.slice(1));
+        const target = document.getElementById(targetId);
+        if (!target) {
+            return;
+        }
+
+        event.preventDefault();
+        if (window.location.hash !== href) {
+            history.replaceState(null, '', href);
+        }
+        scrollToHashTarget('smooth');
+    });
+}
+
 function revealSite() {
     const splash = document.getElementById('splash-screen');
     if (!splash || splash.dataset.revealed === 'true') {
@@ -491,6 +521,11 @@ function initSplash() {
         splash.classList.add('quick-pass');
     }
 
+    const isDeepLinkEntry = Boolean(window.location.hash && getHashTarget());
+    if (isDeepLinkEntry) {
+        splash.classList.add('quick-pass');
+    }
+
     const completeSplash = () => {
         try {
             window.sessionStorage.setItem(SPLASH_SESSION_KEY, '1');
@@ -525,7 +560,9 @@ function initSplash() {
         }
     });
 
-    const minSplashMs = hasSeenSplash ? (prefersReducedMotion ? 420 : 1200) : MOTION.splashMs;
+    const minSplashMs = isDeepLinkEntry
+        ? (prefersReducedMotion ? 120 : 260)
+        : (hasSeenSplash ? (prefersReducedMotion ? 800 : 1800) : MOTION.splashMs);
     const minTime = new Promise((resolve) => setTimeout(resolve, minSplashMs));
     const loadTime = new Promise((resolve) => window.addEventListener('load', resolve, { once: true }));
 
@@ -533,7 +570,22 @@ function initSplash() {
 
     setTimeout(() => {
         completeSplash();
-    }, hasSeenSplash ? 3200 : 6200);
+    }, isDeepLinkEntry ? 1200 : (hasSeenSplash ? 4200 : 7800));
+}
+
+function showMinaFallbackImage() {
+    const stage = document.getElementById('mina-stage');
+    if (!stage || stage.querySelector('.mina-fallback-image')) {
+        return;
+    }
+
+    const fallback = document.createElement('img');
+    fallback.className = 'mina-fallback-image';
+    fallback.src = 'assets/minayellowbg.jpg';
+    fallback.alt = 'Mina fallback portrait';
+    fallback.loading = 'lazy';
+    fallback.decoding = 'async';
+    stage.appendChild(fallback);
 }
 
 function init3D() {
@@ -542,6 +594,11 @@ function init3D() {
         if (stage) {
             stage.style.opacity = '0';
         }
+        return;
+    }
+
+    if (lowDetail3D && isMobile) {
+        showMinaFallbackImage();
         return;
     }
 
@@ -615,6 +672,7 @@ function init3D() {
             startRenderLoop();
             resolve();
         }, undefined, (error) => {
+            showMinaFallbackImage();
             reject(error);
         });
     });
@@ -722,7 +780,7 @@ function findFrameByTarget(target) {
     return currentKeyframes.find((frame) => frame.target === target) || null;
 }
 
-function applyFramePose(frame, immediate = false) {
+function applyFramePose(frame, immediate = false, options = {}) {
     if (!minaGroup || !mina) {
         return;
     }
@@ -732,18 +790,16 @@ function applyFramePose(frame, immediate = false) {
     if (isMinaDocked && frame.target !== '#sec-contact') {
         return;
     }
-    const duration = immediate ? 0 : 0.82;
+    const duration = immediate ? 0 : (typeof options.duration === 'number' ? options.duration : 0.82);
+    const ease = options.ease || 'power2.out';
     const frameLook = frame.look || DEFAULT_LOOK_TARGET;
-    gsap.to(minaGroup.position, { x: frame.pos.x, y: frame.pos.y, z: frame.pos.z, duration, ease: 'power2.out', overwrite: 'auto' });
-    gsap.to(minaGroup.rotation, { x: frame.rot.x, z: frame.rot.z, duration, ease: 'power2.out', overwrite: 'auto' });
-    gsap.to(mina.scale, { x: frame.scale, y: frame.scale, z: frame.scale, duration, ease: 'power2.out', overwrite: 'auto' });
-    gsap.to(activeLookTarget, { x: frameLook.x, z: frameLook.z, duration, ease: 'power2.out', overwrite: 'auto' });
+    gsap.to(minaGroup.position, { x: frame.pos.x, y: frame.pos.y, z: frame.pos.z, duration, ease, overwrite: 'auto' });
+    gsap.to(minaGroup.rotation, { x: frame.rot.x, z: frame.rot.z, duration, ease, overwrite: 'auto' });
+    gsap.to(mina.scale, { x: frame.scale, y: frame.scale, z: frame.scale, duration, ease, overwrite: 'auto' });
+    gsap.to(activeLookTarget, { x: frameLook.x, z: frameLook.z, duration, ease, overwrite: 'auto' });
 }
 
 function createHistoryLaneTriggers() {
-    if (viewportProfile === 'mobile' || viewportProfile === 'small_mobile') {
-        return;
-    }
     const cards = Array.from(document.querySelectorAll('#sec-history .tm-content[data-gallery-key]'));
     if (cards.length === 0) {
         return;
@@ -753,118 +809,124 @@ function createHistoryLaneTriggers() {
         return;
     }
 
-    cards.forEach((card) => {
+    const laneMap = {
+        desktop: 3.18,
+        laptop: 2.84,
+        tablet: 2.28,
+        mobile: 1.08,
+        small_mobile: 0.94
+    };
+    const lookZMap = {
+        desktop: 1.9,
+        laptop: 1.76,
+        tablet: 1.34,
+        mobile: 1.16,
+        small_mobile: 1.1
+    };
+    const profileOffsets = {
+        desktop: {
+            birth: { y: -0.06, z: 0.2, scale: 0.96, x: 0.96 },
+            target: { y: 0.08, z: 0.16, scale: 0.95, x: 1.02 },
+            lyrewood: { y: 0.16, z: 0.14, scale: 0.94, x: 0.98 },
+            bangla: { y: 0.11, z: 0.15, scale: 0.94, x: 1.04 },
+            bpa: { y: 0.04, z: 0.18, scale: 0.92, x: 0.96 },
+            grind: { y: -0.02, z: 0.2, scale: 0.94, x: 1.04 },
+            roots: { y: 0.02, z: 0.2, scale: 0.94, x: 0.96 },
+            mina: { y: -0.1, z: 0.22, scale: 0.98, x: 1.02 },
+            imageline: { y: -0.04, z: 0.24, scale: 0.92, x: 1.04 },
+            cannaline: { y: 0.03, z: 0.2, scale: 0.9, x: 0.96 },
+            mom: { y: 0.05, z: 0.18, scale: 0.92, x: 1.02 },
+            cair: { y: -0.03, z: 0.22, scale: 0.92, x: 0.96 },
+            oao: { y: 0.02, z: 0.18, scale: 0.9, x: 1.02 },
+            topcrop: { y: -0.04, z: 0.2, scale: 0.9, x: 0.96 },
+            now: { y: -0.08, z: 0.24, scale: 0.9, x: 1.0 }
+        },
+        laptop: {
+            birth: { y: -0.04, z: 0.16, scale: 0.94, x: 0.96 },
+            target: { y: 0.06, z: 0.14, scale: 0.93, x: 1.02 },
+            lyrewood: { y: 0.13, z: 0.12, scale: 0.92, x: 0.98 },
+            bangla: { y: 0.09, z: 0.13, scale: 0.92, x: 1.04 },
+            bpa: { y: 0.03, z: 0.16, scale: 0.9, x: 0.96 },
+            grind: { y: -0.01, z: 0.17, scale: 0.92, x: 1.04 },
+            roots: { y: 0.02, z: 0.17, scale: 0.92, x: 0.96 },
+            mina: { y: -0.08, z: 0.18, scale: 0.94, x: 1.02 },
+            imageline: { y: -0.03, z: 0.2, scale: 0.9, x: 1.04 },
+            cannaline: { y: 0.02, z: 0.17, scale: 0.88, x: 0.96 },
+            mom: { y: 0.04, z: 0.16, scale: 0.9, x: 1.02 },
+            cair: { y: -0.02, z: 0.19, scale: 0.9, x: 0.96 },
+            oao: { y: 0.02, z: 0.16, scale: 0.88, x: 1.02 },
+            topcrop: { y: -0.03, z: 0.17, scale: 0.88, x: 0.96 },
+            now: { y: -0.06, z: 0.2, scale: 0.88, x: 1.0 }
+        },
+        tablet: {
+            birth: { y: -0.02, z: -1.02, scale: 0.92, x: 0.94 },
+            target: { y: 0.06, z: -1.04, scale: 0.9, x: 0.94 },
+            lyrewood: { y: 0.12, z: -1.06, scale: 0.9, x: 1.0 },
+            bangla: { y: 0.1, z: -1.07, scale: 0.9, x: 0.98 },
+            bpa: { y: 0.04, z: -1.0, scale: 0.88, x: 0.95 },
+            grind: { y: 0, z: -0.98, scale: 0.9, x: 1.0 },
+            roots: { y: 0.05, z: -0.98, scale: 0.9, x: 0.96 },
+            mina: { y: -0.06, z: -0.95, scale: 0.94, x: 0.98 },
+            imageline: { y: -0.02, z: -0.92, scale: 0.88, x: 1.0 },
+            cannaline: { y: 0.02, z: -0.96, scale: 0.86, x: 0.96 },
+            mom: { y: 0.04, z: -1.0, scale: 0.88, x: 0.96 },
+            cair: { y: -0.02, z: -0.92, scale: 0.88, x: 1.0 },
+            oao: { y: 0.01, z: -0.96, scale: 0.86, x: 0.96 },
+            topcrop: { y: -0.02, z: -0.95, scale: 0.86, x: 1.0 },
+            now: { y: -0.06, z: -0.88, scale: 0.86, x: 0.98 }
+        },
+        mobile: {
+            birth: { y: -0.02, z: -2.28, scale: 0.88, x: 0.86 },
+            target: { y: 0.05, z: -2.26, scale: 0.86, x: 1.08 },
+            lyrewood: { y: 0.1, z: -2.24, scale: 0.86, x: 0.92 },
+            bangla: { y: 0.09, z: -2.24, scale: 0.86, x: 1.14 },
+            bpa: { y: 0.03, z: -2.16, scale: 0.84, x: 0.9 },
+            grind: { y: 0, z: -2.14, scale: 0.86, x: 1.08 },
+            roots: { y: 0.04, z: -2.14, scale: 0.86, x: 0.9 },
+            mina: { y: -0.05, z: -2.1, scale: 0.88, x: 1.06 },
+            imageline: { y: -0.02, z: -2.06, scale: 0.84, x: 1.14 },
+            cannaline: { y: 0.02, z: -2.1, scale: 0.82, x: 0.88 },
+            mom: { y: 0.04, z: -2.14, scale: 0.84, x: 1.1 },
+            cair: { y: -0.02, z: -2.06, scale: 0.84, x: 0.88 },
+            oao: { y: 0.01, z: -2.08, scale: 0.82, x: 1.1 },
+            topcrop: { y: -0.02, z: -2.06, scale: 0.82, x: 0.9 },
+            now: { y: -0.06, z: -1.98, scale: 0.82, x: 1.06 }
+        },
+        small_mobile: {
+            birth: { y: -0.02, z: -2.12, scale: 0.82, x: 0.86 },
+            target: { y: 0.04, z: -2.1, scale: 0.8, x: 1.08 },
+            lyrewood: { y: 0.09, z: -2.08, scale: 0.8, x: 0.92 },
+            bangla: { y: 0.08, z: -2.08, scale: 0.8, x: 1.14 },
+            bpa: { y: 0.03, z: -2.0, scale: 0.78, x: 0.9 },
+            grind: { y: 0, z: -1.98, scale: 0.8, x: 1.08 },
+            roots: { y: 0.04, z: -1.98, scale: 0.8, x: 0.9 },
+            mina: { y: -0.05, z: -1.94, scale: 0.82, x: 1.06 },
+            imageline: { y: -0.02, z: -1.9, scale: 0.78, x: 1.14 },
+            cannaline: { y: 0.02, z: -1.94, scale: 0.76, x: 0.88 },
+            mom: { y: 0.04, z: -1.98, scale: 0.78, x: 1.1 },
+            cair: { y: -0.02, z: -1.9, scale: 0.78, x: 0.88 },
+            oao: { y: 0.01, z: -1.92, scale: 0.76, x: 1.1 },
+            topcrop: { y: -0.02, z: -1.9, scale: 0.76, x: 0.9 },
+            now: { y: -0.06, z: -1.84, scale: 0.76, x: 1.06 }
+        }
+    };
+
+    const buildFrameForCard = (card) => {
         const node = card.closest('.timeline-node');
-        const contentOnRight = node?.classList.contains('right') ?? false;
+        if (!node) {
+            return null;
+        }
+        const contentOnRight = Boolean(node.classList.contains('right'));
         const key = card.dataset.galleryKey || '';
-        const laneMap = {
-            desktop: 2.9,
-            laptop: 2.45,
-            tablet: 1.7,
-            mobile: 0.95,
-            small_mobile: 0.82
-        };
-        const lookZMap = {
-            desktop: 1.86,
-            laptop: 1.72,
-            tablet: 1.34,
-            mobile: 1.16,
-            small_mobile: 1.1
-        };
         const laneX = laneMap[viewportProfile] ?? 2.35;
         const baseX = contentOnRight ? -laneX : laneX;
-        const lookX = contentOnRight ? 0.95 : -0.95;
+        const sideLookBase = contentOnRight ? 1.04 : -1.04;
         const lookZ = lookZMap[viewportProfile] ?? 1.86;
-        const profileOffsets = {
-            desktop: {
-                birth: { y: -0.06, z: 0.2, scale: 1.0, x: 0.96 },
-                target: { y: 0.08, z: 0.16, scale: 0.99, x: 0.94 },
-                lyrewood: { y: 0.16, z: 0.14, scale: 0.98, x: 1.02 },
-                bangla: { y: 0.11, z: 0.15, scale: 0.98, x: 1.0 },
-                bpa: { y: 0.04, z: 0.18, scale: 0.96, x: 0.96 },
-                grind: { y: -0.02, z: 0.2, scale: 0.98, x: 1.02 },
-                roots: { y: 0.02, z: 0.2, scale: 0.98, x: 0.98 },
-                mina: { y: -0.1, z: 0.22, scale: 1.02, x: 1.0 },
-                imageline: { y: -0.04, z: 0.24, scale: 0.96, x: 1.02 },
-                cannaline: { y: 0.03, z: 0.2, scale: 0.94, x: 0.98 },
-                mom: { y: 0.05, z: 0.18, scale: 0.96, x: 0.98 },
-                cair: { y: -0.03, z: 0.22, scale: 0.96, x: 1.02 },
-                oao: { y: 0.02, z: 0.18, scale: 0.94, x: 0.98 },
-                topcrop: { y: -0.04, z: 0.2, scale: 0.94, x: 1.02 },
-                now: { y: -0.08, z: 0.24, scale: 0.94, x: 1.0 }
-            },
-            laptop: {
-                birth: { y: -0.04, z: 0.16, scale: 0.98, x: 0.96 },
-                target: { y: 0.06, z: 0.14, scale: 0.97, x: 0.94 },
-                lyrewood: { y: 0.13, z: 0.12, scale: 0.96, x: 1.02 },
-                bangla: { y: 0.09, z: 0.13, scale: 0.96, x: 1.0 },
-                bpa: { y: 0.03, z: 0.16, scale: 0.94, x: 0.96 },
-                grind: { y: -0.01, z: 0.17, scale: 0.96, x: 1.02 },
-                roots: { y: 0.02, z: 0.17, scale: 0.96, x: 0.98 },
-                mina: { y: -0.08, z: 0.18, scale: 0.98, x: 1.0 },
-                imageline: { y: -0.03, z: 0.2, scale: 0.94, x: 1.02 },
-                cannaline: { y: 0.02, z: 0.17, scale: 0.92, x: 0.98 },
-                mom: { y: 0.04, z: 0.16, scale: 0.94, x: 0.98 },
-                cair: { y: -0.02, z: 0.19, scale: 0.94, x: 1.02 },
-                oao: { y: 0.02, z: 0.16, scale: 0.92, x: 0.98 },
-                topcrop: { y: -0.03, z: 0.17, scale: 0.92, x: 1.02 },
-                now: { y: -0.06, z: 0.2, scale: 0.92, x: 1.0 }
-            },
-            tablet: {
-                birth: { y: -0.02, z: -1.02, scale: 0.92, x: 0.94 },
-                target: { y: 0.06, z: -1.04, scale: 0.9, x: 0.94 },
-                lyrewood: { y: 0.12, z: -1.06, scale: 0.9, x: 1.0 },
-                bangla: { y: 0.1, z: -1.07, scale: 0.9, x: 0.98 },
-                bpa: { y: 0.04, z: -1.0, scale: 0.88, x: 0.95 },
-                grind: { y: 0, z: -0.98, scale: 0.9, x: 1.0 },
-                roots: { y: 0.05, z: -0.98, scale: 0.9, x: 0.96 },
-                mina: { y: -0.06, z: -0.95, scale: 0.94, x: 0.98 },
-                imageline: { y: -0.02, z: -0.92, scale: 0.88, x: 1.0 },
-                cannaline: { y: 0.02, z: -0.96, scale: 0.86, x: 0.96 },
-                mom: { y: 0.04, z: -1.0, scale: 0.88, x: 0.96 },
-                cair: { y: -0.02, z: -0.92, scale: 0.88, x: 1.0 },
-                oao: { y: 0.01, z: -0.96, scale: 0.86, x: 0.96 },
-                topcrop: { y: -0.02, z: -0.95, scale: 0.86, x: 1.0 },
-                now: { y: -0.06, z: -0.88, scale: 0.86, x: 0.98 }
-            },
-            mobile: {
-                birth: { y: -0.02, z: -2.28, scale: 0.9, x: 0.94 },
-                target: { y: 0.05, z: -2.26, scale: 0.88, x: 0.94 },
-                lyrewood: { y: 0.1, z: -2.24, scale: 0.88, x: 1.0 },
-                bangla: { y: 0.09, z: -2.24, scale: 0.88, x: 0.98 },
-                bpa: { y: 0.03, z: -2.16, scale: 0.86, x: 0.95 },
-                grind: { y: 0, z: -2.14, scale: 0.88, x: 1.0 },
-                roots: { y: 0.04, z: -2.14, scale: 0.88, x: 0.96 },
-                mina: { y: -0.05, z: -2.1, scale: 0.9, x: 0.98 },
-                imageline: { y: -0.02, z: -2.06, scale: 0.86, x: 1.0 },
-                cannaline: { y: 0.02, z: -2.1, scale: 0.84, x: 0.96 },
-                mom: { y: 0.04, z: -2.14, scale: 0.86, x: 0.96 },
-                cair: { y: -0.02, z: -2.06, scale: 0.86, x: 1.0 },
-                oao: { y: 0.01, z: -2.08, scale: 0.84, x: 0.96 },
-                topcrop: { y: -0.02, z: -2.06, scale: 0.84, x: 1.0 },
-                now: { y: -0.06, z: -1.98, scale: 0.84, x: 0.98 }
-            },
-            small_mobile: {
-                birth: { y: -0.02, z: -2.12, scale: 0.84, x: 0.94 },
-                target: { y: 0.04, z: -2.1, scale: 0.82, x: 0.94 },
-                lyrewood: { y: 0.09, z: -2.08, scale: 0.82, x: 1.0 },
-                bangla: { y: 0.08, z: -2.08, scale: 0.82, x: 0.98 },
-                bpa: { y: 0.03, z: -2.0, scale: 0.8, x: 0.95 },
-                grind: { y: 0, z: -1.98, scale: 0.82, x: 1.0 },
-                roots: { y: 0.04, z: -1.98, scale: 0.82, x: 0.96 },
-                mina: { y: -0.05, z: -1.94, scale: 0.84, x: 0.98 },
-                imageline: { y: -0.02, z: -1.9, scale: 0.8, x: 1.0 },
-                cannaline: { y: 0.02, z: -1.94, scale: 0.78, x: 0.96 },
-                mom: { y: 0.04, z: -1.98, scale: 0.8, x: 0.96 },
-                cair: { y: -0.02, z: -1.9, scale: 0.8, x: 1.0 },
-                oao: { y: 0.01, z: -1.92, scale: 0.78, x: 0.96 },
-                topcrop: { y: -0.02, z: -1.9, scale: 0.78, x: 1.0 },
-                now: { y: -0.06, z: -1.84, scale: 0.78, x: 0.98 }
-            }
-        };
         const tweak = profileOffsets[viewportProfile]?.[key] || {};
-        const minaX = baseX * (tweak.x || 1);
-        const sideFrame = {
+        const xMul = typeof tweak.x === 'number' ? tweak.x : 1;
+        const minaX = baseX * xMul;
+        const lookX = typeof tweak.lookX === 'number' ? tweak.lookX : sideLookBase;
+        return {
             ...historyFrame,
             pos: {
                 ...historyFrame.pos,
@@ -875,25 +937,106 @@ function createHistoryLaneTriggers() {
             scale: typeof tweak.scale === 'number' ? tweak.scale : historyFrame.scale,
             look: { x: lookX, z: lookZ }
         };
+    };
+
+    const laneItems = cards
+        .map((card) => {
+            const node = card.closest('.timeline-node');
+            const frame = buildFrameForCard(card);
+            if (!node || !frame) {
+                return null;
+            }
+            return { card, node, frame };
+        })
+        .filter(Boolean);
+
+    if (laneItems.length === 0) {
+        return;
+    }
+
+    const useActiveYearResolver = window.matchMedia('(min-width: 769px)').matches;
+    if (useActiveYearResolver) {
+        let activeIndex = -1;
+        const resolveActiveYear = () => {
+            if (isGalleryPinned || isMinaDocked) {
+                return;
+            }
+            const probeY = window.innerHeight * 0.52;
+            let closestIndex = -1;
+            let closestDistance = Number.POSITIVE_INFINITY;
+            laneItems.forEach((item, index) => {
+                const rect = item.node.getBoundingClientRect();
+                if (rect.bottom < 0 || rect.top > window.innerHeight) {
+                    return;
+                }
+                const centerY = rect.top + rect.height * 0.5;
+                const distance = Math.abs(centerY - probeY);
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestIndex = index;
+                }
+            });
+            if (closestIndex < 0 || closestIndex === activeIndex) {
+                return;
+            }
+            activeIndex = closestIndex;
+            applyFramePose(laneItems[closestIndex].frame, false, { duration: 1.06, ease: 'power2.out' });
+        };
 
         const trigger = ScrollTrigger.create({
-            trigger: card,
+            trigger: '#sec-history',
+            start: 'top 86%',
+            end: 'bottom 18%',
+            onEnter: resolveActiveYear,
+            onEnterBack: resolveActiveYear,
+            onUpdate: resolveActiveYear,
+            onLeave: () => {
+                activeIndex = -1;
+            },
+            onLeaveBack: () => {
+                activeIndex = -1;
+            }
+        });
+        minaMotionTriggers.push(trigger);
+        resolveActiveYear();
+        return;
+    }
+
+    laneItems.forEach((item) => {
+        const trigger = ScrollTrigger.create({
+            trigger: item.card,
             start: 'top 74%',
             end: 'bottom 34%',
             onEnter: () => {
                 if (isGalleryPinned || isMinaDocked) {
                     return;
                 }
-                applyFramePose(sideFrame);
+                applyFramePose(item.frame, false, { duration: 1.08, ease: 'power1.out' });
             },
             onEnterBack: () => {
                 if (isGalleryPinned || isMinaDocked) {
                     return;
                 }
-                applyFramePose(sideFrame);
+                applyFramePose(item.frame, false, { duration: 1.08, ease: 'power1.out' });
             }
         });
         minaMotionTriggers.push(trigger);
+    });
+}
+
+function syncTimelineSideLayout() {
+    const nodes = Array.from(document.querySelectorAll('#sec-history .timeline-node'));
+    if (nodes.length === 0) {
+        return;
+    }
+
+    const stacked = window.matchMedia('(max-width: 768px)').matches;
+    nodes.forEach((node, index) => {
+        const shouldRight = index % 2 === 1;
+        node.dataset.timelineSide = shouldRight ? 'right' : 'left';
+        node.classList.remove('timeline-auto-right');
+        node.classList.remove('timeline-force-left');
+        node.classList.toggle('right', !stacked && shouldRight);
     });
 }
 
@@ -1018,8 +1161,8 @@ function playHeroEntrance() {
     }
     const hero = currentKeyframes[0];
     const entrance = {
-        x: hero.pos.x + (isMobile ? 0.16 : 0.35),
-        y: hero.pos.y - (isMobile ? 0.08 : 0.14),
+        x: hero.pos.x + (isMobile ? 0.08 : 0.3),
+        y: hero.pos.y - (isMobile ? 0.06 : 0.12),
         z: hero.pos.z + 0.08
     };
     gsap.set(minaGroup.position, entrance);
@@ -1227,6 +1370,8 @@ function onMouseMove(event) {
 }
 
 function onResize() {
+    syncTimelineSideLayout();
+
     if (!allow3D || !camera || !renderer) {
         return;
     }
@@ -1275,8 +1420,13 @@ function openGallery(source, index = 0) {
 
     currentIndex = Math.max(0, Math.min(index, currentGallery.length - 1));
 
+    lightboxPreviouslyFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     updateLightbox(false);
     lightbox.classList.remove('hidden');
+    lightbox.setAttribute('aria-hidden', 'false');
+    requestAnimationFrame(() => {
+        closeBtn?.focus();
+    });
 }
 
 function runLightboxSwap(renderFn, animate = true) {
@@ -1359,8 +1509,38 @@ function closeLightbox() {
     }
     lightbox.classList.add('hidden');
     lightbox.classList.remove('is-swapping');
+    lightbox.setAttribute('aria-hidden', 'true');
     lightboxVid.pause();
     ytPlayer.src = '';
+    if (lightboxPreviouslyFocused && typeof lightboxPreviouslyFocused.focus === 'function') {
+        lightboxPreviouslyFocused.focus();
+    }
+    lightboxPreviouslyFocused = null;
+}
+
+function trapLightboxFocus(event) {
+    if (event.key !== 'Tab' || lightbox.classList.contains('hidden')) {
+        return;
+    }
+
+    const focusableElements = Array.from(lightbox.querySelectorAll(LIGHTBOX_FOCUSABLE_SELECTOR))
+        .filter((element) => !element.hasAttribute('disabled') && element.tabIndex !== -1 && (element.offsetParent !== null || element === document.activeElement));
+    if (focusableElements.length === 0) {
+        event.preventDefault();
+        return;
+    }
+
+    const first = focusableElements[0];
+    const last = focusableElements[focusableElements.length - 1];
+    const activeElement = document.activeElement;
+
+    if (!event.shiftKey && activeElement === last) {
+        event.preventDefault();
+        first.focus();
+    } else if (event.shiftKey && activeElement === first) {
+        event.preventDefault();
+        last.focus();
+    }
 }
 
 function initLightboxEvents() {
@@ -1419,15 +1599,76 @@ function initLightboxEvents() {
             return;
         }
         if (event.key === 'Escape') {
+            event.preventDefault();
             closeLightbox();
         }
         if (event.key === 'ArrowRight') {
+            event.preventDefault();
             showNext();
         }
         if (event.key === 'ArrowLeft') {
+            event.preventDefault();
             showPrev();
         }
+        trapLightboxFocus(event);
     });
+}
+
+function initTestimonialsCarousel() {
+    const track = document.getElementById('testimonials-track');
+    const slides = Array.from(document.querySelectorAll('.testimonial-slide'));
+    const next = document.getElementById('testimonials-next');
+    const prev = document.getElementById('testimonials-prev');
+    if (!track || slides.length === 0 || !next || !prev) {
+        return;
+    }
+
+    let current = 0;
+    let autoTimer = null;
+
+    const render = () => {
+        slides.forEach((slide, index) => {
+            slide.classList.toggle('is-active', index === current);
+            slide.setAttribute('aria-hidden', index === current ? 'false' : 'true');
+        });
+        track.style.transform = `translateX(${current * -100}%)`;
+    };
+
+    const stopAuto = () => {
+        if (autoTimer) {
+            clearInterval(autoTimer);
+            autoTimer = null;
+        }
+    };
+
+    const startAuto = () => {
+        stopAuto();
+        autoTimer = setInterval(() => {
+            current = (current + 1) % slides.length;
+            render();
+        }, 5600);
+    };
+
+    next.addEventListener('click', () => {
+        current = (current + 1) % slides.length;
+        render();
+        startAuto();
+    });
+
+    prev.addEventListener('click', () => {
+        current = (current - 1 + slides.length) % slides.length;
+        render();
+        startAuto();
+    });
+
+    render();
+    startAuto();
+}
+
+function initServiceWorker() {
+    window.addEventListener('load', () => {
+        registerServiceWorker('/sw.js');
+    }, { once: true });
 }
 
 function initSectionReveals() {
@@ -1498,7 +1739,7 @@ function initTimelineNodeReveals() {
 
 function initMobileTextFocusMode() {
     const mobileTextQuery = window.matchMedia('(max-width: 768px)');
-    const targets = ['#sec-hero', '#sec-profile', '#sec-history', '#sec-cred', '#sec-tech']
+    const targets = ['#sec-profile', '#sec-history', '#sec-cred', '#sec-tech']
         .map((selector) => document.querySelector(selector))
         .filter(Boolean);
 
@@ -1537,6 +1778,66 @@ function initMobileTextFocusMode() {
             activeTargets.clear();
             syncClass();
         }
+    });
+}
+
+function initTechPreviewScroll() {
+    const cards = Array.from(document.querySelectorAll('.tech-card'));
+    if (cards.length === 0) {
+        return;
+    }
+
+    const updatePan = (card) => {
+        const frame = card.querySelector('.tech-shot');
+        const img = card.querySelector('.tech-preview');
+        if (!frame || !img || !img.naturalWidth || !img.naturalHeight) {
+            return;
+        }
+
+        const frameWidth = frame.clientWidth;
+        const frameHeight = frame.clientHeight;
+        if (frameWidth <= 0 || frameHeight <= 0) {
+            return;
+        }
+
+        const scale = 1.06;
+        const renderedHeight = (frameWidth * (img.naturalHeight / img.naturalWidth)) * scale;
+        const panDistance = Math.max(0, Math.min(renderedHeight - frameHeight - 8, 420));
+        card.style.setProperty('--preview-pan-distance', `${panDistance.toFixed(1)}px`);
+        card.classList.toggle('is-pan-ready', panDistance > 18);
+    };
+
+    const activate = (card) => {
+        if (!card.classList.contains('is-pan-ready')) {
+            return;
+        }
+        card.classList.add('is-panning');
+    };
+
+    const deactivate = (card) => {
+        card.classList.remove('is-panning');
+    };
+
+    cards.forEach((card) => {
+        const img = card.querySelector('.tech-preview');
+        if (!img) {
+            return;
+        }
+
+        const update = () => updatePan(card);
+        if (img.complete && img.naturalWidth > 0) {
+            update();
+        }
+        img.addEventListener('load', update);
+
+        card.addEventListener('pointerenter', () => activate(card));
+        card.addEventListener('pointerleave', () => deactivate(card));
+        card.addEventListener('focusin', () => activate(card));
+        card.addEventListener('focusout', () => deactivate(card));
+    });
+
+    window.addEventListener('resize', () => {
+        cards.forEach(updatePan);
     });
 }
 
@@ -1662,157 +1963,191 @@ function initTechThumbFallbacks() {
     });
 }
 
-function initGalleryDrag() {
-    const slider = document.querySelector('.gallery-scroll-container');
-    if (!slider) {
+function initBackgroundGradientAnimation() {
+    const layer = document.getElementById('bg-gradient-animation');
+    if (!layer) {
         return;
     }
+
+    const isSafariBrowser = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    if (isSafariBrowser) {
+        layer.classList.add('is-safari');
+    }
+    layer.classList.add('is-static');
+}
+
+function initGalleryDrag() {
+    const section = document.getElementById('sec-gallery');
+    const slider = section?.querySelector('.gallery-scroll-container');
+    const track = section?.querySelector('.gallery-scroll-track');
+    const progressFill = section?.querySelector('.gallery-progress-fill');
+    if (!slider || !track) {
+        return;
+    }
+
+    if (typeof slider._galleryCleanup === 'function') {
+        slider._galleryCleanup();
+    }
+
+    const originals = Array.from(track.children);
+    const originalCount = originals.length;
+    if (originalCount === 0) {
+        return;
+    }
+    if (track.dataset.loopReady !== 'true') {
+        originals.forEach((item) => {
+            const clone = item.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            clone.setAttribute('tabindex', '-1');
+            track.appendChild(clone);
+        });
+        track.dataset.loopReady = 'true';
+    }
+
     slider.querySelectorAll('img').forEach((img) => {
         img.draggable = false;
     });
 
-    let isDown = false;
-    let startX = 0;
-    let scrollLeft = 0;
-    let startScrollY = 0;
-    const dragThreshold = 8;
+    let loopWidth = 1;
+    let position = 0;
+    let rafId = 0;
+    let lastTime = performance.now();
+    let isDragging = false;
+    let hoverPause = false;
+    let dragStartX = 0;
+    let dragStartPos = 0;
+    const dragThreshold = 6;
+    const baseSpeed = window.matchMedia('(max-width: 768px)').matches ? 0.22 : 0.34;
 
-    slider.addEventListener('pointerdown', (event) => {
-        isDown = true;
-        slider.classList.add('active');
-        document.body.classList.add('gallery-dragging');
-        startX = event.pageX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
-        startScrollY = window.scrollY;
-        galleryDidDrag = false;
-        slider.setPointerCapture(event.pointerId);
-    });
-
-    const release = () => {
-        isDown = false;
-        slider.classList.remove('active');
-        document.body.classList.remove('gallery-dragging');
+    const normalize = (value) => {
+        if (!loopWidth) {
+            return 0;
+        }
+        let next = value % loopWidth;
+        if (next < 0) {
+            next += loopWidth;
+        }
+        return next;
     };
 
-    slider.addEventListener('pointerup', release);
-    slider.addEventListener('pointercancel', release);
-    slider.addEventListener('pointerleave', release);
-
-    slider.addEventListener('pointermove', (event) => {
-        if (!isDown) {
+    const recalcLoopWidth = () => {
+        const first = track.children[0];
+        const firstClone = track.children[originalCount];
+        if (!first || !firstClone) {
+            loopWidth = Math.max(1, track.scrollWidth / 2);
             return;
         }
-        const x = event.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 1.8;
-        if (Math.abs(walk) > dragThreshold) {
+        loopWidth = Math.max(1, firstClone.offsetLeft - first.offsetLeft);
+        position = normalize(position);
+    };
+
+    const render = () => {
+        track.style.transform = `translate3d(${-position}px, 0, 0)`;
+        if (progressFill) {
+            progressFill.style.width = `${Math.round((position / loopWidth) * 100)}%`;
+        }
+    };
+
+    const tick = (time) => {
+        const delta = Math.min(33, time - lastTime);
+        lastTime = time;
+        const isVisible = document.visibilityState === 'visible';
+        const shouldMove = !prefersReducedMotion && !isDragging && !hoverPause && isVisible;
+        if (shouldMove) {
+            position = normalize(position + baseSpeed * (delta / 16.67));
+            render();
+        }
+        rafId = requestAnimationFrame(tick);
+    };
+
+    const onPointerDown = (event) => {
+        isDragging = true;
+        dragStartX = event.clientX;
+        dragStartPos = position;
+        galleryDidDrag = false;
+        slider.classList.add('active');
+        document.body.classList.add('gallery-dragging');
+        slider.setPointerCapture(event.pointerId);
+    };
+
+    const onPointerMove = (event) => {
+        if (!isDragging) {
+            return;
+        }
+        const delta = event.clientX - dragStartX;
+        if (Math.abs(delta) > dragThreshold) {
             galleryDidDrag = true;
-        }
-
-        const isDesktop = !window.matchMedia('(max-width: 768px)').matches;
-        const isPinned = isDesktop && document.body.classList.contains('gallery-locked') && galleryPinTrigger;
-        if (isPinned) {
-            if (!galleryDidDrag) {
-                return;
-            }
-            event.preventDefault();
-            const nextY = THREE.MathUtils.clamp(startScrollY - walk * 1.2, galleryPinTrigger.start, galleryPinTrigger.end);
-            window.scrollTo({ top: nextY });
-            return;
         }
         if (!galleryDidDrag) {
             return;
         }
         event.preventDefault();
-        slider.scrollLeft = scrollLeft - walk;
-    });
+        position = normalize(dragStartPos - delta);
+        render();
+    };
+
+    const releasePointer = () => {
+        if (!isDragging) {
+            return;
+        }
+        isDragging = false;
+        slider.classList.remove('active');
+        document.body.classList.remove('gallery-dragging');
+        window.setTimeout(() => {
+            galleryDidDrag = false;
+        }, 120);
+    };
+
+    const onPointerEnter = () => {
+        hoverPause = true;
+    };
+
+    const onPointerLeave = () => {
+        hoverPause = false;
+        releasePointer();
+    };
+
+    const onResize = () => {
+        recalcLoopWidth();
+        render();
+    };
+
+    const onVisibilityChange = () => {
+        lastTime = performance.now();
+    };
+
+    slider.addEventListener('pointerdown', onPointerDown);
+    slider.addEventListener('pointermove', onPointerMove, { passive: false });
+    slider.addEventListener('pointerup', releasePointer);
+    slider.addEventListener('pointercancel', releasePointer);
+    slider.addEventListener('pointerleave', onPointerLeave);
+    slider.addEventListener('pointerenter', onPointerEnter);
+    window.addEventListener('resize', onResize);
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
+    recalcLoopWidth();
+    render();
+    rafId = requestAnimationFrame(tick);
+
+    slider._galleryCleanup = () => {
+        cancelAnimationFrame(rafId);
+        slider.removeEventListener('pointerdown', onPointerDown);
+        slider.removeEventListener('pointermove', onPointerMove);
+        slider.removeEventListener('pointerup', releasePointer);
+        slider.removeEventListener('pointercancel', releasePointer);
+        slider.removeEventListener('pointerleave', onPointerLeave);
+        slider.removeEventListener('pointerenter', onPointerEnter);
+        window.removeEventListener('resize', onResize);
+        document.removeEventListener('visibilitychange', onVisibilityChange);
+        slider.classList.remove('active');
+        document.body.classList.remove('gallery-dragging');
+    };
 }
 
 function initGalleryScrollLock() {
-    const section = document.getElementById('sec-gallery');
-    const container = section?.querySelector('.gallery-scroll-container');
-    const track = section?.querySelector('.gallery-scroll-track');
-    const progressFill = section?.querySelector('.gallery-progress-fill');
-
-    if (!section || !container || !track || prefersReducedMotion) {
-        return;
-    }
-
-    const setPinnedState = (active) => {
-        document.body.classList.toggle('gallery-locked', active);
-        isGalleryPinned = active;
-        if (active) {
-            isMinaDocked = false;
-            const galleryFrame = findFrameByTarget('#sec-gallery');
-            if (galleryFrame) {
-                applyFramePose(galleryFrame);
-            }
-        }
-        if (progressFill && !active) {
-            progressFill.style.width = '0%';
-        }
-        if (minaMaterial) {
-            gsap.to(minaMaterial, {
-                emissiveIntensity: active ? 0.42 : 0.2,
-                duration: active ? 0.24 : 0.3,
-                overwrite: 'auto',
-                ease: 'power1.out'
-            });
-        }
-        if (redKeyLight) {
-            gsap.to(redKeyLight, {
-                intensity: active ? redKeyLightBaseIntensity * 1.35 : redKeyLightBaseIntensity,
-                duration: active ? 0.24 : 0.34,
-                overwrite: 'auto',
-                ease: 'power1.out'
-            });
-        }
-    };
-
-    ScrollTrigger.matchMedia({
-        '(min-width: 769px)': () => {
-            const horizontalDistance = () => Math.max(0, track.scrollWidth - container.clientWidth);
-            const sweepDistance = () => horizontalDistance() * GALLERY_SCROLL_EXPERIENCE.desktopTravelRatio;
-            const pinDistance = () => {
-                const vhMin = window.innerHeight * GALLERY_SCROLL_EXPERIENCE.desktopPinVhMin;
-                const vhMax = window.innerHeight * GALLERY_SCROLL_EXPERIENCE.desktopPinVhMax;
-                const bySweep = window.innerHeight * 0.5 + sweepDistance() * 0.35;
-                return Math.max(vhMin, Math.min(vhMax, bySweep));
-            };
-
-            const tween = gsap.to(track, {
-                x: () => -sweepDistance(),
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: section,
-                    start: 'top top',
-                    end: () => `+=${pinDistance()}`,
-                    pin: true,
-                    scrub: GALLERY_SCROLL_EXPERIENCE.desktopScrub,
-                    anticipatePin: 1,
-                    invalidateOnRefresh: true,
-                    onEnter: () => setPinnedState(true),
-                    onEnterBack: () => setPinnedState(true),
-                    onLeave: () => setPinnedState(false),
-                    onLeaveBack: () => setPinnedState(false),
-                    onUpdate: (self) => {
-                        galleryPinTrigger = self;
-                        if (progressFill) {
-                            progressFill.style.width = `${Math.round(self.progress * 100)}%`;
-                        }
-                    }
-                }
-            });
-            galleryPinTrigger = tween.scrollTrigger || null;
-
-            return () => {
-                tween.scrollTrigger?.kill();
-                tween.kill();
-                galleryPinTrigger = null;
-                gsap.set(track, { clearProps: 'transform' });
-                setPinnedState(false);
-            };
-        }
-    });
+    document.body.classList.remove('gallery-locked');
+    isGalleryPinned = false;
+    galleryPinTrigger = null;
 }
 
 function initMinaInteractions() {
@@ -1880,18 +2215,24 @@ function init() {
         document.body.classList.add('motion-ready');
     }
     initContactActions();
+    initHashAnchorNavigation();
+    initBackgroundGradientAnimation();
     initJumpNavVisibility();
     initBackToTop();
     initFunnelModal();
     initLightboxEvents();
     initSectionReveals();
+    syncTimelineSideLayout();
     initTimelineNodeReveals();
     initMobileTextFocusMode();
     initProofCounters();
     initTechThumbFallbacks();
+    initTechPreviewScroll();
+    initTestimonialsCarousel();
     initGalleryDrag();
     initGalleryScrollLock();
     initMinaInteractions();
+    initServiceWorker();
     init3D();
     initSplash();
     window.addEventListener('hashchange', () => {

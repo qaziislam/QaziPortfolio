@@ -118,6 +118,19 @@ You wanted 100% more aesthetics. You got 1000% more.
 
 ## 🚀 DEPLOY TO SITEGROUND
 
+## Performance Asset Pipeline
+
+Generate modern formats for local assets and screenshots:
+
+```bash
+npm install
+npm run images:optimize
+```
+
+Outputs are written to `assets/optimized/` and wired via `<picture>` tags with JPEG/PNG fallback in:
+- `index.html`
+- `awards.html`
+
 Same as before:
 
 1. Log into SiteGround
