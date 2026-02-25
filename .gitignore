@@ -1,3 +1,5 @@
 node_modules/
 lighthouse-report.html
 assets/optimized/
+
+.vercel

@@ -55,67 +55,51 @@ function getViewportProfile() {
     return 'desktop';
 }
 
+const BASE_KEYFRAMES = [
+    { target: '#sec-hero', pos: { x: 3.34, y: -1.08, z: 0.62 }, rot: { x: 0.08, y: 0, z: 0 }, scale: 1.84, look: { x: -1.84, z: 3.36 } },
+    { target: '#sec-profile', pos: { x: 3.08, y: -1.02, z: 0.2 }, rot: { x: 0.06, y: 0, z: 0.01 }, scale: 0.98, look: { x: -1.34, z: 2.26 } },
+    { target: '#sec-gallery', pos: { x: 2.78, y: -0.94, z: -0.26 }, rot: { x: 0.06, y: 0, z: 0 }, scale: 0.92, look: { x: -0.74, z: 1.96 } },
+    { target: '#sec-history', pos: { x: 2.42, y: -0.46, z: -0.94 }, rot: { x: 0.06, y: 0, z: 0 }, scale: 0.9, look: { x: -1.06, z: 1.58 } },
+    { target: '#sec-iman', pos: { x: 2.18, y: -0.54, z: -1.36 }, rot: { x: 0.07, y: 0, z: -0.01 }, scale: 0.92, look: { x: -0.9, z: 1.42 } },
+    { target: '#sec-video', pos: { x: 1.74, y: -0.58, z: -1.84 }, rot: { x: 0.06, y: 0, z: 0 }, scale: 0.9, look: { x: -0.44, z: 1.42 } },
+    { target: '#sec-testimonials', pos: { x: 1.24, y: -0.44, z: -1.8 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.86, look: { x: -0.34, z: 1.56 } },
+    { target: '#sec-clients', pos: { x: 1.32, y: -0.84, z: -1.46 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.82, look: { x: -0.72, z: 1.74 } },
+    { target: '#sec-cred', pos: { x: 1.64, y: -0.28, z: -1.18 }, rot: { x: 0.06, y: 0, z: 0 }, scale: 0.84, look: { x: -0.94, z: 1.98 } },
+    { target: '#sec-tech', pos: { x: 0.98, y: -0.78, z: -1.72 }, rot: { x: 0.06, y: 0, z: -0.01 }, scale: 0.8, look: { x: -0.38, z: 1.88 } },
+    { target: '#sec-contact', pos: { x: 0.0, y: -0.26, z: 0.48 }, rot: { x: 0.03, y: 0, z: 0 }, scale: 0.8, look: { x: 0.0, z: 4.34 } }
+];
+
+function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+}
+
+function transformFrames(config) {
+    return BASE_KEYFRAMES.map((frame) => ({
+        target: frame.target,
+        pos: {
+            x: frame.pos.x * config.x + (config.offsetX || 0),
+            y: frame.pos.y * config.y + (config.offsetY || 0),
+            z: frame.pos.z * config.z + (config.offsetZ || 0)
+        },
+        rot: {
+            x: frame.rot.x * config.rot,
+            y: 0,
+            z: frame.rot.z * config.rot
+        },
+        scale: clamp(frame.scale * config.scale, 0.58, 1.62),
+        look: {
+            x: frame.look.x * config.lookX,
+            z: frame.look.z * config.lookZ
+        }
+    }));
+}
+
 const KEYFRAME_LIBRARY = {
-    desktop: [
-        { target: '#sec-hero', pos: { x: 2.96, y: -1.18, z: 0.44 }, rot: { x: 0.08, y: 0, z: 0 }, scale: 1.7, look: { x: -1.52, z: 3.04 } },
-        { target: '#sec-profile', pos: { x: 3.08, y: -1.24, z: 0.24 }, rot: { x: 0.05, y: 0, z: 0.01 }, scale: 0.82, look: { x: -1.24, z: 2.14 } },
-        { target: '#sec-gallery', pos: { x: 3.16, y: -1.0, z: 0.26 }, rot: { x: 0.04, y: 0, z: 0 }, scale: 0.78, look: { x: -0.24, z: 2.04 } },
-        { target: '#sec-history', pos: { x: 2.96, y: 0.18, z: 0.16 }, rot: { x: 0.06, y: 0, z: 0 }, scale: 0.84, look: { x: -1.02, z: 1.74 } },
-        { target: '#sec-iman', pos: { x: 3.04, y: -0.22, z: 0.3 }, rot: { x: 0.07, y: 0, z: -0.01 }, scale: 0.82, look: { x: -0.98, z: 1.8 } },
-        { target: '#sec-video', pos: { x: 2.86, y: -0.5, z: 0.22 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.78, look: { x: -0.34, z: 1.94 } },
-        { target: '#sec-clients', pos: { x: 3.22, y: -1.04, z: 0.16 }, rot: { x: 0.04, y: 0, z: 0 }, scale: 0.74, look: { x: -1.1, z: 2.06 } },
-        { target: '#sec-cred', pos: { x: 4.48, y: -0.34, z: 0.42 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.54, look: { x: -1.72, z: 2.24 } },
-        { target: '#sec-tech', pos: { x: 3.82, y: -0.98, z: 0.28 }, rot: { x: 0.06, y: 0, z: -0.01 }, scale: 0.62, look: { x: -1.38, z: 2.26 } },
-        { target: '#sec-contact', pos: { x: 0.0, y: -0.24, z: 0.42 }, rot: { x: 0.03, y: 0, z: 0 }, scale: 0.76, look: { x: 0.0, z: 4.4 } }
-    ],
-    laptop: [
-        { target: '#sec-hero', pos: { x: 2.6, y: -1.12, z: 0.32 }, rot: { x: 0.08, y: 0, z: 0 }, scale: 1.42, look: { x: -1.28, z: 2.76 } },
-        { target: '#sec-profile', pos: { x: 2.72, y: -1.18, z: 0.2 }, rot: { x: 0.05, y: 0, z: 0.01 }, scale: 0.8, look: { x: -1.08, z: 1.98 } },
-        { target: '#sec-gallery', pos: { x: 2.78, y: -0.94, z: 0.22 }, rot: { x: 0.04, y: 0, z: 0 }, scale: 0.76, look: { x: -0.2, z: 1.92 } },
-        { target: '#sec-history', pos: { x: 2.64, y: 0.14, z: 0.12 }, rot: { x: 0.06, y: 0, z: 0 }, scale: 0.82, look: { x: -0.9, z: 1.62 } },
-        { target: '#sec-iman', pos: { x: 2.7, y: -0.18, z: 0.26 }, rot: { x: 0.07, y: 0, z: -0.01 }, scale: 0.8, look: { x: -0.88, z: 1.68 } },
-        { target: '#sec-video', pos: { x: 2.56, y: -0.48, z: 0.2 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.76, look: { x: -0.28, z: 1.76 } },
-        { target: '#sec-clients', pos: { x: 2.82, y: -0.98, z: 0.16 }, rot: { x: 0.04, y: 0, z: 0 }, scale: 0.72, look: { x: -0.94, z: 1.88 } },
-        { target: '#sec-cred', pos: { x: 3.72, y: -0.3, z: 0.34 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.52, look: { x: -1.42, z: 2.06 } },
-        { target: '#sec-tech', pos: { x: 3.32, y: -0.92, z: 0.24 }, rot: { x: 0.06, y: 0, z: -0.01 }, scale: 0.6, look: { x: -1.2, z: 2.1 } },
-        { target: '#sec-contact', pos: { x: 0.0, y: -0.22, z: 0.4 }, rot: { x: 0.03, y: 0, z: 0 }, scale: 0.74, look: { x: 0.0, z: 4.0 } }
-    ],
-    tablet: [
-        { target: '#sec-hero', pos: { x: 1.18, y: -1.04, z: -0.18 }, rot: { x: 0.08, y: 0, z: 0 }, scale: 1.26, look: { x: -0.64, z: 2.24 } },
-        { target: '#sec-profile', pos: { x: 1.24, y: -0.98, z: -1.14 }, rot: { x: 0.06, y: 0, z: 0 }, scale: 0.86, look: { x: -0.46, z: 1.36 } },
-        { target: '#sec-gallery', pos: { x: 1.34, y: -0.9, z: -1.2 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.86, look: { x: -0.08, z: 1.32 } },
-        { target: '#sec-history', pos: { x: 1.28, y: 0.18, z: -1.12 }, rot: { x: 0.06, y: 0, z: 0 }, scale: 0.84, look: { x: -0.46, z: 1.12 } },
-        { target: '#sec-iman', pos: { x: 1.36, y: -0.1, z: -0.98 }, rot: { x: 0.06, y: 0, z: -0.01 }, scale: 0.88, look: { x: -0.42, z: 1.16 } },
-        { target: '#sec-video', pos: { x: -1.34, y: -0.5, z: -1.18 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.86, look: { x: 0.44, z: 1.2 } },
-        { target: '#sec-clients', pos: { x: 1.24, y: -0.88, z: -1.12 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.84, look: { x: -0.42, z: 1.24 } },
-        { target: '#sec-cred', pos: { x: 1.2, y: -0.18, z: -0.92 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.84, look: { x: -0.42, z: 1.44 } },
-        { target: '#sec-tech', pos: { x: 1.2, y: -0.8, z: -0.98 }, rot: { x: 0.06, y: 0, z: -0.01 }, scale: 0.84, look: { x: -0.38, z: 1.46 } },
-        { target: '#sec-contact', pos: { x: 0.0, y: -0.3, z: -0.44 }, rot: { x: 0.04, y: 0, z: 0 }, scale: 0.78, look: { x: 0.0, z: 2.7 } }
-    ],
-    mobile: [
-        { target: '#sec-hero', pos: { x: 0.88, y: -0.98, z: -0.88 }, rot: { x: 0.07, y: 0, z: 0 }, scale: 0.92, look: { x: -0.36, z: 2.54 } },
-        { target: '#sec-profile', pos: { x: 0.94, y: -0.88, z: -2.24 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.8, look: { x: -0.24, z: 1.22 } },
-        { target: '#sec-gallery', pos: { x: 0.84, y: -0.96, z: -2.32 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.8, look: { x: -0.14, z: 1.18 } },
-        { target: '#sec-history', pos: { x: 0.96, y: 0.2, z: -2.14 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.78, look: { x: -0.24, z: 1.02 } },
-        { target: '#sec-iman', pos: { x: 0.9, y: -0.1, z: -2.0 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.8, look: { x: -0.22, z: 1.1 } },
-        { target: '#sec-video', pos: { x: -0.78, y: -0.56, z: -2.14 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.8, look: { x: 0.2, z: 1.02 } },
-        { target: '#sec-clients', pos: { x: 0.88, y: 0.18, z: -2.08 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.8, look: { x: -0.2, z: 1.1 } },
-        { target: '#sec-cred', pos: { x: 0.92, y: -0.04, z: -1.92 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.8, look: { x: -0.2, z: 1.24 } },
-        { target: '#sec-tech', pos: { x: 0.92, y: -0.54, z: -1.94 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.8, look: { x: -0.16, z: 1.3 } },
-        { target: '#sec-contact', pos: { x: 0.0, y: -0.34, z: -1.08 }, rot: { x: 0.04, y: 0, z: 0 }, scale: 0.76, look: { x: 0.0, z: 3.0 } }
-    ],
-    small_mobile: [
-        { target: '#sec-hero', pos: { x: 0.76, y: -0.94, z: -0.9 }, rot: { x: 0.07, y: 0, z: 0 }, scale: 0.84, look: { x: -0.3, z: 2.26 } },
-        { target: '#sec-profile', pos: { x: 0.82, y: -0.82, z: -2.14 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.74, look: { x: -0.2, z: 1.1 } },
-        { target: '#sec-gallery', pos: { x: 0.74, y: -0.92, z: -2.2 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.74, look: { x: -0.12, z: 1.04 } },
-        { target: '#sec-history', pos: { x: 0.82, y: 0.2, z: -2.04 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.72, look: { x: -0.2, z: 0.94 } },
-        { target: '#sec-iman', pos: { x: 0.78, y: -0.1, z: -1.92 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.74, look: { x: -0.18, z: 1.0 } },
-        { target: '#sec-video', pos: { x: -0.68, y: -0.54, z: -2.06 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.72, look: { x: 0.16, z: 0.96 } },
-        { target: '#sec-clients', pos: { x: 0.76, y: 0.18, z: -2.0 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.72, look: { x: -0.16, z: 1.0 } },
-        { target: '#sec-cred', pos: { x: 0.8, y: -0.04, z: -1.86 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.72, look: { x: -0.16, z: 1.14 } },
-        { target: '#sec-tech', pos: { x: 0.8, y: -0.5, z: -1.88 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.72, look: { x: -0.14, z: 1.18 } },
-        { target: '#sec-contact', pos: { x: 0.0, y: -0.26, z: -1.02 }, rot: { x: 0.04, y: 0, z: 0 }, scale: 0.7, look: { x: 0.0, z: 2.62 } }
-    ]
+    desktop: BASE_KEYFRAMES,
+    laptop: transformFrames({ x: 0.84, y: 0.96, z: 0.94, rot: 1, scale: 0.9, lookX: 0.88, lookZ: 0.9 }),
+    tablet: transformFrames({ x: 0.52, y: 0.9, z: 1.14, rot: 0.92, scale: 0.76, lookX: 0.64, lookZ: 0.78, offsetZ: -0.74 }),
+    mobile: transformFrames({ x: 0.34, y: 0.86, z: 1.28, rot: 0.88, scale: 0.68, lookX: 0.46, lookZ: 0.72, offsetZ: -1.08 }),
+    small_mobile: transformFrames({ x: 0.3, y: 0.84, z: 1.34, rot: 0.84, scale: 0.62, lookX: 0.42, lookZ: 0.68, offsetZ: -1.22 })
 };
 
 function getKeyframesForViewport() {
@@ -751,6 +735,8 @@ function initScrollAnimations() {
     isGalleryPinned = false;
     isMinaDocked = false;
     document.body.classList.remove('mina-docked');
+    document.body.classList.remove('mina-contact-locked');
+    setCinematicDockLighting(false);
     minaMotionTriggers.forEach((trigger) => trigger.kill());
     minaMotionTriggers = [];
     clearMinaBeatTriggers();
@@ -761,12 +747,33 @@ function initScrollAnimations() {
         if (!section) {
             return;
         }
+        const nextFrame = currentKeyframes[index + 1] || frame;
+        const prevFrame = getFrameAt(index - 1);
+        const next2Frame = getFrameAt(index + 2);
         const trigger = ScrollTrigger.create({
             trigger: section,
-            start: index === 0 ? 'top top' : 'top 66%',
-            end: 'bottom 34%',
-            onEnter: () => applyFramePose(frame),
-            onEnterBack: () => applyFramePose(frame)
+            start: index === 0 ? 'top top' : 'top 72%',
+            end: 'bottom 28%',
+            onEnter: () => applyFramePose(frame, false, { duration: 0.84, ease: 'power2.out' }),
+            onEnterBack: () => applyFramePose(frame, false, { duration: 0.84, ease: 'power2.out' }),
+            onUpdate: (self) => {
+                if (isGalleryPinned || isMinaDocked) {
+                    return;
+                }
+                if (frame.target === '#sec-history') {
+                    return;
+                }
+                // Preserve each authored section pose longer, then transition between anchors.
+                const t = clamp((self.progress - 0.22) / 0.56, 0, 1);
+                const smoothed = t * t * (3 - 2 * t);
+                const blendedFrame = interpolateFramePose(frame, nextFrame, smoothed);
+                blendedFrame.pos.x = catmullRomScalar(prevFrame.pos.x, frame.pos.x, nextFrame.pos.x, next2Frame.pos.x, smoothed);
+                blendedFrame.pos.y = catmullRomScalar(prevFrame.pos.y, frame.pos.y, nextFrame.pos.y, next2Frame.pos.y, smoothed);
+                blendedFrame.pos.z = catmullRomScalar(prevFrame.pos.z, frame.pos.z, nextFrame.pos.z, next2Frame.pos.z, smoothed);
+                blendedFrame.look.x = catmullRomScalar((prevFrame.look || DEFAULT_LOOK_TARGET).x, (frame.look || DEFAULT_LOOK_TARGET).x, (nextFrame.look || DEFAULT_LOOK_TARGET).x, (next2Frame.look || DEFAULT_LOOK_TARGET).x, smoothed);
+                blendedFrame.look.z = catmullRomScalar((prevFrame.look || DEFAULT_LOOK_TARGET).z, (frame.look || DEFAULT_LOOK_TARGET).z, (nextFrame.look || DEFAULT_LOOK_TARGET).z, (next2Frame.look || DEFAULT_LOOK_TARGET).z, smoothed);
+                applyFramePose(blendedFrame, true, { instant: true, skipGuards: true });
+            }
         });
         minaMotionTriggers.push(trigger);
     });
@@ -780,19 +787,63 @@ function findFrameByTarget(target) {
     return currentKeyframes.find((frame) => frame.target === target) || null;
 }
 
+function catmullRomScalar(p0, p1, p2, p3, t) {
+    const t2 = t * t;
+    const t3 = t2 * t;
+    return 0.5 * ((2 * p1) + (-p0 + p2) * t + (2 * p0 - 5 * p1 + 4 * p2 - p3) * t2 + (-p0 + 3 * p1 - 3 * p2 + p3) * t3);
+}
+
+function getFrameAt(index) {
+    const clampedIndex = clamp(index, 0, currentKeyframes.length - 1);
+    return currentKeyframes[clampedIndex];
+}
+
+function interpolateFramePose(fromFrame, toFrame, t) {
+    const blend = clamp(t, 0, 1);
+    const lerp = (a, b) => a + (b - a) * blend;
+    return {
+        target: toFrame.target || fromFrame.target,
+        pos: {
+            x: lerp(fromFrame.pos.x, toFrame.pos.x),
+            y: lerp(fromFrame.pos.y, toFrame.pos.y),
+            z: lerp(fromFrame.pos.z, toFrame.pos.z)
+        },
+        rot: {
+            x: lerp(fromFrame.rot.x, toFrame.rot.x),
+            y: 0,
+            z: lerp(fromFrame.rot.z, toFrame.rot.z)
+        },
+        scale: lerp(fromFrame.scale, toFrame.scale),
+        look: {
+            x: lerp((fromFrame.look || DEFAULT_LOOK_TARGET).x, (toFrame.look || DEFAULT_LOOK_TARGET).x),
+            z: lerp((fromFrame.look || DEFAULT_LOOK_TARGET).z, (toFrame.look || DEFAULT_LOOK_TARGET).z)
+        }
+    };
+}
+
 function applyFramePose(frame, immediate = false, options = {}) {
     if (!minaGroup || !mina) {
         return;
     }
-    if (isGalleryPinned && frame.target !== '#sec-gallery') {
+    const skipGuards = options.skipGuards === true;
+    if (!skipGuards && isGalleryPinned && frame.target !== '#sec-gallery') {
         return;
     }
-    if (isMinaDocked && frame.target !== '#sec-contact') {
+    if (!skipGuards && isMinaDocked && frame.target !== '#sec-contact') {
+        return;
+    }
+    const frameLook = frame.look || DEFAULT_LOOK_TARGET;
+    if (immediate || options.instant) {
+        minaGroup.position.set(frame.pos.x, frame.pos.y, frame.pos.z);
+        minaGroup.rotation.x = frame.rot.x;
+        minaGroup.rotation.z = frame.rot.z;
+        mina.scale.set(frame.scale, frame.scale, frame.scale);
+        activeLookTarget.x = frameLook.x;
+        activeLookTarget.z = frameLook.z;
         return;
     }
     const duration = immediate ? 0 : (typeof options.duration === 'number' ? options.duration : 0.82);
     const ease = options.ease || 'power2.out';
-    const frameLook = frame.look || DEFAULT_LOOK_TARGET;
     gsap.to(minaGroup.position, { x: frame.pos.x, y: frame.pos.y, z: frame.pos.z, duration, ease, overwrite: 'auto' });
     gsap.to(minaGroup.rotation, { x: frame.rot.x, z: frame.rot.z, duration, ease, overwrite: 'auto' });
     gsap.to(mina.scale, { x: frame.scale, y: frame.scale, z: frame.scale, duration, ease, overwrite: 'auto' });
@@ -1040,6 +1091,19 @@ function syncTimelineSideLayout() {
     });
 }
 
+function setCinematicDockLighting(enabled) {
+    if (!redKeyLight) {
+        return;
+    }
+    const targetIntensity = enabled ? redKeyLightBaseIntensity * 1.46 : redKeyLightBaseIntensity;
+    gsap.to(redKeyLight, {
+        intensity: targetIntensity,
+        duration: enabled ? 0.46 : 0.38,
+        ease: enabled ? 'power2.out' : 'power2.inOut',
+        overwrite: 'auto'
+    });
+}
+
 function createContactDockTriggers() {
     const contactSection = document.getElementById('sec-contact');
     if (!contactSection) {
@@ -1058,6 +1122,8 @@ function createContactDockTriggers() {
         }
         isMinaDocked = value;
         document.body.classList.toggle('mina-docked', value);
+        document.body.classList.toggle('mina-contact-locked', value);
+        setCinematicDockLighting(value);
         if (value) {
             isGalleryPinned = false;
             runContactBackflipDock(dockFrame);
@@ -1070,10 +1136,14 @@ function createContactDockTriggers() {
         end: 'bottom 28%',
         onEnter: () => {
             isMinaDocked = false;
+            document.body.classList.remove('mina-contact-locked');
+            setCinematicDockLighting(false);
             applyFramePose(contactFrame);
         },
         onEnterBack: () => {
             isMinaDocked = false;
+            document.body.classList.remove('mina-contact-locked');
+            setCinematicDockLighting(false);
             applyFramePose(contactFrame);
         }
     });
@@ -1115,14 +1185,14 @@ function runContactBackflipDock(dockFrame) {
 
     tl.to(minaGroup.position, {
         x: dockFrame.pos.x,
-        y: dockFrame.pos.y + 0.18,
-        z: dockFrame.pos.z - 0.05,
-        duration: 0.28,
+        y: dockFrame.pos.y + 0.22,
+        z: dockFrame.pos.z - 0.08,
+        duration: 0.32,
         ease: 'power2.out'
     }, 0);
     tl.to(mina.rotation, {
         x: mina.rotation.x - Math.PI * 2,
-        duration: 0.62,
+        duration: 0.74,
         ease: 'power2.inOut'
     }, 0.02);
     tl.to(minaGroup.position, {
@@ -1151,6 +1221,30 @@ function runContactBackflipDock(dockFrame) {
         duration: 0.36,
         ease: 'power2.out'
     }, 0.3);
+    tl.to(mina.rotation, {
+        z: 0.06,
+        duration: 0.22,
+        ease: 'sine.out'
+    }, 0.62);
+    tl.to(mina.rotation, {
+        z: 0,
+        duration: 0.26,
+        ease: 'sine.inOut'
+    }, 0.84);
+    tl.to(mina.scale, {
+        x: dockFrame.scale * 1.012,
+        y: dockFrame.scale * 1.012,
+        z: dockFrame.scale * 1.012,
+        duration: 0.22,
+        ease: 'power2.out'
+    }, 0.66);
+    tl.to(mina.scale, {
+        x: dockFrame.scale,
+        y: dockFrame.scale,
+        z: dockFrame.scale,
+        duration: 0.26,
+        ease: 'power2.inOut'
+    }, 0.9);
 
     activeDockFlipTween = tl;
 }
@@ -1185,6 +1279,11 @@ function playHeroEntrance() {
         duration: 1.1,
         ease: 'power2.out'
     });
+    gsap.fromTo(minaGroup.rotation, { y: minaGroup.rotation.y - 0.22 }, {
+        y: minaGroup.rotation.y,
+        duration: 1.05,
+        ease: 'power2.out'
+    });
 }
 
 function clearMinaBeatTriggers() {
@@ -1192,56 +1291,39 @@ function clearMinaBeatTriggers() {
     minaBeatTriggers = [];
 }
 
-function getMinaBeatForTarget(target) {
-    if (viewportProfile === 'mobile' || viewportProfile === 'small_mobile') {
-        switch (target) {
-            case '#sec-profile':
-                return 'nod';
-            case '#sec-gallery':
-                return 'shimmy';
-            case '#sec-history':
-                return 'nod';
-            case '#sec-iman':
-                return 'signature_iman';
-            case '#sec-video':
-                return 'tilt';
-            case '#sec-cred':
-                return 'nod';
-            case '#sec-tech':
-                return 'shimmy';
-            case '#sec-contact':
-                return 'signature_contact';
-            default:
-                return 'none';
-        }
-    }
-    switch (target) {
-        case '#sec-hero':
-            return 'none';
-        case '#sec-profile':
-            return 'none';
-        case '#sec-gallery':
-            return 'none';
-        case '#sec-history':
-            return 'none';
-        case '#sec-iman':
-            return 'signature_iman';
-        case '#sec-video':
-            return 'none';
-        case '#sec-clients':
-            return 'tilt';
-        case '#sec-cred':
-            return 'nod';
-        case '#sec-tech':
-            return 'shimmy';
-        case '#sec-contact':
-            return 'signature_contact';
-        default:
-            return 'none';
-    }
+function getMinaBeatConfigForTarget(target) {
+    const compact = viewportProfile === 'mobile' || viewportProfile === 'small_mobile';
+    const desktopMap = {
+        '#sec-hero': { key: 'none', intensity: 0.9, speed: 1 },
+        '#sec-profile': { key: 'settle', intensity: 0.85, speed: 0.92 },
+        '#sec-gallery': { key: 'shimmy', intensity: 1.08, speed: 1.02 },
+        '#sec-history': { key: 'nod', intensity: 0.94, speed: 0.96 },
+        '#sec-iman': { key: 'signature_iman', intensity: 1.1, speed: 1.02 },
+        '#sec-video': { key: 'tilt', intensity: 0.92, speed: 0.96 },
+        '#sec-testimonials': { key: 'twirl', intensity: 1.1, speed: 0.96 },
+        '#sec-clients': { key: 'tilt', intensity: 0.88, speed: 0.94 },
+        '#sec-cred': { key: 'nod', intensity: 0.96, speed: 1.0 },
+        '#sec-tech': { key: 'shimmy', intensity: 1.14, speed: 1.06 },
+        '#sec-contact': { key: 'signature_contact', intensity: 1.15, speed: 1.0 }
+    };
+    const mobileMap = {
+        '#sec-hero': { key: 'none', intensity: 0.88, speed: 1.06 },
+        '#sec-profile': { key: 'nod', intensity: 0.82, speed: 1.1 },
+        '#sec-gallery': { key: 'shimmy', intensity: 0.9, speed: 1.12 },
+        '#sec-history': { key: 'nod', intensity: 0.8, speed: 1.1 },
+        '#sec-iman': { key: 'signature_iman', intensity: 0.9, speed: 1.1 },
+        '#sec-video': { key: 'tilt', intensity: 0.82, speed: 1.12 },
+        '#sec-testimonials': { key: 'spin', intensity: 0.88, speed: 1.08 },
+        '#sec-clients': { key: 'settle', intensity: 0.8, speed: 1.08 },
+        '#sec-cred': { key: 'nod', intensity: 0.84, speed: 1.1 },
+        '#sec-tech': { key: 'shimmy', intensity: 0.92, speed: 1.12 },
+        '#sec-contact': { key: 'signature_contact', intensity: 0.96, speed: 1.08 }
+    };
+    const map = compact ? mobileMap : desktopMap;
+    return map[target] || { key: 'none', intensity: 1, speed: 1 };
 }
 
-function playMinaBeat(beatKey) {
+function playMinaBeat(beatKey, beatOptions = {}) {
     if (!mina || prefersReducedMotion || isMinaDocked) {
         return;
     }
@@ -1262,59 +1344,62 @@ function playMinaBeat(beatKey) {
     const tl = gsap.timeline({ defaults: { ease: 'sine.inOut' } });
     const isMobileViewport = viewportProfile === 'mobile' || viewportProfile === 'small_mobile';
     const beatScale = isMobileViewport ? 1.15 : 1;
-    const d = (time) => time * beatScale;
+    const intensity = typeof beatOptions.intensity === 'number' ? beatOptions.intensity : 1;
+    const speed = typeof beatOptions.speed === 'number' ? beatOptions.speed : 1;
+    const d = (time) => (time * beatScale) / speed;
+    const amp = (value) => value * intensity;
     switch (beatKey) {
         case 'none':
             return;
         case 'signature_iman':
-            tl.to(mina.rotation, { z: 0.18, x: 0.06, duration: d(0.24), ease: 'power2.out' })
-                .to(mina.rotation, { z: -0.12, x: -0.04, duration: d(0.28), ease: 'power1.inOut' })
+            tl.to(mina.rotation, { z: amp(0.18), x: amp(0.06), duration: d(0.24), ease: 'power2.out' })
+                .to(mina.rotation, { z: amp(-0.12), x: amp(-0.04), duration: d(0.28), ease: 'power1.inOut' })
                 .to(mina.rotation, { z: 0, x: 0, duration: d(0.26), ease: 'sine.inOut' });
             break;
         case 'signature_mom':
-            tl.to(mina.rotation, { z: -0.1, x: 0.06, duration: d(0.24), ease: 'sine.out' })
-                .to(mina.rotation, { z: 0.06, x: -0.03, duration: d(0.28), ease: 'sine.inOut' })
+            tl.to(mina.rotation, { z: amp(-0.1), x: amp(0.06), duration: d(0.24), ease: 'sine.out' })
+                .to(mina.rotation, { z: amp(0.06), x: amp(-0.03), duration: d(0.28), ease: 'sine.inOut' })
                 .to(mina.rotation, { z: 0, x: 0, duration: d(0.26), ease: 'sine.inOut' });
             break;
         case 'signature_contact':
-            tl.to(mina.scale, { x: mina.scale.x * 1.015, y: mina.scale.y * 1.015, z: mina.scale.z * 1.015, duration: d(0.2), ease: 'power2.out' })
-                .to(mina.rotation, { z: 0.08, x: 0.03, duration: d(0.2), ease: 'power2.out' }, 0)
+            tl.to(mina.scale, { x: mina.scale.x * (1 + 0.015 * intensity), y: mina.scale.y * (1 + 0.015 * intensity), z: mina.scale.z * (1 + 0.015 * intensity), duration: d(0.2), ease: 'power2.out' })
+                .to(mina.rotation, { z: amp(0.08), x: amp(0.03), duration: d(0.2), ease: 'power2.out' }, 0)
                 .to(mina.scale, { x: mina.scale.x, y: mina.scale.y, z: mina.scale.z, duration: d(0.24), ease: 'power2.inOut' }, d(0.22))
                 .to(mina.rotation, { z: 0, x: 0, duration: d(0.24), ease: 'sine.inOut' });
             break;
         case 'tilt':
-            tl.to(mina.rotation, { z: -0.12, duration: d(0.2) })
-                .to(mina.rotation, { z: 0.1, duration: d(0.22) })
+            tl.to(mina.rotation, { z: amp(-0.12), duration: d(0.2) })
+                .to(mina.rotation, { z: amp(0.1), duration: d(0.22) })
                 .to(mina.rotation, { z: 0, duration: d(0.2) });
             break;
         case 'shimmy':
-            tl.to(mina.position, { x: 0.08, duration: d(0.14) })
-                .to(mina.position, { x: -0.08, duration: d(0.16) })
-                .to(mina.position, { x: 0.05, duration: d(0.14) })
+            tl.to(mina.position, { x: amp(0.08), duration: d(0.14) })
+                .to(mina.position, { x: amp(-0.08), duration: d(0.16) })
+                .to(mina.position, { x: amp(0.05), duration: d(0.14) })
                 .to(mina.position, { x: 0, duration: d(0.16) })
-                .to(mina.rotation, { z: 0.08, duration: d(0.14) }, d(0.05))
-                .to(mina.rotation, { z: -0.08, duration: d(0.2) }, d(0.2))
+                .to(mina.rotation, { z: amp(0.08), duration: d(0.14) }, d(0.05))
+                .to(mina.rotation, { z: amp(-0.08), duration: d(0.2) }, d(0.2))
                 .to(mina.rotation, { z: 0, duration: d(0.18) }, d(0.42));
             break;
         case 'spin':
-            tl.to(mina.rotation, { z: 0.3, duration: d(0.22) })
-                .to(mina.rotation, { z: -0.2, duration: d(0.24) })
+            tl.to(mina.rotation, { z: amp(0.3), duration: d(0.22) })
+                .to(mina.rotation, { z: amp(-0.2), duration: d(0.24) })
                 .to(mina.rotation, { z: 0, duration: d(0.22) });
             break;
         case 'twirl':
-            tl.to(mina.rotation, { z: 0.45, duration: d(0.24) })
-                .to(mina.rotation, { z: -0.28, duration: d(0.26) })
-                .to(mina.rotation, { z: 0.12, duration: d(0.22) })
+            tl.to(mina.rotation, { z: amp(0.45), duration: d(0.24) })
+                .to(mina.rotation, { z: amp(-0.28), duration: d(0.26) })
+                .to(mina.rotation, { z: amp(0.12), duration: d(0.22) })
                 .to(mina.rotation, { z: 0, duration: d(0.2) });
             break;
         case 'settle':
-            tl.to(mina.rotation, { z: 0.06, duration: d(0.2) })
+            tl.to(mina.rotation, { z: amp(0.06), duration: d(0.2) })
                 .to(mina.rotation, { z: 0, duration: d(0.22) });
             break;
         case 'nod':
         default:
-            tl.to(mina.rotation, { z: 0.08, duration: d(0.16) })
-                .to(mina.rotation, { z: -0.06, duration: d(0.2) })
+            tl.to(mina.rotation, { z: amp(0.08), duration: d(0.16) })
+                .to(mina.rotation, { z: amp(-0.06), duration: d(0.2) })
                 .to(mina.rotation, { z: 0, duration: d(0.2) });
             break;
     }
@@ -1331,7 +1416,7 @@ function createMinaBeatTriggers() {
         if (!section) {
             return;
         }
-        const beat = getMinaBeatForTarget(frame.target);
+        const beatConfig = getMinaBeatConfigForTarget(frame.target);
         const triggerElement = frame.target === '#sec-contact'
             ? (document.getElementById('secure-contact-link') || section)
             : section;
@@ -1340,8 +1425,8 @@ function createMinaBeatTriggers() {
             trigger: triggerElement,
             start: triggerStart,
             end: 'bottom 28%',
-            onEnter: () => playMinaBeat(beat),
-            onEnterBack: () => playMinaBeat(beat)
+            onEnter: () => playMinaBeat(beatConfig.key, beatConfig),
+            onEnterBack: () => playMinaBeat(beatConfig.key, beatConfig)
         });
         minaBeatTriggers.push(trigger);
     });
