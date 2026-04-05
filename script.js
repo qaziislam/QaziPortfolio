@@ -11,19 +11,13 @@ const isLowPowerDevice = lowPowerByCores || lowPowerByMemory;
 const allow3D = !prefersReducedMotion;
 const lowDetail3D = isLowPowerDevice;
 const MOTION = {
-    splashMs: prefersReducedMotion ? 1200 : 4600,
+    splashMs: prefersReducedMotion ? 800 : 1500,
     modelEntranceMs: 0.82,
     revealStagger: 0.085,
     revealDuration: 0.66,
     revealEase: 'power3.out',
     counterDuration: 0.95,
     scrollScrub: 0.28
-};
-const GALLERY_SCROLL_EXPERIENCE = {
-    desktopTravelRatio: 0.42,
-    desktopPinVhMin: 0.85,
-    desktopPinVhMax: 1.2,
-    desktopScrub: 0.72
 };
 const SPLASH_SESSION_KEY = 'qazi_bismillah_seen_v2';
 const CENTER_LOOK_DAMPING = 0.09;
@@ -56,17 +50,17 @@ function getViewportProfile() {
 }
 
 const BASE_KEYFRAMES = [
-    { target: '#sec-hero', pos: { x: 3.34, y: -1.08, z: 0.62 }, rot: { x: 0.08, y: 0, z: 0 }, scale: 1.84, look: { x: -1.84, z: 3.36 } },
-    { target: '#sec-profile', pos: { x: 3.08, y: -1.02, z: 0.2 }, rot: { x: 0.06, y: 0, z: 0.01 }, scale: 0.98, look: { x: -1.34, z: 2.26 } },
-    { target: '#sec-gallery', pos: { x: 2.78, y: -0.94, z: -0.26 }, rot: { x: 0.06, y: 0, z: 0 }, scale: 0.92, look: { x: -0.74, z: 1.96 } },
-    { target: '#sec-history', pos: { x: 2.42, y: -0.46, z: -0.94 }, rot: { x: 0.06, y: 0, z: 0 }, scale: 0.9, look: { x: -1.06, z: 1.58 } },
-    { target: '#sec-iman', pos: { x: 2.18, y: -0.54, z: -1.36 }, rot: { x: 0.07, y: 0, z: -0.01 }, scale: 0.92, look: { x: -0.9, z: 1.42 } },
-    { target: '#sec-video', pos: { x: 1.74, y: -0.58, z: -1.84 }, rot: { x: 0.06, y: 0, z: 0 }, scale: 0.9, look: { x: -0.44, z: 1.42 } },
-    { target: '#sec-testimonials', pos: { x: 1.24, y: -0.44, z: -1.8 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.86, look: { x: -0.34, z: 1.56 } },
-    { target: '#sec-clients', pos: { x: 1.32, y: -0.84, z: -1.46 }, rot: { x: 0.05, y: 0, z: 0 }, scale: 0.82, look: { x: -0.72, z: 1.74 } },
-    { target: '#sec-cred', pos: { x: 1.64, y: -0.28, z: -1.18 }, rot: { x: 0.06, y: 0, z: 0 }, scale: 0.84, look: { x: -0.94, z: 1.98 } },
-    { target: '#sec-tech', pos: { x: 0.98, y: -0.78, z: -1.72 }, rot: { x: 0.06, y: 0, z: -0.01 }, scale: 0.8, look: { x: -0.38, z: 1.88 } },
-    { target: '#sec-contact', pos: { x: 0.0, y: -0.26, z: 0.48 }, rot: { x: 0.03, y: 0, z: 0 }, scale: 0.8, look: { x: 0.0, z: 4.34 } }
+    { target: '#sec-hero',         pos: { x:  3.34, y: -1.08, z: 0.62 }, rot: { x: 0.08, y: 0, z:  0    }, scale: 1.84, look: { x: -1.84, z: 3.36 } }, // RIGHT
+    { target: '#sec-profile',      pos: { x:  2.4,  y: -0.38, z: 0.72 }, rot: { x: 0.06, y: 0, z:  0.01 }, scale: 3.4,  look: { x: -1.34, z: 2.26 } }, // RIGHT large
+    { target: '#sec-gallery',      pos: { x: -2.6,  y: -0.72, z: 0.38 }, rot: { x: 0.06, y: 0, z:  0    }, scale: 1.0,  look: { x:  1.1,  z: 2.2  } }, // LEFT
+    { target: '#sec-history',      pos: { x:  2.5,  y: -0.5,  z: 0.32 }, rot: { x: 0.06, y: 0, z:  0    }, scale: 1.0,  look: { x: -1.1,  z: 2.2  } }, // RIGHT
+    { target: '#sec-iman',         pos: { x:  2.6,  y: -0.50, z: 0.34 }, rot: { x: 0.06, y: 0, z: -0.01 }, scale: 0.92, look: { x: -1.1,  z: 2.0  } }, // RIGHT — poster left, article right, Mina frames right edge
+    { target: '#sec-video',        pos: { x: -2.6,  y: -0.52, z: 0.30 }, rot: { x: 0.06, y: 0, z:  0    }, scale: 0.88, look: { x:  1.0,  z: 2.0  } }, // LEFT — centered video grid, Mina clears left
+    { target: '#sec-testimonials', pos: { x:  2.2,  y: -0.46, z: 0.30 }, rot: { x: 0.05, y: 0, z:  0    }, scale: 0.86, look: { x: -0.9,  z: 2.0  } }, // RIGHT — small centered carousel
+    { target: '#sec-clients',      pos: { x: -2.4,  y: -0.54, z: 0.28 }, rot: { x: 0.05, y: 0, z:  0    }, scale: 0.84, look: { x:  0.9,  z: 2.0  } }, // LEFT — centered logos
+    { target: '#sec-cred',         pos: { x:  2.8,  y: -0.40, z: 0.26 }, rot: { x: 0.05, y: 0, z:  0    }, scale: 0.82, look: { x: -0.9,  z: 1.9  } }, // RIGHT far — pushed past full-width cred grid
+    { target: '#sec-tech',         pos: { x: -2.8,  y: -0.54, z: 0.24 }, rot: { x: 0.05, y: 0, z: -0.01 }, scale: 0.78, look: { x:  0.9,  z: 1.9  } }, // LEFT far — pushed past card grid
+    { target: '#sec-contact',      pos: { x:  0.0,  y: -0.26, z: 0.48 }, rot: { x: 0.03, y: 0, z:  0    }, scale: 0.78, look: { x:  0.0,  z: 4.34 } }, // CENTER — cinematic dock
 ];
 
 function clamp(value, min, max) {
@@ -213,7 +207,15 @@ const GALLERY_DATA = {
 };
 
 const VISUAL_GALLERY_DATA = [
-    { src: 'assets/jabee_runthejewels.jpg', caption: 'Run The Jewels Frame' },
+    { 
+        src: 'assets/jabee_runthejewels.jpg', 
+        caption: 'Run The Jewels Frame',
+        caseStudy: {
+            problem: 'The client needed high-impact visual coverage for a national tour stop without being intrusive to the artists.',
+            approach: 'Embedded directly with the production team to capture authentic, high-energy moments from the stage using low-light primes.',
+            outcome: 'Generated dozens of key assets used immediately across social media and press kits, driving high organic reach.'
+        }
+    },
     { src: 'assets/jabee_thunderarena.jpg', caption: 'Thunder Arena Portrait' },
     { src: 'assets/lilwayne.jpg', caption: 'Lil Wayne Performance Still' },
     { src: 'assets/qaziwithrashidatalib.jpg', caption: 'Community Work with Rep. Rashida Tlaib' },
@@ -252,7 +254,6 @@ let mina;
 let minaGroup;
 const minaRaycaster = new THREE.Raycaster();
 const minaPointer = new THREE.Vector2();
-let minaMaterial;
 let redKeyLight;
 let redKeyLightBaseIntensity = 34;
 let targetRotation = { x: 0, y: 0 };
@@ -282,7 +283,6 @@ const caption = document.getElementById('lb-caption');
 let currentGallery = [];
 let currentIndex = 0;
 let lightboxSwapRaf = null;
-let galleryPinTrigger = null;
 let galleryDidDrag = false;
 let lightboxPreviouslyFocused = null;
 const LIGHTBOX_FOCUSABLE_SELECTOR = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
@@ -300,6 +300,17 @@ function initContactActions() {
             const user = 'qazi';
             const domain = 'imagelinestudios.com';
             window.location.href = `mailto:${user}@${domain}?subject=${encodeURIComponent(subject)}`;
+            
+            const content = funnel.querySelector('.funnel-content');
+            if (content) {
+                content.innerHTML = `
+                    <button type="button" class="funnel-close" aria-label="Close funnel modal">&times;</button>
+                    <h2 style="font-size: 2rem; margin-bottom: 20px;">EMAIL CLIENT OPENED</h2>
+                    <p>Check your email client — or reach me directly at <strong>${user}@${domain}</strong></p>
+                `;
+                const closeBtn = content.querySelector('.funnel-close');
+                closeBtn.addEventListener('click', () => { funnel.classList.add('hidden'); });
+            }
         });
     }
 }
@@ -554,7 +565,7 @@ function initSplash() {
 
     setTimeout(() => {
         completeSplash();
-    }, isDeepLinkEntry ? 1200 : (hasSeenSplash ? 4200 : 7800));
+    }, isDeepLinkEntry ? 1200 : (hasSeenSplash ? 1500 : MOTION.splashMs));
 }
 
 function showMinaFallbackImage() {
@@ -631,7 +642,6 @@ function init3D() {
         emissive: 0x111111,
         emissiveIntensity: 0.2
     });
-    minaMaterial = platinumMaterial;
 
     const loader = new GLTFLoader();
     modelLoadedPromise = new Promise((resolve, reject) => {
@@ -654,8 +664,19 @@ function init3D() {
             initScrollAnimations();
             playHeroEntrance();
             startRenderLoop();
+            
+            const loadingEl = document.getElementById('mina-loading');
+            if (loadingEl) {
+                loadingEl.style.opacity = '0';
+                setTimeout(() => loadingEl.remove(), 500);
+            }
+            
             resolve();
         }, undefined, (error) => {
+            const loadingEl = document.getElementById('mina-loading');
+            if (loadingEl) {
+                loadingEl.remove();
+            }
             showMinaFallbackImage();
             reject(error);
         });
@@ -754,8 +775,14 @@ function initScrollAnimations() {
             trigger: section,
             start: index === 0 ? 'top top' : 'top 72%',
             end: 'bottom 28%',
-            onEnter: () => applyFramePose(frame, false, { duration: 0.84, ease: 'power2.out' }),
-            onEnterBack: () => applyFramePose(frame, false, { duration: 0.84, ease: 'power2.out' }),
+            onEnter: () => {
+                if (frame.target === '#sec-history') { return; }
+                applyFramePose(frame, false, { duration: 0.84, ease: 'power2.out' });
+            },
+            onEnterBack: () => {
+                if (frame.target === '#sec-history') { return; }
+                applyFramePose(frame, false, { duration: 0.84, ease: 'power2.out' });
+            },
             onUpdate: (self) => {
                 if (isGalleryPinned || isMinaDocked) {
                     return;
@@ -1008,30 +1035,36 @@ function createHistoryLaneTriggers() {
     const useActiveYearResolver = window.matchMedia('(min-width: 769px)').matches;
     if (useActiveYearResolver) {
         let activeIndex = -1;
+        let rafPending = false;
         const resolveActiveYear = () => {
-            if (isGalleryPinned || isMinaDocked) {
-                return;
-            }
-            const probeY = window.innerHeight * 0.52;
-            let closestIndex = -1;
-            let closestDistance = Number.POSITIVE_INFINITY;
-            laneItems.forEach((item, index) => {
-                const rect = item.node.getBoundingClientRect();
-                if (rect.bottom < 0 || rect.top > window.innerHeight) {
+            if (rafPending) return;
+            rafPending = true;
+            requestAnimationFrame(() => {
+                rafPending = false;
+                if (isGalleryPinned || isMinaDocked) {
                     return;
                 }
-                const centerY = rect.top + rect.height * 0.5;
-                const distance = Math.abs(centerY - probeY);
-                if (distance < closestDistance) {
-                    closestDistance = distance;
-                    closestIndex = index;
+                const probeY = window.innerHeight * 0.52;
+                let closestIndex = -1;
+                let closestDistance = Number.POSITIVE_INFINITY;
+                laneItems.forEach((item, index) => {
+                    const rect = item.node.getBoundingClientRect();
+                    if (rect.bottom < 0 || rect.top > window.innerHeight) {
+                        return;
+                    }
+                    const centerY = rect.top + rect.height * 0.5;
+                    const distance = Math.abs(centerY - probeY);
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestIndex = index;
+                    }
+                });
+                if (closestIndex < 0 || closestIndex === activeIndex) {
+                    return;
                 }
+                activeIndex = closestIndex;
+                applyFramePose(laneItems[closestIndex].frame, false, { duration: 1.06, ease: 'power2.out' });
             });
-            if (closestIndex < 0 || closestIndex === activeIndex) {
-                return;
-            }
-            activeIndex = closestIndex;
-            applyFramePose(laneItems[closestIndex].frame, false, { duration: 1.06, ease: 'power2.out' });
         };
 
         const trigger = ScrollTrigger.create({
@@ -1575,6 +1608,20 @@ function updateLightbox(animate = true) {
             lightboxImg.src = itemSrc;
             lightboxImg.alt = itemCaption || 'Gallery image';
         }
+        
+        const csContainer = document.getElementById('lb-case-study');
+        if (csContainer) {
+            const caseStudyData = item?.caseStudy;
+            if (caseStudyData) {
+                csContainer.classList.remove('hidden');
+                document.getElementById('cs-problem').textContent = caseStudyData.problem;
+                document.getElementById('cs-approach').textContent = caseStudyData.approach;
+                document.getElementById('cs-outcome').textContent = caseStudyData.outcome;
+                csContainer.querySelector('.case-study-content').classList.add('hidden');
+            } else {
+                csContainer.classList.add('hidden');
+            }
+        }
     }, animate);
 }
 
@@ -1631,6 +1678,14 @@ function trapLightboxFocus(event) {
 function initLightboxEvents() {
     if (!lightbox || !closeBtn || !prevBtn || !nextBtn) {
         return;
+    }
+
+    const csToggle = document.querySelector('.case-study-toggle');
+    if (csToggle) {
+        csToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.querySelector('.case-study-content').classList.toggle('hidden');
+        });
     }
 
     document.body.addEventListener('click', (event) => {
@@ -2232,7 +2287,6 @@ function initGalleryDrag() {
 function initGalleryScrollLock() {
     document.body.classList.remove('gallery-locked');
     isGalleryPinned = false;
-    galleryPinTrigger = null;
 }
 
 function initMinaInteractions() {
@@ -2295,15 +2349,33 @@ function initMinaInteractions() {
     });
 }
 
-function init() {
+function initExperience() {
     if (!prefersReducedMotion) {
         document.body.classList.add('motion-ready');
     }
-    initContactActions();
-    initHashAnchorNavigation();
     initBackgroundGradientAnimation();
+    init3D();
+    initSplash();
+    initMinaInteractions();
+}
+
+function initNavigation() {
+    initHashAnchorNavigation();
     initJumpNavVisibility();
+    initJumpNavActiveState();
     initBackToTop();
+    window.addEventListener('hashchange', () => {
+        scrollToHashTarget('smooth');
+    });
+    window.addEventListener('load', () => {
+        if (window.location.hash) {
+            setTimeout(() => scrollToHashTarget('auto'), 300);
+        }
+    }, { once: true });
+}
+
+function initContent() {
+    initContactActions();
     initFunnelModal();
     initLightboxEvents();
     initSectionReveals();
@@ -2316,18 +2388,50 @@ function init() {
     initTestimonialsCarousel();
     initGalleryDrag();
     initGalleryScrollLock();
-    initMinaInteractions();
+    
+    const galleryContainer = document.querySelector('.gallery-scroll-container');
+    if (galleryContainer) {
+        galleryContainer.addEventListener('scroll', () => {
+            const stage = document.querySelector('.gallery-stage');
+            if (stage && galleryContainer.scrollLeft > 10) stage.classList.add('dragged');
+        }, { once: true, passive: true });
+    }
+}
+
+function init() {
+    initExperience();
+    initNavigation();
+    initContent();
     initServiceWorker();
-    init3D();
-    initSplash();
-    window.addEventListener('hashchange', () => {
-        scrollToHashTarget('smooth');
-    });
-    window.addEventListener('load', () => {
-        if (window.location.hash) {
-            setTimeout(() => scrollToHashTarget('auto'), 300);
-        }
-    }, { once: true });
+}
+
+function initJumpNavActiveState() {
+    const navLinks = document.querySelectorAll('.jump-nav a');
+    if (!navLinks.length) return;
+    
+    const sections = Array.from(navLinks).map(link => {
+        const id = link.getAttribute('href').substring(1);
+        if (!id) return null;
+        return document.getElementById(id);
+    }).filter(Boolean);
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    const isActive = link.getAttribute('href').substring(1) === entry.target.id;
+                    link.classList.toggle('is-active', isActive);
+                    if (isActive) {
+                        link.setAttribute('aria-current', 'page');
+                    } else {
+                        link.removeAttribute('aria-current');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    sections.forEach(sec => observer.observe(sec));
 }
 
 init();

@@ -51,12 +51,22 @@ async function cacheFirst(request) {
     return response;
 }
 
+async function pruneCache(cacheName, maxItems) {
+    const cache = await caches.open(cacheName);
+    const keys = await cache.keys();
+    if (keys.length > maxItems) {
+        await cache.delete(keys[0]);
+        await pruneCache(cacheName, maxItems);
+    }
+}
+
 async function staleWhileRevalidate(request) {
     const cache = await caches.open(MEDIA_CACHE);
     const cached = await cache.match(request);
     const networkPromise = fetch(request)
-        .then((response) => {
+        .then(async (response) => {
             cache.put(request, response.clone());
+            await pruneCache(MEDIA_CACHE, 9); // keeping exactly 10 since we just added one
             return response;
         })
         .catch(() => null);

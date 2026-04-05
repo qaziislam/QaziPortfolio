@@ -7,21 +7,20 @@
 
     <meta name="description"
         content="Qazi Islam: Creative Operator, Multidisciplinary Builder, and Revenue Architect based in OKC.">
-    <meta property="og:title" content="QAZI ISLAM | BIG DAWGS">
-    <meta property="og:image" content="assets/qazi_noice.png">
-    <meta property="og:image" content="assets/jabee_runthejewels.jpg">
-    <meta property="og:image" content="assets/imandocumentaryposter.jpg">
-    <meta property="og:image" content="assets/thunder_dj.jpg">
+    <meta property="og:title" content="QAZI ISLAM | Creative Director & Revenue Architect">
+    <meta property="og:image" content="https://qaziislam.com/assets/qazi_noice.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:description" content="Creative Operator // Revenue Architect">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://qaziislam.com">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="QAZI ISLAM | BIG DAWGS">
+    <meta name="twitter:title" content="QAZI ISLAM | Creative Director & Revenue Architect">
     <meta name="twitter:description" content="Creative Operator // Revenue Architect">
     <meta name="twitter:image" content="https://qaziislam.com/assets/qazi_noice.png">
     <meta name="robots" content="index,follow,max-image-preview:large">
 
-    <title>QAZI ISLAM | BIG DAWGS</title>
+    <title>QAZI ISLAM | Creative Director & Revenue Architect</title>
 
     <!-- Security & SEO -->
     <meta http-equiv="Content-Security-Policy"
@@ -145,6 +144,7 @@
     </nav>
 
     <div id="mina-stage">
+        <div id="mina-loading" class="mina-loading">LOADING 3D MODULE...</div>
         <canvas id="mina-canvas"></canvas>
     </div>
     <div id="mina-gallery-callout" class="mina-gallery-callout" aria-hidden="true">
@@ -152,7 +152,7 @@
         <span class="mina-callout-copy">HOLD UP. QUICK SWEEP THROUGH THE ARCHIVE.</span>
     </div>
 
-    <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true" aria-hidden="true">
+    <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true" aria-hidden="true" aria-describedby="lb-caption">
         <button type="button" class="lightbox-close" aria-label="Close lightbox">&times;</button>
         <button id="lb-prev" class="lb-nav left" type="button" aria-label="Previous gallery item">‹</button>
 
@@ -169,12 +169,20 @@
 
         <button id="lb-next" class="lb-nav right" type="button" aria-label="Next gallery item">›</button>
         <div id="lb-caption"></div>
+        <div id="lb-case-study" class="lb-case-study hidden">
+            <button class="case-study-toggle">VIEW CASE STUDY</button>
+            <div class="case-study-content hidden">
+                <div class="cs-section"><h4>PROBLEM</h4><p id="cs-problem"></p></div>
+                <div class="cs-section"><h4>APPROACH</h4><p id="cs-approach"></p></div>
+                <div class="cs-section"><h4>OUTCOME</h4><p id="cs-outcome"></p></div>
+            </div>
+        </div>
     </div>
 
     <div id="funnel-modal" class="funnel-modal hidden">
         <div class="funnel-content">
             <button type="button" class="funnel-close" aria-label="Close funnel modal">&times;</button>
-            <h2>INITIATE PROTOCOL</h2>
+            <h2>LET'S WORK TOGETHER</h2>
             <p>SELECT YOUR OBJECTIVE:</p>
 
             <div class="funnel-options">
@@ -199,10 +207,8 @@
         <section id="sec-hero">
             <div class="hud-top">SYSTEM: OPERATIONAL // OKC BASE</div>
             <h1 class="giant-text"><span class="hero-line">QAZI</span><span class="hero-line">ISLAM</span></h1>
-            <div class="sub-text">A VISUAL TIMELINE <span class="slash">//</span> FAILING FORWARD <span
-                    class="slash">//</span> EXECUTION UNDER PRESSURE</div>
-            <p class="hero-brief">For builders, founders, and teams who value grit, clarity, and outcomes. Real lessons,
-                real losses, real wins.</p>
+            <div class="sub-text">I BUILD SYSTEMS THAT GENERATE REVENUE <span class="slash">//</span> AND STORIES THAT OUTLAST THE ALGORITHM</div>
+            <p class="hero-brief">500+ clients. $4M/mo in managed revenue ops. Documentary work in the Oklahoma History Center. If you need someone who executes — not just strategizes — this is the record.</p>
             <div class="hero-signal-row" role="list" aria-label="Core services">
                 <span role="listitem">CREATIVE DIRECTION</span>
                 <span role="listitem">REVENUE OPS</span>
@@ -216,6 +222,7 @@
             <div class="hero-action-row">
                 <a href="#sec-contact" class="hero-cta hero-cta-primary">START A PROJECT</a>
                 <a href="#sec-gallery" class="hero-cta hero-cta-secondary">VIEW WORK</a>
+                <a href="assets/Qazi_Islam_Resume.pdf" download="Qazi_Islam_Resume.pdf" class="hero-cta hero-cta-secondary" aria-label="Download CV">DOWNLOAD CV ↓</a>
             </div>
         </section>
 
@@ -227,8 +234,7 @@
             <div class="lyrics-box">
                 <p>I grew up in survival mode in NW Oklahoma City and turned that pressure into a career built on
                     execution, service, and long-term trust.</p>
-                <ul
-                    style="list-style: none; padding: 0; margin: 20px 0; color: #ccc; font-size: 1rem; line-height: 1.6;">
+                <ul class="profile-list">
                     <li>// CREATIVE DIRECTION ACROSS FILM, PHOTO, AND CAMPAIGNS</li>
                     <li>// SYSTEM BUILDER FOR BRANDS, PRODUCTS, AND OPERATIONS</li>
                     <li>// REVENUE-OPS EXPERIENCE (OVER $4M/MO MANAGED)</li>
@@ -253,18 +259,14 @@
                     <span class="gallery-command-kicker">LIVE ARCHIVE MODE</span>
                     <strong>18 FRAMES // 3 CONTINENTS // OPEN ANY TILE</strong>
                 </div>
-                <div class="gallery-chip-row" aria-label="Gallery categories">
-                    <button type="button" class="gallery-chip is-active" aria-pressed="true">EDITORIAL</button>
-                    <button type="button" class="gallery-chip" aria-pressed="false">CAMPAIGNS</button>
-                    <button type="button" class="gallery-chip" aria-pressed="false">FIELDWORK</button>
-                    <button type="button" class="gallery-chip" aria-pressed="false">PERSONAL</button>
-                </div>
+                
             </div>
             <div class="gallery-intent-bar">
                 <div class="gallery-phase-copy">MINA CURATED SWEEP // PAUSE, SCAN, THEN DIVE DEEPER</div>
                 <a href="#sec-history" class="gallery-skip-link">SKIP SWEEP ↓</a>
             </div>
-            <div class="gallery-stage">
+            <div class="gallery-stage has-scroll-affordance">
+                <div class="scroll-affordance-hint">← SWIPE →</div>
                 <div class="gallery-progress"><span class="gallery-progress-fill"></span></div>
                 <div class="gallery-scroll-container">
                     <div class="gallery-scroll-track">
@@ -272,29 +274,26 @@
                         data-shot="RUN THE JEWELS" aria-label="Open gallery image: Run The Jewels"><picture>
                             <source srcset="assets/optimized/jabee_runthejewels.avif" type="image/avif">
                             <source srcset="assets/optimized/jabee_runthejewels.webp" type="image/webp">
-                            <img decoding="async" src="assets/jabee_runthejewels.jpg"
-                                srcset="assets/jabee_runthejewels.jpg 1x" alt="Run The Jewels frame" loading="lazy">
+                            <img decoding="async" src="assets/jabee_runthejewels.jpg" alt="Run The Jewels frame" loading="lazy">
                         </picture></button>
                     <button type="button" class="scroll-item is-wide" data-gallery-index="1" data-frame="02"
                         data-shot="THUNDER ARENA" aria-label="Open gallery image: Thunder Arena"><picture>
                             <source srcset="assets/optimized/jabee_thunderarena.avif" type="image/avif">
                             <source srcset="assets/optimized/jabee_thunderarena.webp" type="image/webp">
-                            <img decoding="async" src="assets/jabee_thunderarena.jpg"
-                                srcset="assets/jabee_thunderarena.jpg 1x" alt="Thunder Arena frame" loading="lazy">
+                            <img decoding="async" src="assets/jabee_thunderarena.jpg" alt="Thunder Arena frame" loading="lazy">
                         </picture></button>
                     <button type="button" class="scroll-item is-wide" data-gallery-index="2" data-frame="03"
                         data-shot="LIL WAYNE" aria-label="Open gallery image: Lil Wayne"><picture>
                             <source srcset="assets/optimized/lilwayne.avif" type="image/avif">
                             <source srcset="assets/optimized/lilwayne.webp" type="image/webp">
                             <img decoding="async" src="assets/lilwayne.jpg" alt="Lil Wayne performance frame"
-                                loading="lazy" srcset="assets/lilwayne.jpg 1x">
+                                loading="lazy">
                         </picture></button>
                     <button type="button" class="scroll-item is-portrait is-tall" data-gallery-index="3" data-frame="04"
                         data-shot="RASHIDA TLAIB" aria-label="Open gallery image: Rashida Tlaib"><picture>
                             <source srcset="assets/optimized/qaziwithrashidatalib.avif" type="image/avif">
                             <source srcset="assets/optimized/qaziwithrashidatalib.webp" type="image/webp">
-                            <img decoding="async" src="assets/qaziwithrashidatalib.jpg"
-                                srcset="assets/qaziwithrashidatalib.jpg 1x" alt="Rashida Tlaib portrait frame"
+                            <img decoding="async" src="assets/qaziwithrashidatalib.jpg" alt="Rashida Tlaib portrait frame"
                                 loading="lazy">
                         </picture></button>
                     <button type="button" class="scroll-item is-portrait is-tall" data-gallery-index="4" data-frame="05"
@@ -302,99 +301,94 @@
                             <source srcset="assets/optimized/repturner.avif" type="image/avif">
                             <source srcset="assets/optimized/repturner.webp" type="image/webp">
                             <img decoding="async" src="assets/repturner.jpg" alt="Oklahoma Capitol frame"
-                                loading="lazy" srcset="assets/repturner.jpg 1x">
+                                loading="lazy">
                         </picture></button>
                     <button type="button" class="scroll-item" data-gallery-index="5" data-frame="06"
                         data-shot="SOYLENT CAMPAIGN" aria-label="Open gallery image: Soylent Campaign"><picture>
                             <source srcset="assets/optimized/tianasoylent.avif" type="image/avif">
                             <source srcset="assets/optimized/tianasoylent.webp" type="image/webp">
                             <img decoding="async" src="assets/tianasoylent.jpg" alt="Soylent campaign portrait"
-                                loading="lazy" srcset="assets/tianasoylent.jpg 1x">
+                                loading="lazy">
                         </picture></button>
                     <button type="button" class="scroll-item is-wide" data-gallery-index="6" data-frame="07"
                         data-shot="THUNDER TUNNELS" aria-label="Open gallery image: Thunder Tunnels"><picture>
                             <source srcset="assets/optimized/thunder_dj.avif" type="image/avif">
                             <source srcset="assets/optimized/thunder_dj.webp" type="image/webp">
                             <img decoding="async" src="assets/thunder_dj.jpg" alt="Thunder tunnels session frame"
-                                loading="lazy" srcset="assets/thunder_dj.jpg 1x">
+                                loading="lazy">
                         </picture></button>
                     <button type="button" class="scroll-item" data-gallery-index="7" data-frame="08"
                         data-shot="BANGLADESH AERIAL" aria-label="Open gallery image: Bangladesh Aerial"><picture>
                             <source srcset="assets/optimized/bangladesh_dronepicture.avif" type="image/avif">
                             <source srcset="assets/optimized/bangladesh_dronepicture.webp" type="image/webp">
                             <img decoding="async" src="assets/bangladesh_dronepicture.jpg" alt="Bangladesh aerial frame"
-                                loading="lazy" srcset="assets/bangladesh_dronepicture.jpg 1x">
+                                loading="lazy">
                         </picture></button>
                     <button type="button" class="scroll-item is-wide" data-gallery-index="8" data-frame="09"
                         data-shot="CANNALINE SHOOT" aria-label="Open gallery image: Cannaline Shoot"><picture>
                             <source srcset="assets/optimized/cannalineshoot1.avif" type="image/avif">
                             <source srcset="assets/optimized/cannalineshoot1.webp" type="image/webp">
                             <img decoding="async" src="assets/cannalineshoot1.jpg" alt="Cannaline field shoot frame"
-                                loading="lazy" srcset="assets/cannalineshoot1.jpg 1x">
+                                loading="lazy">
                         </picture></button>
                     <button type="button" class="scroll-item" data-gallery-index="9" data-frame="10"
                         data-shot="SEATTLE FOREST" aria-label="Open gallery image: Seattle Forest"><picture>
-                            <source srcset="assets/optimized/lilwayne.avif" type="image/avif">
-                            <source srcset="assets/optimized/lilwayne.webp" type="image/webp">
-                            <img decoding="async" src="assets/lilwayne.jpg" srcset="assets/lilwayne.jpg 1x"
-                                alt="Lil Wayne performance frame" loading="lazy">
+                            <img decoding="async" src="assets/qaziseattle.jpg"
+                                alt="Seattle forest frame" loading="lazy">
                         </picture></button>
                     <button type="button" class="scroll-item" data-gallery-index="10" data-frame="11"
                         data-shot="COMMUNITY WORK" aria-label="Open gallery image: Community Work"><picture>
                             <source srcset="assets/optimized/foodbankcair.avif" type="image/avif">
                             <source srcset="assets/optimized/foodbankcair.webp" type="image/webp">
                             <img decoding="async" src="assets/foodbankcair.jpg" alt="Community work frame"
-                                loading="lazy" srcset="assets/foodbankcair.jpg 1x">
+                                loading="lazy">
                         </picture></button>
                     <button type="button" class="scroll-item is-portrait is-tall" data-gallery-index="11"
                         data-frame="12" data-shot="IMAN POSTER" aria-label="Open gallery image: Iman Poster"><picture>
                             <source srcset="assets/optimized/imandocumentaryposter.avif" type="image/avif">
                             <source srcset="assets/optimized/imandocumentaryposter.webp" type="image/webp">
                             <img decoding="async" src="assets/imandocumentaryposter.jpg" alt="IMAN documentary poster"
-                                loading="lazy" srcset="assets/imandocumentaryposter.jpg 1x">
+                                loading="lazy">
                         </picture></button>
                     <button type="button" class="scroll-item" data-gallery-index="12" data-frame="13"
                         data-shot="DC PROTEST" aria-label="Open gallery image: DC Protest"><picture>
                             <source srcset="assets/optimized/qaziatwashingtondcprotest.avif" type="image/avif">
                             <source srcset="assets/optimized/qaziatwashingtondcprotest.webp" type="image/webp">
                             <img decoding="async" src="assets/qaziatwashingtondcprotest.jpg"
-                                alt="Washington DC protest frame" loading="lazy"
-                                srcset="assets/qaziatwashingtondcprotest.jpg 1x">
+                                alt="Washington DC protest frame" loading="lazy">
                         </picture></button>
                     <button type="button" class="scroll-item" data-gallery-index="13" data-frame="14"
                         data-shot="ALASKA FIELD" aria-label="Open gallery image: Alaska Field"><picture>
                             <source srcset="assets/optimized/qazialaska.avif" type="image/avif">
                             <source srcset="assets/optimized/qazialaska.webp" type="image/webp">
-                            <img decoding="async" src="assets/qazialaska.jpg" alt="Alaska field frame" loading="lazy"
-                                srcset="assets/qazialaska.jpg 1x">
+                            <img decoding="async" src="assets/qazialaska.jpg" alt="Alaska field frame" loading="lazy">
                         </picture></button>
                     <button type="button" class="scroll-item" data-gallery-index="14" data-frame="15"
                         data-shot="SOYLENT // JEN" aria-label="Open gallery image: Soylent Jen"><picture>
                             <source srcset="assets/optimized/soylent_jen.avif" type="image/avif">
                             <source srcset="assets/optimized/soylent_jen.webp" type="image/webp">
                             <img decoding="async" src="assets/soylent_jen.jpg" alt="Soylent Jen portrait"
-                                loading="lazy" srcset="assets/soylent_jen.jpg 1x">
+                                loading="lazy">
                         </picture></button>
                     <button type="button" class="scroll-item" data-gallery-index="15" data-frame="16"
                         data-shot="SOYLENT // MICHELLE" aria-label="Open gallery image: Soylent Michelle"><picture>
                             <source srcset="assets/optimized/soylent_michelle.avif" type="image/avif">
                             <source srcset="assets/optimized/soylent_michelle.webp" type="image/webp">
                             <img decoding="async" src="assets/soylent_michelle.jpg" alt="Soylent Michelle portrait"
-                                loading="lazy" srcset="assets/soylent_michelle.jpg 1x">
+                                loading="lazy">
                         </picture></button>
                     <button type="button" class="scroll-item is-wide" data-gallery-index="16" data-frame="17"
                         data-shot="POKUX" aria-label="Open gallery image: Pokux"><picture>
                             <source srcset="assets/optimized/pokuxshopgood.avif" type="image/avif">
                             <source srcset="assets/optimized/pokuxshopgood.webp" type="image/webp">
                             <img decoding="async" src="assets/pokuxshopgood.jpg" alt="Pokux campaign frame"
-                                loading="lazy" srcset="assets/pokuxshopgood.jpg 1x">
+                                loading="lazy">
                         </picture></button>
                     <button type="button" class="scroll-item is-portrait is-tall" data-gallery-index="17"
                         data-frame="18" data-shot="FAMILY ARCHIVE" aria-label="Open gallery image: Family Archive"><picture>
                             <source srcset="assets/optimized/qazianddad.avif" type="image/avif">
                             <source srcset="assets/optimized/qazianddad.webp" type="image/webp">
-                            <img decoding="async" src="assets/qazianddad.jpg" alt="Family archive frame" loading="lazy"
-                                srcset="assets/qazianddad.jpg 1x">
+                            <img decoding="async" src="assets/qazianddad.jpg" alt="Family archive frame" loading="lazy">
                         </picture></button>
                     </div>
                 </div>
@@ -420,19 +414,19 @@
             </div>
             <p class="timeline-intro">Every chapter below is a real place, real cost, and a real turning point.</p>
             <div class="timeline-command-bar glass-panel" role="navigation" aria-label="Timeline chapter jump links">
-                <a href="#sec-history">1994 // ORIGIN</a>
-                <a href="#sec-history">2001 // PRESSURE</a>
-                <a href="#sec-history">2013 // RESET</a>
-                <a href="#sec-history">2020 // BUILD</a>
-                <a href="#sec-history">2026 // EXECUTION</a>
+                <a href="#chap-1994">1994 // ORIGIN</a>
+                <a href="#chap-2001">2001 // PRESSURE</a>
+                <a href="#chap-2013">2013 // RESET</a>
+                <a href="#chap-2020">2020 // BUILD</a>
+                <a href="#chap-2026">2026 // EXECUTION</a>
             </div>
             <p class="timeline-meta-note">Tap any chapter card to open related media from the archive.</p>
 
             <div class="timeline-wrap">
                 <div class="timeline-line"></div>
 
-                <div class="timeline-node">
-                    <div class="tm-year">1994</div>
+                <div class="timeline-node" id="chap-1994">
+                    <time class="tm-year" datetime="1994">1994</time>
                     <div class="tm-content" data-gallery-key="birth">
                         <h3>THE ORIGIN</h3>
                         <p class="accent">OKC BORN</p>
@@ -442,53 +436,14 @@
                             <source srcset="assets/optimized/qazi-birth-2.avif" type="image/avif">
                             <source srcset="assets/optimized/qazi-birth-2.webp" type="image/webp">
                             <img decoding="async" src="assets/qazi-birth-2.jpg" alt="1994" class="tm-img"
-                                loading="lazy" srcset="assets/qazi-birth-2.jpg 1x">
+                                loading="lazy">
                         </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
 
                 <div class="timeline-node">
-                    <div class="tm-year">2001-2012</div>
-                    <div class="tm-content" data-gallery-key="target">
-                        <h3>THE TARGET</h3>
-                        <p class="accent">POST-9/11 // SCHOOL YEARS</p>
-                        <p>After 9/11, I was treated like a suspect as a child. I was called racial slurs, labeled a
-                            terrorist, and physically bullied from elementary through high school because of my skin
-                            color, religion, and name.</p>
-                        <p>Teachers often watched it happen and did nothing. That school reality, layered with long work
-                            shifts after class, built years of exhaustion, fear, and isolation.</p>
-                        <picture>
-                            <source srcset="assets/optimized/baby-qazi.avif" type="image/avif">
-                            <source srcset="assets/optimized/baby-qazi.webp" type="image/webp">
-                            <img decoding="async" src="assets/baby-qazi.jpg" alt="School years archive" class="tm-img"
-                                loading="lazy" srcset="assets/baby-qazi.jpg 1x">
-                        </picture>
-                        <span class="tap-hint">VIEW MEDIA</span>
-                    </div>
-                </div>
-
-                <div class="timeline-node right">
-                    <div class="tm-year">2000-2012</div>
-                    <div class="tm-content" data-gallery-key="lyrewood">
-                        <h3>THE BLOCK // LYREWOOD LANE</h3>
-                        <p class="accent">NW 63RD TO WILSHIRE CORRIDOR</p>
-                        <p>Known in our circle as L-BLOCK, this was home base through survival-mode years: violence
-                            nearby, open drug activity, and constant police pressure.</p>
-                        <p>My family held the same house for over 20 years, watched the neighborhood evolve, and kept
-                            service, respect, and community care at the center.</p>
-                        <picture>
-                            <source srcset="assets/optimized/lyrewoodlane.avif" type="image/avif">
-                            <source srcset="assets/optimized/lyrewoodlane.webp" type="image/webp">
-                            <img decoding="async" src="assets/lyrewoodlane.png" alt="Lyrewood" class="tm-img"
-                                loading="lazy" srcset="assets/lyrewoodlane.png 1x">
-                        </picture>
-                        <span class="tap-hint">VIEW MEDIA</span>
-                    </div>
-                </div>
-
-                <div class="timeline-node">
-                    <div class="tm-year">1998-2012</div>
+                    <time class="tm-year" datetime="1998-2012">1998-2012</time>
                     <div class="tm-content" data-gallery-key="bangla">
                         <h3>THE BAZAAR</h3>
                         <p class="accent">THE INTEGRITY</p>
@@ -504,15 +459,53 @@
                             <source srcset="assets/optimized/banglabazaar-inside.avif" type="image/avif">
                             <source srcset="assets/optimized/banglabazaar-inside.webp" type="image/webp">
                             <img decoding="async" src="assets/banglabazaar-inside.jpg"
-                                alt="Bangla Bazaar family archive" class="tm-img" loading="lazy"
-                                srcset="assets/banglabazaar-inside.jpg 1x">
+                                alt="Bangla Bazaar family archive" class="tm-img" loading="lazy">
                         </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
 
-                <div class="timeline-node">
-                    <div class="tm-year">2013-2015</div>
+                <div class="timeline-node right">
+                    <time class="tm-year" datetime="2000-2012">2000-2012</time>
+                    <div class="tm-content" data-gallery-key="lyrewood">
+                        <h3>THE BLOCK // LYREWOOD LANE</h3>
+                        <p class="accent">NW 63RD TO WILSHIRE CORRIDOR</p>
+                        <p>Known in our circle as L-BLOCK, this was home base through survival-mode years: violence
+                            nearby, open drug activity, and constant police pressure.</p>
+                        <p>My family held the same house for over 20 years, watched the neighborhood evolve, and kept
+                            service, respect, and community care at the center.</p>
+                        <picture>
+                            <source srcset="assets/optimized/lyrewoodlane.avif" type="image/avif">
+                            <source srcset="assets/optimized/lyrewoodlane.webp" type="image/webp">
+                            <img decoding="async" src="assets/lyrewoodlane.png" alt="Lyrewood" class="tm-img"
+                                loading="lazy">
+                        </picture>
+                        <span class="tap-hint">VIEW MEDIA</span>
+                    </div>
+                </div>
+
+                <div class="timeline-node" id="chap-2001">
+                    <time class="tm-year" datetime="2001-2012">2001-2012</time>
+                    <div class="tm-content" data-gallery-key="target">
+                        <h3>THE TARGET</h3>
+                        <p class="accent">POST-9/11 // SCHOOL YEARS</p>
+                        <p>After 9/11, I was treated like a suspect as a child. I was called racial slurs, labeled a
+                            terrorist, and physically bullied from elementary through high school because of my skin
+                            color, religion, and name.</p>
+                        <p>Teachers often watched it happen and did nothing. That school reality, layered with long work
+                            shifts after class, built years of exhaustion, fear, and isolation.</p>
+                        <picture>
+                            <source srcset="assets/optimized/baby-qazi.avif" type="image/avif">
+                            <source srcset="assets/optimized/baby-qazi.webp" type="image/webp">
+                            <img decoding="async" src="assets/baby-qazi.jpg" alt="School years archive" class="tm-img"
+                                loading="lazy">
+                        </picture>
+                        <span class="tap-hint">VIEW MEDIA</span>
+                    </div>
+                </div>
+
+                <div class="timeline-node" id="chap-2013">
+                    <time class="tm-year" datetime="2013-2015">2013-2015</time>
                     <div class="tm-content" data-gallery-key="bpa">
                         <h3>THE FOUNDATION</h3>
                         <p class="accent">FRANCIS TUTTLE // WEB + GRAPHIC DESIGN</p>
@@ -524,14 +517,14 @@
                             <source srcset="assets/optimized/bpafirstplace.avif" type="image/avif">
                             <source srcset="assets/optimized/bpafirstplace.webp" type="image/webp">
                             <img decoding="async" src="assets/bpafirstplace.jpg" alt="BPA first place" class="tm-img"
-                                loading="lazy" srcset="assets/bpafirstplace.jpg 1x">
+                                loading="lazy">
                         </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
 
                 <div class="timeline-node right">
-                    <div class="tm-year">2012-2018</div>
+                    <time class="tm-year" datetime="2012-2018">2012-2018</time>
                     <div class="tm-content" data-gallery-key="grind">
                         <h3>THE GRIND</h3>
                         <p class="accent">IMAGELINE STUDIOS / IMAGELINE MOMENTS / SYN3RGY ERA</p>
@@ -543,14 +536,14 @@
                             <source srcset="assets/optimized/sabah_vape_photography.avif" type="image/avif">
                             <source srcset="assets/optimized/sabah_vape_photography.webp" type="image/webp">
                             <img decoding="async" src="assets/sabah_vape_photography.jpg" alt="The Grind" class="tm-img"
-                                loading="lazy" srcset="assets/sabah_vape_photography.jpg 1x">
+                                loading="lazy">
                         </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
 
                 <div class="timeline-node">
-                    <div class="tm-year">2017-2019</div>
+                    <time class="tm-year" datetime="2017-2019">2017-2019</time>
                     <div class="tm-content" data-gallery-key="roots">
                         <h3>THE ROOTS PROJECT</h3>
                         <p class="accent">OKLAHOMA HIP-HOP ARCHIVE</p>
@@ -565,7 +558,7 @@
                 </div>
 
                 <div class="timeline-node">
-                    <div class="tm-year">2018-2019</div>
+                    <time class="tm-year" datetime="2018-2019">2018-2019</time>
                     <div class="tm-content" data-gallery-key="mina">
                         <h3>THE SAVIOR</h3>
                         <p class="accent">MINA // COMPANION ERA</p>
@@ -575,15 +568,14 @@
                         <picture>
                             <source srcset="assets/optimized/puppymina.avif" type="image/avif">
                             <source srcset="assets/optimized/puppymina.webp" type="image/webp">
-                            <img decoding="async" src="assets/puppymina.jpg" alt="Mina" class="tm-img" loading="lazy"
-                                srcset="assets/puppymina.jpg 1x">
+                            <img decoding="async" src="assets/puppymina.jpg" alt="Mina" class="tm-img" loading="lazy">
                         </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
 
                 <div class="timeline-node right">
-                    <div class="tm-year">2019-PRESENT</div>
+                    <time class="tm-year" datetime="2019-PRESENT">2019-PRESENT</time>
                     <div class="tm-content" data-gallery-key="imageline">
                         <h3>THE UMBRELLA</h3>
                         <p class="accent">IMAGELINE STUDIOS // UMBRELLA AGENCY</p>
@@ -596,15 +588,14 @@
                             <source srcset="assets/optimized/pokuxshopgood.avif" type="image/avif">
                             <source srcset="assets/optimized/pokuxshopgood.webp" type="image/webp">
                             <img decoding="async" src="assets/pokuxshopgood.jpg"
-                                alt="Imageline Studios umbrella agency work" class="tm-img" loading="lazy"
-                                srcset="assets/pokuxshopgood.jpg 1x">
+                                alt="Imageline Studios umbrella agency work" class="tm-img" loading="lazy">
                         </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
 
-                <div class="timeline-node">
-                    <div class="tm-year">2020-2024</div>
+                <div class="timeline-node" id="chap-2020">
+                    <time class="tm-year" datetime="2020-2024">2020-2024</time>
                     <div class="tm-content" data-gallery-key="cannaline">
                         <h3>THE CANNALINE ERA</h3>
                         <p class="accent">CANNABIS-FOCUSED AGENCY UNDER IMAGELINE</p>
@@ -616,14 +607,14 @@
                             <source srcset="assets/optimized/cannalineshoot2.avif" type="image/avif">
                             <source srcset="assets/optimized/cannalineshoot2.webp" type="image/webp">
                             <img decoding="async" src="assets/cannalineshoot2.jpg" alt="Cannaline Marketing field shoot"
-                                class="tm-img" loading="lazy" srcset="assets/cannalineshoot2.jpg 1x">
+                                class="tm-img" loading="lazy">
                         </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
 
                 <div class="timeline-node">
-                    <div class="tm-year">2022</div>
+                    <time class="tm-year" datetime="2022">2022</time>
                     <div class="tm-content" data-gallery-key="mom">
                         <h3>THE MATRIARCH</h3>
                         <p class="accent">APRIL FOREVER</p>
@@ -635,15 +626,14 @@
                         <picture>
                             <source srcset="assets/optimized/momanddad.avif" type="image/avif">
                             <source srcset="assets/optimized/momanddad.webp" type="image/webp">
-                            <img decoding="async" src="assets/momanddad.jpg" alt="Maa" class="tm-img" loading="lazy"
-                                srcset="assets/momanddad.jpg 1x">
+                            <img decoding="async" src="assets/momanddad.jpg" alt="Maa" class="tm-img" loading="lazy">
                         </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
 
                 <div class="timeline-node right">
-                    <div class="tm-year">2023</div>
+                    <time class="tm-year" datetime="2023">2023</time>
                     <div class="tm-content" data-gallery-key="cair">
                         <h3>THE PROJECT</h3>
                         <p class="accent">IMAN DOC / CAIR DECADE OF WORK</p>
@@ -657,14 +647,14 @@
                             <source srcset="assets/optimized/imandocumentaryposter.avif" type="image/avif">
                             <source srcset="assets/optimized/imandocumentaryposter.webp" type="image/webp">
                             <img decoding="async" src="assets/imandocumentaryposter.jpg" alt="IMAN Documentary Poster"
-                                class="tm-img" loading="lazy" srcset="assets/imandocumentaryposter.jpg 1x">
+                                class="tm-img" loading="lazy">
                         </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
 
                 <div class="timeline-node">
-                    <div class="tm-year">2024</div>
+                    <time class="tm-year" datetime="2024">2024</time>
                     <div class="tm-content" data-gallery-key="oao">
                         <h3>THE RESISTANCE</h3>
                         <p class="accent">GAZA / OAO</p>
@@ -676,14 +666,14 @@
                             <source srcset="assets/optimized/qaziatwashingtondcprotest.avif" type="image/avif">
                             <source srcset="assets/optimized/qaziatwashingtondcprotest.webp" type="image/webp">
                             <img decoding="async" src="assets/qaziatwashingtondcprotest.jpg" alt="OAO Rally"
-                                class="tm-img" loading="lazy" srcset="assets/qaziatwashingtondcprotest.jpg 1x">
+                                class="tm-img" loading="lazy">
                         </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
 
                 <div class="timeline-node right">
-                    <div class="tm-year">2025</div>
+                    <time class="tm-year" datetime="2025">2025</time>
                     <div class="tm-content" data-gallery-key="topcrop">
                         <h3>THE ASCENSION</h3>
                         <p class="accent">TOP CROP // SYSTEMS BUILD ERA</p>
@@ -695,14 +685,14 @@
                             <source srcset="assets/optimized/qazicannalinebald.avif" type="image/avif">
                             <source srcset="assets/optimized/qazicannalinebald.webp" type="image/webp">
                             <img decoding="async" src="assets/qazicannalinebald.jpg" alt="Top Crop" class="tm-img"
-                                loading="lazy" srcset="assets/qazicannalinebald.jpg 1x">
+                                loading="lazy">
                         </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
                 </div>
 
-                <div class="timeline-node">
-                    <div class="tm-year">2026</div>
+                <div class="timeline-node" id="chap-2026">
+                    <time class="tm-year" datetime="2026">2026</time>
                     <div class="tm-content" data-gallery-key="now">
                         <h3>THE EXECUTION</h3>
                         <p class="accent">BIG DAWG ERA</p>
@@ -714,7 +704,7 @@
                             <source srcset="assets/optimized/qazi_noice.avif" type="image/avif">
                             <source srcset="assets/optimized/qazi_noice.webp" type="image/webp">
                             <img decoding="async" src="assets/qazi_noice.png" alt="Big Dawg" class="tm-img"
-                                loading="lazy" srcset="assets/qazi_noice.png 1x">
+                                loading="lazy">
                         </picture>
                         <span class="tap-hint">VIEW MEDIA</span>
                     </div>
@@ -733,7 +723,7 @@
                         <source srcset="assets/optimized/imandocumentaryposter.avif" type="image/avif">
                         <source srcset="assets/optimized/imandocumentaryposter.webp" type="image/webp">
                         <img decoding="async" src="assets/imandocumentaryposter.jpg" alt="IMAN documentary poster"
-                            loading="lazy" srcset="assets/imandocumentaryposter.jpg 1x">
+                            loading="lazy">
                     </picture>
                     <figcaption>ARCHIVAL POSTER // IMAN: TWO JOURNEYS OF FAITH</figcaption>
                 </figure>
@@ -775,15 +765,7 @@
                     <h2 class="outline-text">FILM ARCHIVE</h2>
                 </div>
                 <p class="video-subline">Direction, documentary, campaign films, and field edits.</p>
-                <div class="video-command-bar glass-panel" role="group" aria-label="Film archive groups">
-                    <div class="video-chip-row">
-                        <button type="button" class="video-chip is-active" aria-pressed="true">ALL CUTS</button>
-                        <button type="button" class="video-chip" aria-pressed="false">DOC</button>
-                        <button type="button" class="video-chip" aria-pressed="false">BRAND</button>
-                        <button type="button" class="video-chip" aria-pressed="false">FIELD</button>
-                    </div>
-                    <span class="video-command-copy">9 FEATURED RELEASES // SELECT TO PLAY</span>
-                </div>
+                <p class="video-command-copy">9 FEATURED RELEASES // SELECT TO PLAY</p>
                 <div class="video-grid">
                     <button type="button" class="video-card" data-gallery-index="0" data-lane="FILM"
                         aria-label="Open video: Oregon Trip">
@@ -908,38 +890,33 @@
                 <picture>
                     <source srcset="assets/optimized/thunderlogo.avif" type="image/avif">
                     <source srcset="assets/optimized/thunderlogo.webp" type="image/webp">
-                    <img loading="lazy" decoding="async" src="assets/thunderlogo.png" alt="OKC Thunder" class="client-logo"
-                        srcset="assets/thunderlogo.png 1x">
+                    <img loading="lazy" decoding="async" src="assets/thunderlogo.png" alt="OKC Thunder" class="client-logo">
                 </picture>
                 <picture>
                     <source srcset="assets/optimized/cairlogo.avif" type="image/avif">
                     <source srcset="assets/optimized/cairlogo.webp" type="image/webp">
-                    <img loading="lazy" decoding="async" src="assets/cairlogo.png" alt="CAIR" class="client-logo"
-                        srcset="assets/cairlogo.png 1x">
+                    <img loading="lazy" decoding="async" src="assets/cairlogo.png" alt="CAIR" class="client-logo">
                 </picture>
                 <picture>
                     <source srcset="assets/optimized/atlanticlogo.avif" type="image/avif">
                     <source srcset="assets/optimized/atlanticlogo.webp" type="image/webp">
-                    <img loading="lazy" decoding="async" src="assets/atlanticlogo.png" alt="Atlantic" class="client-logo"
-                        srcset="assets/atlanticlogo.png 1x">
+                    <img loading="lazy" decoding="async" src="assets/atlanticlogo.png" alt="Atlantic" class="client-logo">
                 </picture>
                 <picture>
                     <source srcset="assets/optimized/dressforsuccessblack.avif" type="image/avif">
                     <source srcset="assets/optimized/dressforsuccessblack.webp" type="image/webp">
                     <img loading="lazy" decoding="async" src="assets/dressforsuccessblack.png" alt="Dress For Success"
-                        class="client-logo invert-logo" srcset="assets/dressforsuccessblack.png 1x">
+                        class="client-logo invert-logo">
                 </picture>
                 <picture>
                     <source srcset="assets/optimized/towerlogo.avif" type="image/avif">
                     <source srcset="assets/optimized/towerlogo.webp" type="image/webp">
-                    <img loading="lazy" decoding="async" src="assets/towerlogo.png" alt="Tower" class="client-logo"
-                        srcset="assets/towerlogo.png 1x">
+                    <img loading="lazy" decoding="async" src="assets/towerlogo.png" alt="Tower" class="client-logo">
                 </picture>
                 <picture>
                     <source srcset="assets/optimized/soylentlogo.avif" type="image/avif">
                     <source srcset="assets/optimized/soylentlogo.webp" type="image/webp">
-                    <img loading="lazy" decoding="async" src="assets/soylentlogo.png" alt="Soylent" class="client-logo"
-                        srcset="assets/soylentlogo.png 1x">
+                    <img loading="lazy" decoding="async" src="assets/soylentlogo.png" alt="Soylent" class="client-logo">
                 </picture>
             </div>
         </section>
@@ -1114,15 +1091,21 @@
 
         <section id="sec-contact" class="align-center">
             <a href="#" id="secure-contact-link" class="giant-link js-initiate"
-                style="cursor: pointer;">INITIATE<br>LINK</a>
+                style="cursor: pointer;">LET'S WORK<br>TOGETHER</a>
             <p class="contact-brief">OPEN TO HIGH-IMPACT LEADERSHIP AND CREATIVE-OPERATIONS ENGAGEMENTS.</p>
             <p class="contact-focus">CURRENT FOCUS: CORPORATE ADS // CREATIVE OPERATIONS // SYSTEMS THAT SCALE</p>
+            <p class="contact-email"><a href="mailto:hello@qaziislam.com" style="color:var(--text-muted,#9a9a9a);font-size:11px;letter-spacing:1.4px;text-decoration:underline;">hello@qaziislam.com</a></p>
         </section>
 
         <footer>
             <div class="footer-content">
                 <div class="f-left">QAZI ISLAM © 2026</div>
-                <div class="f-right">OKC // WORLDWIDE</div>
+                <div class="f-right">
+                    <a href="https://www.linkedin.com/in/qaziislam" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="f-social-link">LI</a>
+                    <a href="https://www.instagram.com/qaziislam" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="f-social-link">IG</a>
+                    <a href="mailto:hello@qaziislam.com" class="f-social-link">hello@qaziislam.com</a>
+                    OKC // WORLDWIDE
+                </div>
             </div>
         </footer>
 
@@ -1130,6 +1113,10 @@
     <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">↑</button>
 
     <script type="module" src="script.js?v=6.9"></script>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
 </body>
 
 </html>
