@@ -51,16 +51,16 @@ function getViewportProfile() {
 
 const BASE_KEYFRAMES = [
     { target: '#sec-hero',         pos: { x:  3.34, y: -1.08, z: 0.62 }, rot: { x: 0.08, y: 0, z:  0    }, scale: 1.84, look: { x: -1.84, z: 3.36 } }, // RIGHT
-    { target: '#sec-profile',      pos: { x:  2.4,  y: -0.38, z: 0.72 }, rot: { x: 0.06, y: 0, z:  0.01 }, scale: 3.4,  look: { x: -1.34, z: 2.26 } }, // RIGHT large
+    { target: '#sec-profile',      pos: { x:  2.2,  y:  0.24, z: 0.72 }, rot: { x: 0.06, y: 0, z:  0.01 }, scale: 3.4,  look: { x: -1.34, z: 2.26 } }, // RIGHT large
     { target: '#sec-gallery',      pos: { x: -2.6,  y: -0.72, z: 0.38 }, rot: { x: 0.06, y: 0, z:  0    }, scale: 1.0,  look: { x:  1.1,  z: 2.2  } }, // LEFT
     { target: '#sec-history',      pos: { x:  2.5,  y: -0.5,  z: 0.32 }, rot: { x: 0.06, y: 0, z:  0    }, scale: 1.0,  look: { x: -1.1,  z: 2.2  } }, // RIGHT
     { target: '#sec-iman',         pos: { x:  2.6,  y: -0.50, z: 0.34 }, rot: { x: 0.06, y: 0, z: -0.01 }, scale: 0.92, look: { x: -1.1,  z: 2.0  } }, // RIGHT — poster left, article right, Mina frames right edge
     { target: '#sec-video',        pos: { x: -2.6,  y: -0.52, z: 0.30 }, rot: { x: 0.06, y: 0, z:  0    }, scale: 0.88, look: { x:  1.0,  z: 2.0  } }, // LEFT — centered video grid, Mina clears left
     { target: '#sec-testimonials', pos: { x:  2.2,  y: -0.46, z: 0.30 }, rot: { x: 0.05, y: 0, z:  0    }, scale: 0.86, look: { x: -0.9,  z: 2.0  } }, // RIGHT — small centered carousel
     { target: '#sec-clients',      pos: { x: -2.4,  y: -0.54, z: 0.28 }, rot: { x: 0.05, y: 0, z:  0    }, scale: 0.84, look: { x:  0.9,  z: 2.0  } }, // LEFT — centered logos
-    { target: '#sec-cred',         pos: { x:  2.8,  y: -0.40, z: 0.26 }, rot: { x: 0.05, y: 0, z:  0    }, scale: 0.82, look: { x: -0.9,  z: 1.9  } }, // RIGHT far — pushed past full-width cred grid
+    { target: '#sec-cred',         pos: { x:  2.0,  y: -0.30, z: 0.26 }, rot: { x: 0.05, y: 0, z:  0    }, scale: 0.88, look: { x: -0.9,  z: 1.9  } }, // RIGHT — beside heading
     { target: '#sec-tech',         pos: { x: -2.8,  y: -0.54, z: 0.24 }, rot: { x: 0.05, y: 0, z: -0.01 }, scale: 0.78, look: { x:  0.9,  z: 1.9  } }, // LEFT far — pushed past card grid
-    { target: '#sec-contact',      pos: { x:  0.0,  y: -0.26, z: 0.48 }, rot: { x: 0.03, y: 0, z:  0    }, scale: 0.78, look: { x:  0.0,  z: 4.34 } }, // CENTER — cinematic dock
+    { target: '#sec-contact',      pos: { x:  0.0,  y: -0.82, z: 0.54 }, rot: { x: 0.03, y: 0, z:  0    }, scale: 0.86, look: { x:  0.0,  z: 4.34 } }, // CENTER — sits on "INITIATE LINK" text
 ];
 
 function clamp(value, min, max) {
@@ -80,7 +80,7 @@ function transformFrames(config) {
             y: 0,
             z: frame.rot.z * config.rot
         },
-        scale: clamp(frame.scale * config.scale, 0.58, 1.62),
+        scale: clamp(frame.scale * config.scale, 0.58, 2.8),
         look: {
             x: frame.look.x * config.lookX,
             z: frame.look.z * config.lookZ
