@@ -1148,22 +1148,138 @@ h2 {
     background: #000;
 }
 
-.tm-content:hover .tm-img {
-    transform: scale(1.02);
-}
+/* Ken Burns supersedes the hover scale — drop it */
 
+/* TAP HINT — always visible pulse so users know it's interactive */
 .tap-hint {
     display: block;
     margin-top: 10px;
     font-size: 9px;
     color: #9f9f9f;
     letter-spacing: 1.4px;
-    opacity: 0;
-    transition: 0.24s ease;
+    opacity: 0.55;
+    animation: tapHintPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes tapHintPulse {
+    0%, 100% { opacity: 0.55; color: #9f9f9f; }
+    50%       { opacity: 1;    color: #e30613; }
 }
 
 .tm-content:hover .tap-hint {
     opacity: 1;
+    animation: none;
+    color: #fff;
+}
+
+/* ── TIMELINE AUTO-GALLERY ── */
+.tm-img-wrap {
+    position: relative;
+    overflow: hidden;
+    margin-top: 15px;
+    border: 1px solid #333;
+    background: #000;
+    height: 250px;
+    border-radius: 3px;
+    line-height: 0;
+}
+
+/* Override base img rules inside the wrap */
+.tm-img-wrap picture {
+    display: block;
+    height: 100%;
+}
+
+.tm-img-wrap .tm-img {
+    margin-top: 0;
+    border: none;
+    height: 100%;
+    max-height: none;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    animation: tmKenBurns-A 7s ease-in-out infinite;
+    transition: opacity 0.55s ease;
+}
+
+/* Ken Burns keyframe variants */
+@keyframes tmKenBurns-A {
+    0%   { transform: scale(1.0)  translate(0%,    0%);    }
+    50%  { transform: scale(1.08) translate(-1.5%, -1%);   }
+    100% { transform: scale(1.0)  translate(0%,    0%);    }
+}
+
+@keyframes tmKenBurns-B {
+    0%   { transform: scale(1.06) translate(1.5%,  1%);    }
+    50%  { transform: scale(1.0)  translate(0%,    0%);    }
+    100% { transform: scale(1.06) translate(1.5%,  1%);    }
+}
+
+@keyframes tmKenBurns-C {
+    0%   { transform: scale(1.04) translate(-1%,   1.5%);  }
+    50%  { transform: scale(1.1)  translate(1%,   -1.5%);  }
+    100% { transform: scale(1.04) translate(-1%,   1.5%);  }
+}
+
+/* Cycle overlay images */
+.tm-cycle-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.55s ease;
+    animation: tmKenBurns-A 7s ease-in-out infinite;
+}
+
+.tm-cycle-img.is-active {
+    opacity: 1;
+}
+
+/* Red scan-line sweep between transitions */
+.tm-scan-line {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        transparent     0%,
+        rgba(227,6,19,.28) 48%,
+        rgba(255,255,255,.08) 50%,
+        rgba(227,6,19,.28) 52%,
+        transparent     100%
+    );
+    transform: translateX(-110%);
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0;
+}
+
+.tm-scan-line.is-scanning {
+    animation: tmScanSweep 0.62s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes tmScanSweep {
+    0%   { opacity: 1; transform: translateX(-110%); }
+    100% { opacity: 0; transform: translateX(110%);  }
+}
+
+/* Frame counter badge */
+.tm-img-counter {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-size: 9px;
+    font-family: 'Share Tech Mono', 'Courier New', monospace;
+    letter-spacing: 1.8px;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2px 7px;
+    border: 1px solid rgba(227, 6, 19, 0.45);
+    border-radius: 2px;
+    z-index: 4;
+    pointer-events: none;
+    text-shadow: 0 0 6px rgba(227, 6, 19, 0.6);
 }
 
 /* IMAN FEATURE */
@@ -2525,6 +2641,10 @@ footer {
         object-position: top;
     }
 
+    .tm-img-wrap {
+        height: 200px;
+    }
+
     .iman-grid {
         grid-template-columns: 1fr;
         gap: 14px;
@@ -2832,6 +2952,10 @@ footer {
 
     .tm-img {
         max-height: 200px;
+    }
+
+    .tm-img-wrap {
+        height: 175px;
     }
 
     .tech-grid {

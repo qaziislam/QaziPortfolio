@@ -2383,6 +2383,7 @@ function initContent() {
     initSectionReveals();
     syncTimelineSideLayout();
     initTimelineActiveYear();
+    initTimelineAutoGallery();
     initTimelineNodeReveals();
     initMobileTextFocusMode();
     initProofCounters();
@@ -2418,6 +2419,124 @@ function initStickyHire() {
         });
     }, { threshold: 0.1 });
     observer.observe(hero);
+}
+
+function initTimelineAutoGallery() {
+    if (prefersReducedMotion) return;
+
+    const cards = Array.from(document.querySelectorAll('.tm-content[data-gallery-key]'));
+
+    cards.forEach((card, cardIndex) => {
+        const key = card.dataset.galleryKey;
+        const data = GALLERY_DATA[key];
+        if (!data) return;
+
+        // Image-only entries — skip .mp4 and bare 11-char YouTube IDs
+        const images = data.filter(item =>
+            !item.src.endsWith('.mp4') && !/^[a-zA-Z0-9_-]{11}$/.test(item.src)
+        );
+        if (images.length < 2) return;
+
+        const picture = card.querySelector('picture');
+        if (!picture) return;
+
+        // Wrap <picture> in .tm-img-wrap
+        const wrap = document.createElement('div');
+        wrap.className = 'tm-img-wrap';
+        picture.parentNode.insertBefore(wrap, picture);
+        wrap.appendChild(picture);
+
+        // Apply Ken Burns variant to base img
+        const kbVariants = ['tmKenBurns-A', 'tmKenBurns-B', 'tmKenBurns-C'];
+        const baseImg = wrap.querySelector('.tm-img');
+        if (baseImg) {
+            baseImg.style.animationName = kbVariants[cardIndex % 3];
+            baseImg.style.animationDelay = `-${(cardIndex % 3) * 2.2}s`;
+        }
+
+        // Inject overlay images for indices 1..N
+        images.slice(1).forEach((item, i) => {
+            const img = document.createElement('img');
+            img.className = 'tm-cycle-img';
+            img.src = item.src;
+            img.alt = item.caption || '';
+            img.loading = 'lazy';
+            img.decoding = 'async';
+            img.style.animationName = kbVariants[(i + 1 + cardIndex) % 3];
+            img.style.animationDelay = `-${((i + 2) * 1.6) % 7}s`;
+            wrap.appendChild(img);
+        });
+
+        // Scan line + counter
+        const scanLine = document.createElement('div');
+        scanLine.className = 'tm-scan-line';
+        wrap.appendChild(scanLine);
+
+        const counter = document.createElement('span');
+        counter.className = 'tm-img-counter';
+        wrap.appendChild(counter);
+
+        const cycleImgs = Array.from(wrap.querySelectorAll('.tm-cycle-img'));
+        const total = images.length;
+
+        const state = { idx: 0, intervalId: null, timeoutId: null };
+
+        function updateCounter() {
+            counter.textContent = `${String(state.idx + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+        }
+
+        function advance() {
+            const next = (state.idx + 1) % total;
+
+            // Trigger scan sweep
+            scanLine.classList.remove('is-scanning');
+            void scanLine.offsetWidth; // force reflow to restart animation
+            scanLine.classList.add('is-scanning');
+
+            // Cross-dissolve at mid-point of scan (300ms in)
+            setTimeout(() => {
+                if (state.idx === 0) {
+                    if (baseImg) baseImg.style.opacity = '0';
+                } else {
+                    cycleImgs[state.idx - 1].classList.remove('is-active');
+                }
+                if (next === 0) {
+                    if (baseImg) baseImg.style.opacity = '1';
+                } else {
+                    cycleImgs[next - 1].classList.add('is-active');
+                }
+                state.idx = next;
+                updateCounter();
+            }, 300);
+        }
+
+        function startCycling() {
+            if (state.intervalId || state.timeoutId) return;
+            const delay = cardIndex * 320 + Math.random() * 700;
+            state.timeoutId = setTimeout(() => {
+                state.timeoutId = null;
+                state.intervalId = setInterval(advance, 2800);
+            }, delay);
+        }
+
+        function stopCycling() {
+            if (state.timeoutId) { clearTimeout(state.timeoutId); state.timeoutId = null; }
+            if (state.intervalId) { clearInterval(state.intervalId); state.intervalId = null; }
+            // Snap back to first image
+            state.idx = 0;
+            if (baseImg) baseImg.style.opacity = '1';
+            cycleImgs.forEach(img => img.classList.remove('is-active'));
+            updateCounter();
+        }
+
+        updateCounter();
+
+        const observer = new IntersectionObserver(
+            (entries) => entries.forEach(e => e.isIntersecting ? startCycling() : stopCycling()),
+            { threshold: 0.3 }
+        );
+        observer.observe(card);
+    });
 }
 
 function initTimelineActiveYear() {
