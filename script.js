@@ -2424,6 +2424,7 @@ function initStickyHire() {
 function initTimelineAutoGallery() {
     if (prefersReducedMotion) return;
 
+    const kbVariants = ['tmKenBurns-A', 'tmKenBurns-B', 'tmKenBurns-C'];
     const cards = Array.from(document.querySelectorAll('.tm-content[data-gallery-key]'));
 
     cards.forEach((card, cardIndex) => {
@@ -2447,93 +2448,102 @@ function initTimelineAutoGallery() {
         wrap.appendChild(picture);
 
         // Apply Ken Burns variant to base img
-        const kbVariants = ['tmKenBurns-A', 'tmKenBurns-B', 'tmKenBurns-C'];
         const baseImg = wrap.querySelector('.tm-img');
         if (baseImg) {
+            baseImg.style.willChange = 'opacity, transform';
             baseImg.style.animationName = kbVariants[cardIndex % 3];
-            baseImg.style.animationDelay = `-${(cardIndex % 3) * 2.2}s`;
+            baseImg.style.animationDelay = `-${(cardIndex % 3) * 2.3}s`;
         }
 
-        // Inject overlay images for indices 1..N
-        images.slice(1).forEach((item, i) => {
+        // Pre-create overlay images (eager load so they're ready before shown)
+        const cycleImgs = images.slice(1).map((item, i) => {
             const img = document.createElement('img');
             img.className = 'tm-cycle-img';
             img.src = item.src;
             img.alt = item.caption || '';
-            img.loading = 'lazy';
+            img.loading = i < 2 ? 'eager' : 'lazy';
             img.decoding = 'async';
+            img.style.willChange = 'opacity, transform';
             img.style.animationName = kbVariants[(i + 1 + cardIndex) % 3];
-            img.style.animationDelay = `-${((i + 2) * 1.6) % 7}s`;
+            img.style.animationDelay = `-${((i + 1) * 1.9) % 7}s`;
             wrap.appendChild(img);
+            return img;
         });
 
-        // Scan line + counter
-        const scanLine = document.createElement('div');
-        scanLine.className = 'tm-scan-line';
-        wrap.appendChild(scanLine);
-
+        // Counter badge
         const counter = document.createElement('span');
         counter.className = 'tm-img-counter';
         wrap.appendChild(counter);
 
-        const cycleImgs = Array.from(wrap.querySelectorAll('.tm-cycle-img'));
         const total = images.length;
-
-        const state = { idx: 0, intervalId: null, timeoutId: null };
+        const state = { idx: 0, timer: null };
 
         function updateCounter() {
             counter.textContent = `${String(state.idx + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
         }
 
-        function advance() {
-            const next = (state.idx + 1) % total;
+        // Scan line: create a fresh element each time to avoid animation-restart jitter
+        function fireScan() {
+            const old = wrap.querySelector('.tm-scan-line');
+            if (old) old.remove();
+            const sl = document.createElement('div');
+            sl.className = 'tm-scan-line is-scanning';
+            // Insert behind counter
+            wrap.insertBefore(sl, counter);
+            sl.addEventListener('animationend', () => sl.remove(), { once: true });
+        }
 
-            // Trigger scan sweep
-            scanLine.classList.remove('is-scanning');
-            void scanLine.offsetWidth; // force reflow to restart animation
-            scanLine.classList.add('is-scanning');
+        function showFrame(newIdx) {
+            const oldIdx = state.idx;
+            state.idx = newIdx;
 
-            // Cross-dissolve at mid-point of scan (300ms in)
+            fireScan();
+
+            // Cross-dissolve at mid-point of scan
             setTimeout(() => {
-                if (state.idx === 0) {
+                // Hide old frame
+                if (oldIdx === 0) {
                     if (baseImg) baseImg.style.opacity = '0';
                 } else {
-                    cycleImgs[state.idx - 1].classList.remove('is-active');
+                    cycleImgs[oldIdx - 1].classList.remove('is-active');
                 }
-                if (next === 0) {
+                // Show new frame
+                if (newIdx === 0) {
                     if (baseImg) baseImg.style.opacity = '1';
                 } else {
-                    cycleImgs[next - 1].classList.add('is-active');
+                    cycleImgs[newIdx - 1].classList.add('is-active');
                 }
-                state.idx = next;
                 updateCounter();
-            }, 300);
+            }, 290);
         }
 
         function startCycling() {
-            if (state.intervalId || state.timeoutId) return;
-            const delay = cardIndex * 320 + Math.random() * 700;
-            state.timeoutId = setTimeout(() => {
-                state.timeoutId = null;
-                state.intervalId = setInterval(advance, 2800);
-            }, delay);
+            if (state.timer) return;
+            // Stagger per card so they don't all flip at once
+            const staggerMs = (cardIndex % 6) * 380 + Math.random() * 500;
+            state.timer = setTimeout(function tick() {
+                showFrame((state.idx + 1) % total);
+                state.timer = setTimeout(tick, 3200);
+            }, staggerMs);
         }
 
         function stopCycling() {
-            if (state.timeoutId) { clearTimeout(state.timeoutId); state.timeoutId = null; }
-            if (state.intervalId) { clearInterval(state.intervalId); state.intervalId = null; }
-            // Snap back to first image
+            if (state.timer) { clearTimeout(state.timer); state.timer = null; }
+            // Reset to first frame
             state.idx = 0;
             if (baseImg) baseImg.style.opacity = '1';
             cycleImgs.forEach(img => img.classList.remove('is-active'));
+            const stale = wrap.querySelector('.tm-scan-line');
+            if (stale) stale.remove();
             updateCounter();
         }
 
         updateCounter();
 
+        // Start/stop cycling as the card enters/leaves the viewport
         const observer = new IntersectionObserver(
             (entries) => entries.forEach(e => e.isIntersecting ? startCycling() : stopCycling()),
-            { threshold: 0.3 }
+            { threshold: 0.15 }
         );
         observer.observe(card);
     });
