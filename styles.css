@@ -1069,6 +1069,19 @@ h2 {
     background: linear-gradient(to bottom, rgba(227, 6, 19, 0.95), rgba(227, 6, 19, 0.15));
 }
 
+.tm-content:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.tm-content {
+    font-family: var(--font-mono);
+    color: var(--text);
+    text-align: inherit;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
 .tm-content:hover {
     border-color: #8a8a8a;
     transform: translateY(-3px);
@@ -2094,6 +2107,19 @@ h2 {
     line-height: 0.9;
     border-bottom: 5px solid var(--accent);
     transition: color var(--duration-normal) ease;
+    /* button reset */
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 0;
+    cursor: pointer;
+    display: block;
+}
+
+.giant-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 6px;
 }
 
 .giant-link:hover {

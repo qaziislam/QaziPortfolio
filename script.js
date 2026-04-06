@@ -135,6 +135,7 @@ const GALLERY_DATA = {
     grind: [
         { src: 'assets/sabah_vape_photography.jpg', caption: 'Sabah Vape Photography' },
         { src: 'assets/okcdowntown.jpg', caption: 'Dual-Shift Years: Day Job and Agency Nights' },
+        { src: 'https://img.youtube.com/vi/VgfP2XjQL_A/maxresdefault.jpg', caption: 'Imageline Moments Wedding Reel // Thumbnail' },
         { src: 'VgfP2XjQL_A', caption: 'Imageline Moments Wedding Reel' }
     ],
     roots: [
@@ -297,16 +298,15 @@ function initContactActions() {
             }
             event.preventDefault();
             const subject = button.dataset.subject || 'Project Inquiry';
-            const user = 'qazi';
-            const domain = 'imagelinestudios.com';
-            window.location.href = `mailto:${user}@${domain}?subject=${encodeURIComponent(subject)}`;
-            
+            const contactEmail = 'qazi@qaziislam.com';
+            window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}`;
+
             const content = funnel.querySelector('.funnel-content');
             if (content) {
                 content.innerHTML = `
                     <button type="button" class="funnel-close" aria-label="Close funnel modal">&times;</button>
                     <h2 style="font-size: 2rem; margin-bottom: 20px;">EMAIL CLIENT OPENED</h2>
-                    <p>Check your email client — or reach me directly at <strong>${user}@${domain}</strong></p>
+                    <p>Check your email client — or reach me directly at <strong>${contactEmail}</strong></p>
                 `;
                 const closeBtn = content.querySelector('.funnel-close');
                 closeBtn.addEventListener('click', () => { funnel.classList.add('hidden'); });
