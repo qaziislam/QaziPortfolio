@@ -2091,6 +2091,7 @@ function initTechThumbFallbacks() {
         img.addEventListener('load', () => {
             const isPortrait = img.naturalWidth > 0 && img.naturalHeight > img.naturalWidth;
             setFallbackFrame(img.src.startsWith('data:image/svg+xml') || isPortrait);
+            img.closest('.tech-card')?.classList.add('is-loaded');
         });
 
         img.addEventListener('error', () => {
@@ -2363,6 +2364,7 @@ function initNavigation() {
     initHashAnchorNavigation();
     initJumpNavVisibility();
     initJumpNavActiveState();
+    initStickyHire();
     initBackToTop();
     window.addEventListener('hashchange', () => {
         scrollToHashTarget('smooth');
@@ -2380,6 +2382,7 @@ function initContent() {
     initLightboxEvents();
     initSectionReveals();
     syncTimelineSideLayout();
+    initTimelineActiveYear();
     initTimelineNodeReveals();
     initMobileTextFocusMode();
     initProofCounters();
@@ -2403,6 +2406,29 @@ function init() {
     initNavigation();
     initContent();
     initServiceWorker();
+}
+
+function initStickyHire() {
+    const pill = document.getElementById('sticky-hire');
+    const hero = document.getElementById('sec-hero');
+    if (!pill || !hero) return;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            pill.classList.toggle('is-visible', !entry.isIntersecting);
+        });
+    }, { threshold: 0.1 });
+    observer.observe(hero);
+}
+
+function initTimelineActiveYear() {
+    const nodes = Array.from(document.querySelectorAll('#sec-history .timeline-node'));
+    if (nodes.length === 0) return;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            entry.target.classList.toggle('is-mina-active', entry.isIntersecting);
+        });
+    }, { threshold: 0.5 });
+    nodes.forEach(node => observer.observe(node));
 }
 
 function initJumpNavActiveState() {
